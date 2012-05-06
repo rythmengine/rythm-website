@@ -1,0 +1,145 @@
+@extends("main", noGoHome=true)
+@set(title: "home")
+@args String title;
+
+@cache() {
+
+<div id="help" style="display:none;padding: 5px; background-color: #FFFF99; border: 1px solid #888; margin-bottom: 30px">
+
+<p style="font-weight: bold">Hey, I am looking for volunteers who would like to help me developing this sample application. Specifically I need the following help</p>
+
+<ul>
+<li>Dressing up the app with css/javascripts</li>
+<li>Add more use cases</li>
+<li>Add description to each use case</li>
+</ul>
+
+<div>
+<a href="mailto:greenlaw110@@gmail.com?subject=about%20play-rythm-demo%20app%20development">Yes I would like to help!</a>&nbsp;&nbsp;&nbsp;<a href="#" onclick="noThanks()">No thanks</a>
+</div>
+
+</div>
+
+<h1>PlayRythm Demo App</h1>
+
+<p>This application demonstrate the new <a href="http://www.playframework.org/modules/rythm">PlayRythm</a> template engine for Play!Framework (v1.2.x) based on <a href="http://www.rythmengine.com">Rythm</a>.
+
+<p>Click on the following links you can find out the varieties of Rythm features including template layout management, caching, escape, call different tags etc.</p>
+
+<div>
+    <a href="@url(Application.testDefaultEscape())">test default escape</a>
+</div>
+<div>
+    <a href="@url(Application.testRenderSection())">test render section</a>
+</div>
+<div>
+    <a href="@url(Application.testDefaultLayoutContent())">test default layout content</a>
+</div>
+<div>
+    <a href="@url(Application.testCache())">test cache</a>
+</div>
+<div>
+    <a href="@url(Application.testTagCache())">test tag cache</a>
+</div>
+<div>
+    <a href="@url(Application.testLoadTagByRelativePath())">load tag using relative path</a>
+</div>
+<div>
+    <a href="@url(Application.testLoadTagUsingImportPath())">load tag using import path</a>
+</div>
+<div>
+    <a href="@url(Application.testActionCall())">call action method from view</a>
+</div>
+<div>
+    <a href="@url(Application.testFastTag())">Call fast tag</a>
+</div>
+<div>
+    <a href="@url(Application.testInclude())">Include other templates</a>
+</div>
+<div>
+    <a href="@url(Application.testBreakContinue())">test break continue statement</a>
+</div>
+<div>
+    <a href="@url(Application.testInvoke())">test dynamic tag dispatch</a>
+</div>
+<div>
+    <a href="@url(Application.testExtendsWithParams())">test extends layout template with params</a>
+</div>
+<div>
+    <a href="@url(Application.testExtendsWithOutParams())">test extends layout template with out params</a>
+</div>
+<div>
+    <a href="@url(Application.callExtendedTag())">Call tags that extending other templates</a>
+</div>
+<div>
+    <a href="@url(Application.testTagInvokeCallBack())">Test tag invoke with callback</a>
+</div>
+<div>
+    <a href="@url(Application.testAssign())">Test assignment</a>
+</div>
+<div>
+    <a href="@url(Application.testChain())">Test chained extension</a>
+</div>
+<div>
+    <a href="@url(Application.testMisc())">Misc tests</a>
+</div>
+<div>
+    <a href="@url(Application.testSimple())">tests simple template</a>
+</div>
+<div>
+    <a href="@url(Application.testCache4())">tests Cache4</a>
+</div>
+<div>
+    <a href="@url(Application.testCache4WithSessionData())">tests Cache4 with session data check enabled</a>
+</div>
+<div>
+    <a href="@url(Application.testInlineTag())">test inline tag</a>
+</div>
+<div>
+    <a href="@url(Application.fibonacci())">Fibonacci - recursive tag invocation</a>
+</div>
+
+}
+
+@include(tmpl_src)
+
+<script type="text/javascript">
+function setCookie(c_nothx, value) {
+    var exdate=new Date(), exdays = 100;
+    exdate.setDate(exdate.getDate() + exdays);
+    var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
+    document.cookie=c_nothx + "=" + c_value;
+}
+
+function getCookie(c_name) {
+    var i,x,y,ARRcookies=document.cookie.split(";");
+    for (i=0;i<ARRcookies.length;i++) {
+        x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
+        y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
+        x=x.replace(/^\\s+|\\s+$/g,"");
+        if (x==c_name) {
+            return unescape(y);
+        }
+    }
+}
+
+function checkCookie() {
+    var nothx=getCookie("nothx");
+    if (nothx!=null && nothx!="") {
+    } else  {
+        showHelp();
+    }
+}
+
+function showHelp() {
+    document.getElementById('help').style.display='block';
+}
+
+function noThanks() {
+    document.getElementById('help').style.display='none';
+    setCookie("nothx", "yes");
+    return false;
+}
+
+checkCookie();
+</script>
