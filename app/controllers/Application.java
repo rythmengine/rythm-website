@@ -182,4 +182,9 @@ public class Application extends Controller {
         int j = 1;
         render(max, i, j);
     }
+
+    public static void testTagContext() {
+        render();
+    }
+
 }

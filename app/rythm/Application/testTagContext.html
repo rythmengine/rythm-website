@@ -1,0 +1,14 @@
+@extends(main)
+<h1>Test TagContext</h1>
+
+@ft.test() {
+
+    @ft.variant("nameA") {
+        Hi this is nameA
+    }
+    @ft.variant("nameB") {
+        Hi this is nameB
+    }
+}
+
+@include(tmpl_src)
