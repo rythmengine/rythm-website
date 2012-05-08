@@ -1,33 +1,140 @@
 <!DOCTYPE html>
 @args boolean noGoHome = false;
-<html class="@get("domClass")">
+<html class='@get("domClass")'>
 <head>
-    <title>@get("title")</title>
+    <title>PlayRythm Demo - @get("title")</title>
     <meta charset="@_response_encoding">
-    <link rel="stylesheet" media="screen" href="/public/stylesheets/main.css">
+    <meta content="" name="description">
+    <meta content="" name="author">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <link rel="stylesheet" media="screen" href="/public/css/bootstrap.min.css">
+    <link rel="stylesheet" media="screen" href="/public/css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" media="screen" href="/public/css/prettify.css">
+    <link rel="stylesheet" media="screen" href="/public/css/main.css">
     @render("moreStyles")
-    <link rel="shortcut icon" type="image/png" href="/public/images/favicon.png">
-    <script src="/public/javascripts/jquery-1.5.2.min.js" type="text/javascript" charset="@_response_encoding"></script>
-    @render('moreScripts')
+
+    <link rel="shortcut icon" type="image/png" href="/public/img/favicon.png">
 </head>
 <body>
-@if (!noGoHome) {
-<p>
-    <a href="/">Go home</a>
-</p>
-}
-@doLayout()
-<h3>Template Source</h3>
-<pre>
-@render("tmpl_src") {
-    template source not provided
-}
-</pre>
-<h3>Java Source</h3>
-<pre>
-@render("java_src") {
-    java source not provided
-}
-</pre>
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <a href="#" class="brand">PlayRythm Demo</a>
+                <div class="nav-collapse">
+                    <ul class="nav">
+                        <li @if (noGoHome) {class="active"}><a href="/">Home</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </div>
+    </div>
+
+    <div class="content container">
+        <section class="row help-plea">
+            <div class="span12">
+                <div id="help" class="alert alert-block">
+                    <p>Hey, I am looking for volunteers who would like to help me developing this sample application. Specifically I need the following help:</p>
+                    <ul>
+                        <li>Dressing up the demo app with CSS &amp; Javascripts</li>
+                        <li>Add more use cases</li>
+                        <li>Add description to each use case</li>
+                    </ul>
+                    <div class="action-btn pull-right">
+                        <a class="btn btn-primary btn-large" href="mailto:greenlaw110@@gmail.com?subject=about%20play-rythm-demo%20app%20development">Yes, I would like to help!</a>
+                        <a class="btn" href="#" onclick="noThanks()">No thanks</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        @if (!noGoHome) {
+        <ul class="breadcrumb">
+            <li><a href="/">Home</a> <span class="divider">/</span></li>
+            <li class="active">@get("title")</li>
+        </ul>
+        }
+
+        @doLayout()
+
+        <section class="row">
+            <div class="span12">
+                <h3>Template Source</h3>
+                    <pre class="prettyprint linenums">
+                    @render("tmpl_src") {
+                        template source not provided
+                    }
+                    </pre>
+            </div>
+        </section>
+
+        <section class="row">
+            <div class="span12">
+                <h3>Java Source</h3>
+                    <pre class="prettyprint linenums">
+                    @render("java_src") {
+                        java source not provided
+                    }
+                    </pre>
+            </div>
+        </section>
+    </div>
+
+    <script src="/public/js/jquery-1.7.2.min.js" type="text/javascript" charset="@_response_encoding"></script>
+    <script src="/public/js/bootstrap.min.js" type="text/javascript" charset="@_response_encoding"></script>
+    <script src="/public/js/prettify.js" type="text/javascript" charset="@_response_encoding"></script>
+    <script type="text/javascript">
+    //<![CDATA[
+        $(function() {
+            function setCookie(c_nothx, value) {
+                var exdate=new Date(), exdays = 100;
+                exdate.setDate(exdate.getDate() + exdays);
+                var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
+                document.cookie=c_nothx + "=" + c_value;
+            }
+
+            function getCookie(c_name) {
+                var i,x,y,ARRcookies=document.cookie.split(";");
+                for (i=0;i<ARRcookies.length;i++) {
+                    x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
+                    y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
+                    x=x.replace(/^\\s+|\\s+$/g,"");
+                    if (x==c_name) {
+                        return unescape(y);
+                    }
+                }
+            }
+
+            function checkCookie() {
+                var nothx=getCookie("nothx");
+                if (nothx!=null && nothx!="") {
+                    // Do nothing
+                } else  {
+                    showHelp();
+                }
+            }
+
+            function showHelp() {
+                document.getElementById('help').style.display='block';
+            }
+
+            function noThanks() {
+                document.getElementById('help').style.display='none';
+                setCookie("nothx", "yes");
+                return false;
+            }
+
+            checkCookie();
+            window.prettyPrint && prettyPrint();
+        });
+    //]]>
+    </script>
+    @render('moreScripts')
+
 </body>
 </html>
