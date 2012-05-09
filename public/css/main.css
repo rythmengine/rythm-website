@@ -2,7 +2,7 @@
 .content { padding-top: 60px; }
 
 /* Plea for help */
-.help-plea { display: hidden; }
+#help { display: none; }
 .help-plea ul { margin-top: 10px; }
 .help-plea .action-btn { margin-top: -35px; }
 .help-plea .action-btn a:first-child { margin-right: 10px; }

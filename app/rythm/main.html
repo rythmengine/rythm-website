@@ -36,9 +36,9 @@
     </div>
 
     <div class="content container">
-        <section class="row help-plea">
+        <section id="help" class="row help-plea">
             <div class="span12">
-                <div id="help" class="alert alert-block">
+                <div class="alert alert-block">
                     <p>Hey, I am looking for volunteers who would like to help me developing this sample application. Specifically I need the following help:</p>
                     <ul>
                         <li>Dressing up the demo app with CSS &amp; Javascripts</li>
@@ -86,51 +86,29 @@
     </div>
 
     <script src="/public/js/jquery-1.7.2.min.js" type="text/javascript" charset="@_response_encoding"></script>
+    <script src="/public/js/jquery.cookie.min.js" type="text/javascript" charset="@_response_encoding"></script>
     <script src="/public/js/bootstrap.min.js" type="text/javascript" charset="@_response_encoding"></script>
     <script src="/public/js/prettify.js" type="text/javascript" charset="@_response_encoding"></script>
     <script type="text/javascript">
     //<![CDATA[
         $(function() {
-            function setCookie(c_nothx, value) {
-                var exdate=new Date(), exdays = 100;
-                exdate.setDate(exdate.getDate() + exdays);
-                var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
-                document.cookie=c_nothx + "=" + c_value;
-            }
-
-            function getCookie(c_name) {
-                var i,x,y,ARRcookies=document.cookie.split(";");
-                for (i=0;i<ARRcookies.length;i++) {
-                    x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
-                    y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
-                    x=x.replace(/^\\s+|\\s+$/g,"");
-                    if (x==c_name) {
-                        return unescape(y);
-                    }
-                }
-            }
 
             function checkCookie() {
-                var nothx=getCookie("nothx");
-                if (nothx!=null && nothx!="") {
-                    // Do nothing
-                } else  {
-                    showHelp();
-                }
+                if (!$.cookie.("nothx")) { showHelp() }
             }
 
             function showHelp() {
-                document.getElementById('help').style.display='block';
+                $('#help').css("display", "block");
             }
 
             function noThanks() {
-                document.getElementById('help').style.display='none';
-                setCookie("nothx", "yes");
+                $('#help').css("display", "none");
+                $.cookie("nothx", "yes");
                 return false;
             }
 
             checkCookie();
-            window.prettyPrint && prettyPrint();
+            prettyPrint();
         });
     //]]>
     </script>
