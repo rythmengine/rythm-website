@@ -103,7 +103,7 @@
 
             function noThanks() {
                 $('#help').css("display", "none");
-                $.cookie("nothx", "yes");
+                $.cookie("nothx", "yes", { expires: 100 });
                 return false;
             }
 
