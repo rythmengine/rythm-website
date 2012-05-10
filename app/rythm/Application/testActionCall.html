@@ -1,39 +1,35 @@
 @import controllers.*
 @extends(main)
-<h1>Call action method from view</h1>
+@set(title: "Call Action Method from View")
 
-<table border="1">
+<h2>Call Action Method from View</h2>
+
+<table class="table">
     <thead>
-    <th>code</th>
-    <th>result</th>
+        <th class="span6">Code</th>
+        <th>Result</th>
     </thead>
     <tbody>
     <tr>
-        <td><pre>
-@verbatim() {
-@controllers.Application.timestamp()
-}
-        </pre></td>
+        <td>
+            <pre class="prettyprint linenums">@verbatim() {@controllers.Application.timestamp()}</pre>
+        </td>
         <td>
             @controllers.Application.timestamp()
         </td>
     </tr>
     <tr>
-        <td><pre>
-@verbatim() {
-@controllers.Application.timestamp().cache(3)
-}
-        </pre></td>
+        <td>
+            <pre class="prettyprint linenums">@verbatim() {@controllers.Application.timestamp().cache(3)}</pre>
+        </td>
         <td>
             @controllers.Application.timestamp().cache(3)
         </td>
     </tr>
     <tr>
-        <td><pre>
-@verbatim() {
-@Application.timestamp()
-}
-        </pre></td>
+        <td>
+            <pre class="prettyprint linenums">@verbatim() {@Application.timestamp()}</pre>
+        </td>
         <td>
             @Application.timestamp()
         </td>

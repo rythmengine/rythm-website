@@ -1,12 +1,13 @@
 @extends(main)
 @args String who = "unknown person"
-<h1>The layout template with param</h1>
+
+<h2>The layout template with param</h2>
 <p>Hello @who</p>
 @render()
 <p>Bye @who</p>
 
 <hr/>
-<h3>layout template source</h3>
-<pre>
+<h3>Layout template source</h3>
+<pre class="prettyprint linenums">
 @(getTemplateClass(false).getTemplateSource())
 </pre>

@@ -48,54 +48,45 @@
 
         <section class="row">
             <div class="span12">
-                <div data-toggle="collapse" data-target="#template-src" style="cursor: pointer; font-weight: bold;"><i class="icon-play"></i>Template Source</div>
-                <div id="template-src" class="collapse">
-                    <pre class="prettyprint linenums">@render("tmpl_src") {template source not provided}</pre>
-                </div>
-            </div>
-        </section>
-
-        <section class="row">
-            <div class="span12">
-                <div data-toggle="collapse" data-target="#java-src" style="cursor: pointer; font-weight: bold;"><i class="icon-play"></i>Java Source (Rythem Generated)</div>
-                <div id="java-src" class="collapse">
-                    <pre class="prettyprint linenums">@render("java_src") {java source not provided}</pre>
+                <div class="sources">
+                    <div data-toggle="collapse" data-target="#template-src" class="collapse-container"><i class="icon-play"></i> Template Source</div>
+                    <div id="template-src" class="collapse">
+                        <pre class="prettyprint linenums">@render("tmpl_src") {template source not provided}</pre>
+                    </div>
+                    <div data-toggle="collapse" data-target="#java-src" class="collapse-container"><i class="icon-play"></i> Java Source (Rythm Generated)</div>
+                    <div id="java-src" class="collapse">
+                        <pre class="prettyprint linenums">@render("java_src") {java source not provided}</pre>
+                    </div>
                 </div>
             </div>
         </section>
 
         <footer class="footer">
             <p class="pull-right"><a href="#">Back to top</a></p>
-            <p>Powered by <a href="http://playframework.org" target="_blank">Play!Framework v1.2</a> and <a href="http://twitter.github.com/bootstrap">Twitter Bootstrap</a> using <a href="www.playframework.org/modules/rythm" target="_blank">Play-Rythm template</a> (of course!);</p>
-            <p>Built by <a href="mailto:greenlaw110@@gmail.com">Green Luo</a> and <a href="mailto:herdy.handoko@@gmail.com">Herdy Handoko</a></p>
-            <p>Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a></p>
+            <p>Powered by <a href="http://playframework.org" target="_blank">Play! Framework v1.2</a> and <a href="http://twitter.github.com/bootstrap">Twitter Bootstrap</a> using <a href="http://www.playframework.org/modules/rythm">PlayRythm Template</a> (of course!).</p>
+            <p>Built by <a href="mailto:greenlaw110@@gmail.com">Green Luo</a> and <a href="http://hhandoko.com">Herdy Handoko</a>.</p>
+            <p>Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0">Apache License v2.0</a>.</p>
         </footer>
     </div>
 
-    <script src="/public/js/jquery-1.7.2.min.js" type="text/javascript" charset="@_response_encoding"></script>
-    <script src="/public/js/jquery.cookie.min.js" type="text/javascript" charset="@_response_encoding"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript" charset="@_response_encoding"></script>
+    <script type="text/javascript">
+    //<![CDATA[
+        // Fallback if jQuery CDN is not available
+        if (typeof jQuery == 'undefined') {
+            document.write(unescape("%3Cscript src='/public/js/jquery-1.7.2.min.js' type='text/javascript' charset='@_response_encoding'%3E%3C/script%3E"));
+        }
+    //]]>
+    </script>
     <script src="/public/js/bootstrap.min.js" type="text/javascript" charset="@_response_encoding"></script>
     <script src="/public/js/prettify.js" type="text/javascript" charset="@_response_encoding"></script>
     <script type="text/javascript">
     //<![CDATA[
         $(function() {
 
-            function checkCookie() {
-                if (!$.cookie("nothx")) { showHelp() }
-            }
-
-            function showHelp() {
-                $('#help').css("display", "block");
-            }
-
-            function noThanks() {
-                $('#help').css("display", "none");
-                $.cookie("nothx", "yes", { expires: 100 });
-                return false;
-            }
-
-            checkCookie();
+            // Make source code pretty!
             prettyPrint();
+
         });
     //]]>
     </script>

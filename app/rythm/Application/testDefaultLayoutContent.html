@@ -1,13 +1,41 @@
 @extends(testRenderSectionLayout)
+@set(title: "Default Layout Content")
 
 @// no main content supplied
 
-@section("sectionA") {
+<!--
+<table class="table">
+    <thead>
+        <th class="span6">Code</th>
+        <th>Result</th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <pre class="prettyprint linenums">@verbatim() {@section("sectionA") {
     <p>This is section A</p>
-}
-
-@section("sectionB") {
+}}</pre>
+            </td>
+            <td>
+                @section("sectionA") {
+                    <p>This is section A</p>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <pre class="prettyprint linenums">@verbatim() {@section("sectionB") {
     <p>This is section B</p>
-}
+}}</pre>
+            </td>
+            <td>
+                @section("sectionB") {
+                    <p>This is section B</p>
+                }
+            </td>
+        </tr>
+    </tbody>
+</table>
+-->
 
 @include(tmpl_src)

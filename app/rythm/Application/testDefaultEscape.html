@@ -1,20 +1,68 @@
 @args String body
+@set(title: "Default Escape")
 @extends(main)
 
-@body
+<h2>Default Escape</h2>
 
-@body.raw()
-
-@raw() {
+<table class="table">
+    <thead>
+        <th class="span6">Code</th>
+        <th>Result</th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                    <pre class="prettyprint linenums">@verbatim() {@body}</pre>
+            </td>
+            <td>
+                @body
+            </td>
+        </tr>
+        <tr>
+            <td>
+                    <pre class="prettyprint linenums">@verbatim() {@body.raw()}</pre>
+            </td>
+            <td>
+                @body.raw()
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <pre class="prettyprint linenums">@verbatim() {@raw() {
     @body
-}
-
-@raw() {
+}}</pre>
+            </td>
+            <td>
+                @raw() {
+                    @body
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <pre class="prettyprint linenums">@verbatim() {@raw() {
     @body.escape()
-}
-
-@escape() {
+}}</pre>
+            </td>
+            <td>
+                @raw() {
+                    @body.escape()
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <pre class="prettyprint linenums">@verbatim() {@escape() {
     @body.raw()
-}
+}}</pre>
+            </td>
+            <td>
+                @escape() {
+                    @body.raw()
+                }
+            </td>
+        </tr>
+    </tbody>
+</table>
 
 @include("tmpl_src")

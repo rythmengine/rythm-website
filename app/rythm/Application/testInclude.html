@@ -1,36 +1,33 @@
 @extends(main)
-<h1>Test Include</h1>
+@set(title:"Include Other Templates")
 
-<table border="1">
+<h2>Include Other Templates</h2>
+
+<table class="table">
     <thead>
     <tr>
-        <th>Code</th>
+        <th class="span6">Code</th>
         <th>Result</th>
     </tr>
     </thead>
     <tbody>
-    <tr>
-        <td><pre>
-@verbatim() {
-@include(tags.bar)
-}
-        </pre></td>
-        <td>
-            @include(tags.bar)
-        </td>
-    </tr>
-    <tr>
-        <td><pre>
-@verbatim() {
-@include(tags.helper)
-@sayHi("green")
-}
-        </pre></td>
-        <td>
-            @include(tags.helper)
-            @hi("green")
-        </td>
-    </tr>
+        <tr>
+            <td>
+                <pre class="prettyprint linenums">@verbatim() {@include(tags.bar)}</pre></td>
+            <td>
+                @include(tags.bar)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <pre class="prettyprint linenums">@verbatim() {@include(tags.helper)
+@sayHi("green")}</pre>
+            </td>
+            <td>
+                @include(tags.helper)
+                @hi("green")
+            </td>
+        </tr>
     </tbody>
 </table>
 

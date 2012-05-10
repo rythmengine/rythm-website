@@ -1,14 +1,40 @@
 @extends(testRenderSectionLayout)
+@set(title: "Render Section")
 
-<p>This is main content</p>
-
-@section("sectionA") {
+<!-- <p>This is the main content</p> -->
+<!--
+<table class="table">
+    <thead>
+        <th class="span6">Code</th>
+        <th>Result</th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <pre class="prettyprint linenums">@verbatim() {@section("sectionA") {
     <p>This is section A</p>
-}
-
-@section("sectionB") {
+}}</pre>
+            </td>
+            <td>
+                @section("sectionA") {
+                    <p>This is section A</p>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <pre class="prettyprint linenums">@verbatim() {@section("sectionB") {
     <p>This is section B</p>
-}
-AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+}}</pre>
+            </td>
+            <td>
+                @section("sectionB") {
+                    <p>This is section B</p>
+                }
+            </td>
+        </tr>
+    </tbody>
+</table>
+-->
 
 @include(tmpl_src)

@@ -1,90 +1,66 @@
 @extends("main", noGoHome=true)
-@set(title: "home")
+@set(title: "Home")
 @args String title;
 
 @cache() {
 
-<h1>PlayRythm Demo App</h1>
+<section class="row main">
+    <div class="span12">
+        <h1>PlayRythm Demo App</h1>
 
-<p>This application demonstrate the new <a href="http://www.playframework.org/modules/rythm">PlayRythm</a> template engine for Play!Framework (v1.2.x) based on <a href="http://www.rythmengine.com">Rythm</a>.
+        <p class="lead">A demonstration of the new <a href="http://www.playframework.org/modules/rythm">PlayRythm</a> template engine for Play! Framework (v1.2.x) based on <a href="http://www.rythmengine.com">Rythm</a>.
 
-<p>Click on the following links you can find out the varieties of Rythm features including template layout management, caching, escape, call different tags etc.</p>
+        <p>Click on the following links to find out the varieties of Rythm features, including: template layout management, caching, escaping, calling different tags, etc.</p>
+    </div>
+</section>
 
-<div>
-    <a href="@url(Application.testDefaultEscape())">test default escape</a>
-</div>
-<div>
-    <a href="@url(Application.testRenderSection())">test render section</a>
-</div>
-<div>
-    <a href="@url(Application.testDefaultLayoutContent())">test default layout content</a>
-</div>
-<div>
-    <a href="@url(Application.testCache())">test cache</a>
-</div>
-<div>
-    <a href="@url(Application.testTagCache())">test tag cache</a>
-</div>
-<div>
-    <a href="@url(Application.testLoadTagByRelativePath())">load tag using relative path</a>
-</div>
-<div>
-    <a href="@url(Application.testLoadTagUsingImportPath())">load tag using import path</a>
-</div>
-<div>
-    <a href="@url(Application.testActionCall())">call action method from view</a>
-</div>
-<div>
-    <a href="@url(Application.testFastTag())">Call fast tag</a>
-</div>
-<div>
-    <a href="@url(Application.testInclude())">Include other templates</a>
-</div>
-<div>
-    <a href="@url(Application.testBreakContinue())">test break continue statement</a>
-</div>
-<div>
-    <a href="@url(Application.testInvoke())">test dynamic tag dispatch</a>
-</div>
-<div>
-    <a href="@url(Application.testExtendsWithParams())">test extends layout template with params</a>
-</div>
-<div>
-    <a href="@url(Application.testExtendsWithOutParams())">test extends layout template with out params</a>
-</div>
-<div>
-    <a href="@url(Application.callExtendedTag())">Call tags that extending other templates</a>
-</div>
-<div>
-    <a href="@url(Application.testTagInvokeCallBack())">Test tag invoke with callback</a>
-</div>
-<div>
-    <a href="@url(Application.testAssign())">Test assignment</a>
-</div>
-<div>
-    <a href="@url(Application.testChain())">Test chained extension</a>
-</div>
-<div>
-    <a href="@url(Application.testMisc())">Misc tests</a>
-</div>
-<div>
-    <a href="@url(Application.testSimple())">tests simple template</a>
-</div>
-<div>
-    <a href="@url(Application.testCache4())">tests Cache4</a>
-</div>
-<div>
-    <a href="@url(Application.testCache4WithSessionData())">tests Cache4 with session data check enabled</a>
-</div>
-<div>
-    <a href="@url(Application.testInlineTag())">test inline tag</a>
-</div>
-<div>
-    <a href="@url(Application.fibonacci())">Fibonacci - recursive tag invocation</a>
-</div>
-<div>
-    <a href="@url(Application.testTagContext())">Test TagContext</a>
-</div>
+<section class="row">
+    <div class="span3">
+        <h3>Basic Features</h3>
+        <ul>
+            <li><a href="@url(Application.testSimple())">Simple template</a></li>
+            <li><a href="@url(Application.testDefaultLayoutContent())">Default layout content</a></li>
+            <li><a href="@url(Application.testDefaultEscape())">Default escape</a></li>
+            <li><a href="@url(Application.testRenderSection())">Render section</a></li>
+            <li><a href="@url(Application.testActionCall())">Call action method from view</a></li>
+            <li><a href="@url(Application.testInclude())">Include other templates</a></li>
+            <li><a href="@url(Application.testExtendsWithParams())">Extends layout template with params</a></li>
+            <li><a href="@url(Application.testExtendsWithOutParams())">Extends layout template without params</a></li>
+        </ul>
+    </div>
+    <div class="span3">
+        <h3>Caching</h3>
+        <ul>
+            <li><a href="@url(Application.testCache())">Cache</a></li>
+            <li><a href="@url(Application.testTagCache())">Tag cache</a></li>
+            <li><a href="@url(Application.testCache4())">Cache4</a></li>
+            <li><a href="@url(Application.testCache4WithSessionData())">Cache4 with session data check enabled</a></li>
+        </ul>
+    </div>
+    <div class="span3">
+        <h3>Tags and Inline Functions</h3>
+        <ul>
+            <li><a href="@url(Application.testInlineTag())">Inline tag</a></li>
+            <li><a href="@url(Application.testLoadTagByRelativePath())">Load tag using relative path</a></li>
+            <li><a href="@url(Application.testLoadTagUsingImportPath())">Load tag using import path</a></li>
+            <li><a href="@url(Application.testTagInvokeCallBack())">Tag invoke with callback</a></li>
+            <li><a href="@url(Application.callExtendedTag())">Call tag that extends other templates</a></li>
+            <li><a href="@url(Application.testInvoke())">Dynamic tag dispatch</a></li>
+            <li><a href="@url(Application.testTagContext())">TagContext</a></li>
+            <li><a href="@url(Application.testFastTag())">Fast tag</a></li>
+            <li><a href="@url(Application.testBreakContinue())">Break continue statement</a></li>
+        </ul>
+    </div>
+    <div class="span3">
+        <h3>Others</h3>
+        <ul>
+            <li><a href="@url(Application.testAssign())">Assignment</a></li>
+            <li><a href="@url(Application.testChain())">Chained extension</a></li>
+            <li><a href="@url(Application.fibonacci())">Fibonacci - recursive tag invocation</a></li>
+            <li><a href="@url(Application.testMisc())">Miscellaneous tests</a></li>
+        </ul>
+    </div>
+</section>
 
 }
 

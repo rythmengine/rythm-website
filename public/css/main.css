@@ -1,19 +1,25 @@
 /* Basic */
 .content { padding-top: 60px; }
-
+.sources,
 .footer {
-    margin-top: 45px;
-    padding: 35px 0 36px;
     border-top: 1px solid #e5e5e5;
+    margin-top: 35px;
+    padding-top: 35px;
 }
+.footer { padding: 35px 0 36px; }
 .footer p {
-    margin-bottom: 0;
     color: #555;
+    margin-bottom: 0;
 }
 
+/* Specific Content Sections */
+.main h1 {
+    font-size: 48px;
+    line-height: 60px;
+}
 
-/* Plea for help */
-#help { display: none; }
-.help-plea ul { margin-top: 10px; }
-.help-plea .action-btn { margin-top: -35px; }
-.help-plea .action-btn a:first-child { margin-right: 10px; }
+/* Collapse Section */
+.collapse-container {
+    cursor: pointer;
+    font-weight: bold;
+}
