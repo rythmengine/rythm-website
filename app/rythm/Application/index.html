@@ -4,22 +4,6 @@
 
 @cache() {
 
-<div id="help" style="display:none;padding: 5px; background-color: #FFFF99; border: 1px solid #888; margin-bottom: 30px">
-
-<p style="font-weight: bold">Hey, I am looking for volunteers who would like to help me developing this sample application. Specifically I need the following help</p>
-
-<ul>
-<li>Dressing up the app with css/javascripts</li>
-<li>Add more use cases</li>
-<li>Add description to each use case</li>
-</ul>
-
-<div>
-<a href="mailto:greenlaw110@@gmail.com?subject=about%20play-rythm-demo%20app%20development">Yes I would like to help!</a>&nbsp;&nbsp;&nbsp;<a href="#" onclick="noThanks()">No thanks</a>
-</div>
-
-</div>
-
 <h1>PlayRythm Demo App</h1>
 
 <p>This application demonstrate the new <a href="http://www.playframework.org/modules/rythm">PlayRythm</a> template engine for Play!Framework (v1.2.x) based on <a href="http://www.rythmengine.com">Rythm</a>.
@@ -105,44 +89,3 @@
 }
 
 @include(tmpl_src)
-
-<script type="text/javascript">
-function setCookie(c_nothx, value) {
-    var exdate=new Date(), exdays = 100;
-    exdate.setDate(exdate.getDate() + exdays);
-    var c_value=escape(value) + ((exdays==null) ? "" : "; expires="+exdate.toUTCString());
-    document.cookie=c_nothx + "=" + c_value;
-}
-
-function getCookie(c_name) {
-    var i,x,y,ARRcookies=document.cookie.split(";");
-    for (i=0;i<ARRcookies.length;i++) {
-        x=ARRcookies[i].substr(0,ARRcookies[i].indexOf("="));
-        y=ARRcookies[i].substr(ARRcookies[i].indexOf("=")+1);
-        x=x.replace(/^\\s+|\\s+$/g,"");
-        if (x==c_name) {
-            return unescape(y);
-        }
-    }
-}
-
-function checkCookie() {
-    var nothx=getCookie("nothx");
-    if (nothx!=null && nothx!="") {
-    } else  {
-        showHelp();
-    }
-}
-
-function showHelp() {
-    document.getElementById('help').style.display='block';
-}
-
-function noThanks() {
-    document.getElementById('help').style.display='none';
-    setCookie("nothx", "yes");
-    return false;
-}
-
-checkCookie();
-</script>
