@@ -64,25 +64,28 @@
 
         <section class="row">
             <div class="span12">
-                <h3>Template Source</h3>
-                    <pre class="prettyprint linenums">
-                    @render("tmpl_src") {
-                        template source not provided
-                    }
-                    </pre>
+                <div data-toggle="collapse" data-target="#template-src" style="cursor: pointer; font-weight: bold;"><i class="icon-play"></i>Template Source</div>
+                <div id="template-src" class="collapse">
+                    <pre class="prettyprint linenums">@render("tmpl_src") {template source not provided}</pre>
+                </div>
             </div>
         </section>
 
         <section class="row">
             <div class="span12">
-                <h3>Java Source</h3>
-                    <pre class="prettyprint linenums">
-                    @render("java_src") {
-                        java source not provided
-                    }
-                    </pre>
+                <div data-toggle="collapse" data-target="#java-src" style="cursor: pointer; font-weight: bold;"><i class="icon-play"></i>Java Source (Rythem Generated)</div>
+                <div id="java-src" class="collapse">
+                    <pre class="prettyprint linenums">@render("java_src") {java source not provided}</pre>
+                </div>
             </div>
         </section>
+
+        <footer class="footer">
+            <p class="pull-right"><a href="#">Back to top</a></p>
+            <p>Powered by <a href="http://playframework.org" target="_blank">Play!Framework v1.2</a> and <a href="http://twitter.github.com/bootstrap">Twitter Bootstrap</a> using <a href="www.playframework.org/modules/rythm" target="_blank">Play-Rythm template</a> (of course!);</p>
+            <p>Built by <a href="mailto:greenlaw110@@gmail.com">Green Luo</a> and <a href="mailto:herdy.handoko@@gmail.com">Herdy Handoko</a></p>
+            <p>Code licensed under the <a href="http://www.apache.org/licenses/LICENSE-2.0" target="_blank">Apache License v2.0</a></p>
+        </footer>
     </div>
 
     <script src="/public/js/jquery-1.7.2.min.js" type="text/javascript" charset="@_response_encoding"></script>
@@ -94,7 +97,7 @@
         $(function() {
 
             function checkCookie() {
-                if (!$.cookie.("nothx")) { showHelp() }
+                if (!$.cookie("nothx")) { showHelp() }
             }
 
             function showHelp() {

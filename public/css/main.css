@@ -1,6 +1,17 @@
 /* Basic */
 .content { padding-top: 60px; }
 
+.footer {
+    margin-top: 45px;
+    padding: 35px 0 36px;
+    border-top: 1px solid #e5e5e5;
+}
+.footer p {
+    margin-bottom: 0;
+    color: #555;
+}
+
+
 /* Plea for help */
 #help { display: none; }
 .help-plea ul { margin-top: 10px; }
