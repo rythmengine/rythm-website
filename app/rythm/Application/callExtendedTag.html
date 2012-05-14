@@ -1,6 +1,23 @@
 @extends(main)
+@set(title:"Calling Extended Tag")
 
+<div>
+    <h2>@get("title") <small>call tags that extend other templates</small></h2>
+</div>
+
+<div>
+    <p>To call other templates, simply call the controller method:</p>
+    <h3>Code</h3>
+    <pre class="prettyprint linenums">
+        @verbatim() {@testExtendsWithOutParams()
+@testExtendsWithParams()}
+    </pre>
+    <h3>Result</h3>
+</div>
+
+<blockquote>
 @testExtendsWithOutParams()
 @testExtendsWithParams()
+</blockquote>
 
 @include(tmpl_src)

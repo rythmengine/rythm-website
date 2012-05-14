@@ -2,9 +2,11 @@
 @set(title: "Default Escape")
 @extends(main)
 
-<h2>Default Escape</h2>
+<div>
+    <h2>@get("title") <small>demonstrate basic escaping functions</small></h2>
+</div>
 
-<table class="table">
+<table class="table code-section">
     <thead>
         <th class="span6">Code</th>
         <th>Result</th>
@@ -12,7 +14,7 @@
     <tbody>
         <tr>
             <td>
-                    <pre class="prettyprint linenums">@verbatim() {@body}</pre>
+                <pre class="prettyprint linenums">@verbatim() {@body}</pre>
             </td>
             <td>
                 @body
@@ -20,7 +22,7 @@
         </tr>
         <tr>
             <td>
-                    <pre class="prettyprint linenums">@verbatim() {@body.raw()}</pre>
+                <pre class="prettyprint linenums">@verbatim() {@body.raw()}</pre>
             </td>
             <td>
                 @body.raw()

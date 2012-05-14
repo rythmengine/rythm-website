@@ -1,8 +1,8 @@
 /* Basic */
-.content { padding-top: 60px; }
+.main { padding-top: 60px; }
 .sources,
 .footer {
-    border-top: 1px solid #e5e5e5;
+    border-top: 1px solid #eee;
     margin-top: 35px;
     padding-top: 35px;
 }
@@ -12,11 +12,19 @@
     margin-bottom: 0;
 }
 
-/* Specific Content Sections */
-.main h1 {
-    font-size: 48px;
-    line-height: 60px;
+/* Code Examples Section */
+.code-section th {
+    font-size: 16px;
 }
+.code-section td {
+    padding: 24px 8px;
+}
+.code-section pre {
+    margin-bottom: 0;
+}
+
+/* Specific Content Sections */
+.examples-list { margin-top: 10px; }
 
 /* Collapse Section */
 .collapse-container {

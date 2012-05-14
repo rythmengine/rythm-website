@@ -1,70 +1,66 @@
-@extends(main)
 @import foo.bar.*
-<h1>Callback body from tag invocation</h1>
+@extends(main)
+@set(title:"Tag Invoke Callback")
 
-<p>The tag content</p>
-<pre>@verbatim() {
-@arg int number
-<p>inside foo.tagWithCallback</p>
+<div>
+    <h2>@get("title") <small>callback body from tag invocation</small></h2>
+</div>
+
+<div>
+    <p>The tag content is as follows:</p>
+    <pre class="prettyprint linenums">@verbatim() {@arg int number
+<p>Inside foo.tagWithCallback</p>
 <p>About to callback tag body</p>
 <p><span>@number</span>: @renderBody(who: "Velocity")</p>
-<p><span>@number</span>: @renderBody(who: "Freemarker")</p>
-}
-</pre>
-<table border="1">
+<p><span>@number</span>: @renderBody(who: "Freemarker")</p>}</pre>
+</div>
+
+<table class="table code-section">
     <thead>
-    <th>code</th>
-    <th>result</th>
+        <th class="span6">Code</th>
+        <th>Result</th>
     </thead>
     <tbody>
-    <tr>
-        <td><pre>
-@verbatim() {
-@tagWithCallback()
-}
-        </pre></td>
-        <td>
-            @tagWithCallback()
-        </td>
-    </tr>
-    <tr>
-        <td><pre>
-@verbatim() {
-@tagWithCallback(2)
-}
-        </pre></td>
-        <td>
-            @tagWithCallback(2)
-        </td>
-    </tr>
-    <tr>
-        <td><pre>
-@verbatim() {
-@tagWithCallback(3).callback(String who) {
-my name is @who
-}
-}
-        </pre></td>
-        <td>
-            @tagWithCallback(3).callback(String who) {
-            my name is @who
-            }
-        </td>
-    </tr>
-    <tr>
-        <td><pre>
-@verbatim() {
-@tagWithCallback(3) {
-body without parameter
-}
-}
-        </pre></td>
-        <td>
-            @tagWithCallback(3) {
-            body without parameter
-            }
-        </td>
-    </tr>
+        <tr>
+            <td>
+                <pre class="prettyprint linenums">@verbatim() {@tagWithCallback()}</pre>
+            </td>
+            <td>
+                @tagWithCallback()
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <pre class="prettyprint linenums">@verbatim() {@tagWithCallback(2)}</pre>
+            </td>
+            <td>
+                @tagWithCallback(2)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <pre class="prettyprint linenums">@verbatim() {@tagWithCallback(3).callback(String who) {
+    My name is @who
+}}</pre>
+            </td>
+            <td>
+                @tagWithCallback(3).callback(String who) {
+                    My name is @who
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <pre class="prettyprint linenums">@verbatim() {@tagWithCallback(3) {
+    Body without parameter
+}}</pre>
+            </td>
+            <td>
+                @tagWithCallback(3) {
+                    Body without parameter
+                }
+            </td>
+        </tr>
     </tbody>
 </table>
 

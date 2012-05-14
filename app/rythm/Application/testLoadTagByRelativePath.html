@@ -1,30 +1,33 @@
 @extends(main)
-<h1>Demonstrate Tag invoke using relative path name</h1>
-<table border="1">
+@set(title:"Load Tags by Relative Path")
+
+<div>
+    <h2>@get("title") <small>tag invoke using relative path name</small></h2>
+</div>
+
+<table class="table code-section">
     <thead>
-        <th>Code</th>
+        <th class="span6">Code</th>
         <th>Result</th>
     </thead>
     <tbody>
         <tr>
-            <td><pre>
-@verbatim(){
-<p>Invoke tag using full path</p>
+            <td>
+                <pre class="prettyprint linenums">@verbatim(){<p>Invoke tag using full path</p>
 @Application.tags.bar()
-}
-            </pre></td>
+}</pre>
+            </td>
             <td>
                 <p>Invoke tag using full path</p>
                 @Application.tags.bar()
             </td>
         </tr>
         <tr>
-            <td><pre>
-@verbatim(){
-<p>Invoke tag using relative path</p>
+            <td>
+                <pre class="prettyprint linenums">@verbatim(){<p>Invoke tag using relative path</p>
 @tags.bar()
-}
-            </pre></td>
+}</pre>
+            </td>
             <td>
                 <p>Invoke tag using relative path</p>
                 @tags.bar()

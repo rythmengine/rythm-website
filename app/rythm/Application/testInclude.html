@@ -1,14 +1,16 @@
 @extends(main)
 @set(title:"Include Other Templates")
 
-<h2>Include Other Templates</h2>
+<div>
+    <h2>@get("title") <small>how to include content from other templates</small></h2>
+</div>
 
-<table class="table">
+<table class="table code-section">
     <thead>
-    <tr>
-        <th class="span6">Code</th>
-        <th>Result</th>
-    </tr>
+        <tr>
+            <th class="span6">Code</th>
+            <th>Result</th>
+        </tr>
     </thead>
     <tbody>
         <tr>
@@ -21,11 +23,11 @@
         <tr>
             <td>
                 <pre class="prettyprint linenums">@verbatim() {@include(tags.helper)
-@sayHi("green")}</pre>
+@sayHi("Green")}</pre>
             </td>
             <td>
                 @include(tags.helper)
-                @hi("green")
+                @hi("Green")
             </td>
         </tr>
     </tbody>

@@ -22,7 +22,7 @@ import java.util.Random;
 @FastTags.Namespace("ft")
 public class MyFastTags extends FastTags {
     public static void _foo(Map<?, ?> args, Closure body, PrintWriter out, GroovyTemplate.ExecutableTemplate template, int fromLine) {
-        out.println("inside fasttags:foo(), timestamp:" + System.currentTimeMillis());
+        out.println("Inside fasttags:foo(), timestamp:" + System.currentTimeMillis());
         body.call();
     }
 

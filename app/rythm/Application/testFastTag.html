@@ -1,47 +1,48 @@
 @extends(main)
-<h1>Test FastTags</h1>
-<table border="1">
+@set(title:"FastTags")
+
+<div>
+    <h2>@get("title") <small></small></h2>
+</div>
+
+<div>
+    <p>FastTag class can be found in <code>~/app/templates/MyFastTags.java</code></p>
+</div>
+
+<table class="table code-section">
     <thead>
-    <tr>
-        <th>Code</th>
+        <th class="span6">Code</th>
         <th>Result</th>
-    </tr>
     </thead>
     <tbody>
-    <tr>
-        <td><pre>
-@verbatim() {
-@ft.foo()
-}
-        </pre></td>
-        <td>
-            @ft.foo()
-        </td>
-    </tr>
-    <tr>
-        <td><pre>
-@verbatim() {
-@ft.foo().cache(3)
-}
-        </pre></td>
-        <td>
-            @ft.foo().cache(3)
-        </td>
-    </tr>
-    <tr>
-        <td><pre>
-@verbatim() {
-@ft.foo().cache(3) {
+        <tr>
+            <td>
+                <pre class="prettyprint linenums">@verbatim() {@ft.foo()}</pre>
+            </td>
+            <td>
+                @ft.foo()
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <pre class="prettyprint linenums">@verbatim() {@ft.foo().cache(3)}</pre>
+            </td>
+            <td>
+                @ft.foo().cache(3)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <pre class="prettyprint linenums">@verbatim() {@ft.foo().cache(3) {
     Hello Rythm!
-}
-}
-        </pre></td>
-        <td>
-            @ft.foo().cache(3) {
-            Hello Rythm!
-            }
-        </td>
-    </tr>
+}}</pre>
+            </td>
+            <td>
+                @ft.foo().cache(3) {
+                    Hello Rythm!
+                }
+            </td>
+        </tr>
     </tbody>
 </table>
 

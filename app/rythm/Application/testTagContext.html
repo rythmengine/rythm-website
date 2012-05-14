@@ -1,14 +1,42 @@
 @extends(main)
-<h1>Test TagContext</h1>
+@set(title:"TagContext")
 
-@ft.test() {
+<div>
+    <h2>@get("title") <small></small></h2>
+</div>
+<table class="table code-section">
+    <thead>
+        <th class="span6">Code</th>
+        <th>Result</th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <pre class="prettyprint linenums">@verbatim() {@ft.test() {
 
     @ft.variant("nameA") {
         Hi this is nameA
     }
+
     @ft.variant("nameB") {
         Hi this is nameB
     }
-}
+}}</pre>
+            </td>
+            <td>
+                @ft.test() {
+
+                    @ft.variant("nameA") {
+                        Hi this is nameA
+                    }
+
+                    @ft.variant("nameB") {
+                        Hi this is nameB
+                    }
+                }
+            </td>
+        </tr>
+    </tbody>
+</table>
 
 @include(tmpl_src)

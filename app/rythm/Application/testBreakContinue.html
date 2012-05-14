@@ -1,109 +1,109 @@
 @extends(main)
-<h1>Test Break Continue</h1>
-<table border="1">
-    <thead>
-    <th>code</th>
-    <th>result</th>
-    </thead>
-    <tbody>
-    <tr>
-        <td><pre>
-@verbatim() {
-@for (int i = 0; i < 5; ++i) {
-   <p>current number is: @i</p>
-   @if (i > 2) {
-       @break
-   }
-   <p>next number is :@(i + 1)</p>
-}
-}
-        </pre></td>
-        <td>
-            @for (int i = 0; i < 5; ++i) {
-                <p>current number is: @i</p>
-                @if (i > 2) {
-                    @break
-                }
-                <p>next number is :@(i + 1)</p>
-            }
-        </td>
-    </tr>
-    <tr>
-        <td><pre>
-@verbatim() {
-@for (int i = 0; i < 5; ++i) {
-   <p>current number is: @i</p>
-   @if (i < 2) {
-       @continue
-   }
-   <p>next number is :@(i + 1)</p>
-}
-}
-        </pre></td>
-        <td>
-            @for (int i = 0; i < 5; ++i) {
-                <p>current number is: @i</p>
-                @if (i < 2) {
-                    @continue
-                }
-                <p>next number is :@(i + 1)</p>
-            }
-        </td>
-    </tr>
-    </tbody>
-</table>
+@set(title:"Break Continue Statement")
 
-@{Integer[] ia = {1, 2, 3, 4, 5}}
-<table border="1">
+<div>
+    <h2>@get("title") <small></small></h2>
+</div>
+
+<table class="table code-section">
     <thead>
-    <th>code</th>
-    <th>result</th>
+        <th class="span6">Code</th>
+        <th>Result</th>
     </thead>
     <tbody>
-    <tr>
-        <td><pre>
-@verbatim() {
-@for (Integer i : ia) {
-   <p>current number is: @i</p>
+        <tr>
+            <td>
+                <pre class="prettyprint linenums">@verbatim() {@for (int i = 0; i < 5; ++i) {
+    <p>Current number is: @i</p>
     @if (i > 2) {
         @break
     }
-    <p>next number is :@(i + 1)</p>
-}
-}
-        </pre></td>
-        <td>
-            @for (Integer i : ia) {
-            <p>current number is: @i</p>
-            @if (i > 2) {
-            @break
-            }
-            <p>next number is :@(i + 1)</p>
-            }
-        </td>
-    </tr>
-    <tr>
-        <td><pre>
-@verbatim() {
-@for (Integer i : ia) {
-   <p>current number is: @i</p>
+    <p>Next number is: @(i + 1)</p>
+}}</pre>
+            </td>
+            <td>
+                @for (int i = 0; i < 5; ++i) {
+                    <p>Current number is: @i</p>
+                    @if (i > 2) {
+                        @break
+                    }
+                    <p>Next number is: @(i + 1)</p>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <pre class="prettyprint linenums">@verbatim() {@for (int i = 0; i < 5; ++i) {
+    <p>Current number is: @i</p>
     @if (i < 2) {
         @continue
     }
-    <p>next number is :@(i + 1)</p>
-}
-}
-        </pre></td>
-        <td>
-            @for (Integer i : ia) {
-            <p>current number is: @i</p>
-            @if (i < 2) {
-            @continue
-            }
-            <p>next number is :@(i + 1)</p>
-            }
-        </td>
-    </tr>
+    <p>Next number is: @(i + 1)</p>
+}}</pre>
+            </td>
+            <td>
+                @for (int i = 0; i < 5; ++i) {
+                    <p>Current number is: @i</p>
+                    @if (i < 2) {
+                        @continue
+                    }
+                    <p>Next number is: @(i + 1)</p>
+                }
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div>
+    <p>We can also use an array of integers: <code>@verbatim() {@{Integer[] ia = {1, 2, 3, 4, 5}}}</code></p>
+</div>
+@{Integer[] ia = {1, 2, 3, 4, 5}}
+<table class="table code-section">
+    <thead>
+        <th class="span6">Code</th>
+        <th>Result</th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <pre class="prettyprint linenums">@verbatim() {@for (Integer i : ia) {
+    <p>Current number is: @i</p>
+    @if (i > 2) {
+        @break
+    }
+    <p>Next number is: @(i + 1)</p>
+}}</pre>
+            </td>
+            <td>
+                @for (Integer i : ia) {
+                    <p>Current number is: @i</p>
+                    @if (i > 2) {
+                        @break
+                    }
+                    <p>Next number is: @(i + 1)</p>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <pre class="prettyprint linenums">@verbatim() {@for (Integer i : ia) {
+    <p>Current number is: @i</p>
+    @if (i < 2) {
+        @continue
+    }
+    <p>Next number is: @(i + 1)</p>
+}}</pre>
+            </td>
+            <td>
+                @for (Integer i : ia) {
+                    <p>Current number is: @i</p>
+                    @if (i < 2) {
+                        @continue
+                    }
+                    <p>Next number is: @(i + 1)</p>
+                }
+            </td>
+        </tr>
     </tbody>
 </table>
 
