@@ -14,26 +14,26 @@
     <tbody>
     <tr>
         <td>
-            <pre class="prettyprint linenums">@verbatim() {@controllers.Application.timestamp()}</pre>
+            <pre class="prettyprint linenums">@verbatim() {@controllers.Demo.timestamp()}</pre>
         </td>
         <td>
-            @controllers.Application.timestamp()
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <pre class="prettyprint linenums">@verbatim() {@controllers.Application.timestamp().cache(3)}</pre>
-        </td>
-        <td>
-            @controllers.Application.timestamp().cache(3)
+            @controllers.Demo.timestamp()
         </td>
     </tr>
     <tr>
         <td>
-            <pre class="prettyprint linenums">@verbatim() {@Application.timestamp()}</pre>
+            <pre class="prettyprint linenums">@verbatim() {@controllers.Demo.timestamp().cache(3)}</pre>
         </td>
         <td>
-            @Application.timestamp()
+            @controllers.Demo.timestamp().cache(3)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <pre class="prettyprint linenums">@verbatim() {@Demo.timestamp()}</pre>
+        </td>
+        <td>
+            @Demo.timestamp()
         </td>
     </tr>
     </tbody>

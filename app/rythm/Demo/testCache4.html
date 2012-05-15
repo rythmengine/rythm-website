@@ -1,7 +1,7 @@
 @args boolean enableCache
 @extends(main)
 
-<form action="@url(Application.testCache4)">
+<form action="@url(Demo.testCache4)">
     <input type="hidden" name="enableCache" value="@(!enableCache)"/>
     <p>
         <span>Currently cache4 is @(enableCache ? "enabled" : "disabled")</span>
@@ -12,7 +12,7 @@
 
 <button id="refresh">Refresh</button>
 <hr/>
-<iframe id="check" src="@url(Application.cachedTS())"></iframe>
+<iframe id="check" src="@url(Demo.cachedTS())"></iframe>
 
 <script type="text/javascript">
     $('#refresh').click(function(){

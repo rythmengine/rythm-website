@@ -9,7 +9,7 @@ GET     /public/                                staticDir:public
 GET     /favicon.ico                            404
 
 # Home page
-GET     /                                       Application.index
+GET     /                                       Demo.index
 
 # Catch all
 *       /{controller}/{action}                  {controller}.{action}

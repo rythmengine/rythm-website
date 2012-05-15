@@ -58,14 +58,14 @@
         $.post('@url(SecureApp.logout())', reloadIFrame);
     });
     $('#login').click(function(){
-        $.post('@url(Application.login())', reloadIFrame);
+        $.post('@url(Demo.login())', reloadIFrame);
     });
     $('#reset').click(function(){
-        $.post("@url(Application.reset())", function(){
+        $.post("@url(Demo.reset())", function(){
             location.reload();
         });
     });
     $('#setCacheTime').click(function(){
-        $.post('@url(Application.setCacheTime())', {time: $('#cacheTime').val()});
+        $.post('@url(Demo.setCacheTime())', {time: $('#cacheTime').val()});
     });
 </script>

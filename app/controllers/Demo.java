@@ -15,7 +15,7 @@ import play.mvc.Util;
 import java.util.Properties;
 import java.util.Random;
 
-public class Application extends Controller {
+public class Demo extends Controller {
     @Before(unless = {"testCache4","cachedTS"})
     public static void enableCacheOnDev() {
         Play.configuration.setProperty("rythm.cache.prodOnly", "false");
