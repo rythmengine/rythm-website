@@ -1,71 +1,94 @@
-@extends(main)
 @args String cacheTime
+@extends(main)
+@set(title:"Test Cache4 with Session Data")
 
-<style>
-    iframe {
-        width: 500px;
-        height: 300px;
-    }
-</style>
+<div>
+    <h2>@get("title") <small></small></h2>
+</div>
 
-<h1>Test Cache4 with session data</h1>
+<div>
+    <p>Notes:</p>
+    <ul>
+        <li>Zone A controller is marked with <code>@@Cache4("cron.testCache4")</code></li>
+        <li>Zone B controller is marked with <code>@@Cache4(useSessionData = true, value = "cron.testCache4")</code></li>
+    </ul>
+    <p>
+        As a result, zone B is sensitive to session data changes,
+        e.g. user login/logout will cause cache to invalidate, while zone A is only sensitive to request itself, user logout will
+        not cause the content change in zone A.
+    </p>
+</div>
 
-<p>
-    Note, zone A controller is marked with <code>@@Cache4("cron.testCache4")</code>; zone B controller is marked with
-    <code>@@Cache4(useSessionData = true, value = "cron.testCache4")</code>.
-</p>
-<p>
-    As a result zone B is sensitive to session data changes,
-    e.g. user login/logout will cause cache invalidate, while zone A is only sensitive to request itself, user logout will
-    not cause the content change in zone A
-</p>
+<div>
+    <p>
+        <button id="setCacheTime" class="btn">Set</button> cache time to <input type="text" name="cacheTime" id="cacheTime" value="@cacheTime">
+    </p>
 
-<p>
-    <button id="setCacheTime">set</button> cache time to <input type="text" name="cacheTime" id="cacheTime" value="@cacheTime">
-</p>
-
-<p>By clicking <button id="login" type="button">Log in</button> you set a username into the session data. You should be able to see "now is: xxxx" message in both iframes</p>
-<p>By clicking <button id="logout" type="button">Log out</button> you clean the session data, and you should see a login screen is zone b, but zone a still remain unchanged</p>
-<p>By clicking <button id="refresh">Refresh</button> you refresh the current page and watch the change in the two iframes</p>
-<p>By clicking <button id="reset">Reset</button> you reset server status and clear all caches</p>
+    <p>By clicking <button id="login" type="button" class="btn">Log in</button> you set a username into the session data. You should be able to see "now is: xxxx" message in both iframes</p>
+    <p>By clicking <button id="logout" type="button" class="btn">Log out</button> you clean the session data, and you should see a login screen is zone b, but zone a still remain unchanged</p>
+    <p>By clicking <button id="refresh" class="btn">Refresh</button> you refresh the current page and watch the change in the two iframes</p>
+    <p>By clicking <button id="reset" class="btn">Reset</button> you reset server status and clear all caches</p>
+</div>
 
 <hr/>
-<table border="1">
+
+<table class="table code-section">
     <thead>
-    <tr>
-        <th>Zone A</th>
-        <th>Zone B</th>
-    </tr>
+        <tr>
+            <th class="span6">Zone A</th>
+            <th>Zone B</th>
+        </tr>
     </thead>
     <tbody>
-    <tr>
-        <td>
-            <iframe id="zoneA" src="@url(SecureApp.zoneA())"></iframe>
-        </td>
-        <td>
-            <iframe id="zoneB" src="@url(SecureApp.zoneB())"></iframe>
-        </td>
-    </tr>
+        <tr>
+            <td>
+                <iframe id="zoneA" src="@url(SecureApp.zoneA())"></iframe>
+            </td>
+            <td>
+                <iframe id="zoneB" src="@url(SecureApp.zoneB())"></iframe>
+            </td>
+        </tr>
     </tbody>
 </table>
 
-<script type="text/javascript">
-    function reloadIFrame() {
-        location.reload();
+@section("moreStyles") {
+<style>
+    iframe {
+        width: 400px;
+        height: 300px;
     }
-    $('#refresh').click(reloadIFrame);
-    $('#logout').click(function(){
-        $.post('@url(SecureApp.logout())', reloadIFrame);
-    });
-    $('#login').click(function(){
-        $.post('@url(Demo.login())', reloadIFrame);
-    });
-    $('#reset').click(function(){
-        $.post("@url(Demo.reset())", function(){
+</style>
+}
+
+@section("moreScripts") {
+<script type="text/javascript">
+//<![CDATA[
+    $(function() {
+
+        function reloadIFrame() {
             location.reload();
+        }
+
+        $('#refresh').click(reloadIFrame);
+
+        $('#logout').click(function(){
+            $.post('@url(SecureApp.logout())', reloadIFrame);
+        });
+
+        $('#login').click(function(){
+            $.post('@url(Demo.login())', reloadIFrame);
+        });
+
+        $('#reset').click(function(){
+            $.post("@url(Demo.reset())", function(){
+                location.reload();
+            });
+        });
+
+        $('#setCacheTime').click(function(){
+            $.post('@url(Demo.setCacheTime())', {time: $('#cacheTime').val()});
         });
     });
-    $('#setCacheTime').click(function(){
-        $.post('@url(Demo.setCacheTime())', {time: $('#cacheTime').val()});
-    });
+//]]>
 </script>
+}

@@ -1,29 +1,31 @@
 @import foo.bar.*
 @extends(main)
-<h1>Test chained extension</h1>
+@set(title:"Chained Extension")
 
-<table border="1">
+<div>
+    <h2>@get("title") <small></small></h2>
+</div>
+
+<table class="table code-section">
     <thead>
-    <th>code</th>
-    <th>result</th>
+        <th class="span6">Code</th>
+        <th>Result</th>
     </thead>
     <tbody>
-    <tr>
-        <td><pre>
-@verbatim() {
-@chain().raw().cache(3).assign("r1") {
-    <p>chained content: @(new Date().getTime())</p>
+        <tr>
+            <td>
+                <pre class="prettyprint linenums">@verbatim() {@chain().raw().cache(3).assign("r1") {
+    <p>Chained content: @(new Date().getTime())</p>
 }
-the result is @r1
-}
-        </pre></td>
-        <td>
-            @chain().raw().cache(3).assign("r1") {
-            <p>chained content: @(new Date().getTime())</p>
-            }
-            the result is @r1
-        </td>
-    </tr>
+The result is @r1}</pre>
+            </td>
+            <td>
+                @chain().raw().cache(3).assign("r1") {
+                    <p>Chained content: @(new Date().getTime())</p>
+                }
+                The result is @r1
+            </td>
+        </tr>
     </tbody>
 </table>
 

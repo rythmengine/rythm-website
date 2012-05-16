@@ -1,41 +1,41 @@
 @import foo.bar.*
 @extends(main)
-<h1>Test assignment</h1>
+@set(title:"Assignment")
 
-<table border="1">
+<div>
+    <h2>@get("title") <small></small></h2>
+</div>
+
+<table class="table code-section">
     <thead>
-    <th>code</th>
-    <th>result</th>
+        <th class="span6">Code</th>
+        <th>Result</th>
     </thead>
     <tbody>
-    <tr>
-        <td><pre>
-@verbatim() {
-@tag1().assign("r1")
-the result is @r1
+        <tr>
+            <td>
+                <pre class="prettyprint linenums">@verbatim() {@tag1().assign("r1")
+The result is @r1}</pre>
+            </td>
+            <td>
+                @tag1().assign("r1")
+                The result is @r1
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <pre class="prettyprint linenums">@verbatim() {@assign("r2") {
+    <p>To be assigned</p>
 }
-        </pre></td>
-        <td>
-            @tag1().assign("r1")
-            the result is @r1
-        </td>
-    </tr>
-    <tr>
-        <td><pre>
-@verbatim() {
-@assign("r2") {
-<p>to be assigned</p>
-}
-the result is @r2
-}
-        </pre></td>
-        <td>
-            @assign("r2") {
-            <p>to be assigned</p>
-            }
-            the result is @r2
-        </td>
-    </tr>
+The result is @r2}</pre>
+            </td>
+            <td>
+                @assign("r2") {
+                    <p>To be assigned</p>
+                }
+                The result is @r2
+            </td>
+        </tr>
     </tbody>
 </table>
 

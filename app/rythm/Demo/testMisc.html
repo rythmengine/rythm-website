@@ -1,43 +1,46 @@
 @extends(main)
-<h1>Arbitrary Tests</h1>
+@set(title:"Miscellaneous Tests")
 
-<table border="1">
+<div>
+    <h2>@get("title") <small>arbitrary tests</small></h2>
+</div>
+
+<table class="table code-section">
     <thead>
-    <th>code</th>
-    <th>result</th>
+        <th class="span6">Code</th>
+        <th>Result</th>
     </thead>
     <tbody>
-    <tr>
-        <td><pre>
-@verbatim() {
-Now is @ts()
-}
-        </pre></td>
-        <td>
-            Now is @ts()
-        </td>
-    </tr>
-    <tr>
-        <td><pre>
-@verbatim() {
-@{Object html = "<p>abcd</p>"}
+        <tr>
+            <td>
+                <pre class="prettyprint linenums">@verbatim() {Now is @ts()}</pre>
+            </td>
+            <td>
+                Now is @ts()
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <pre class="prettyprint linenums">@verbatim() {@{Object html = "<p>abcd</p>"}
 @raw() {
     @html
-}
-}
-        </pre></td>
-        <td>
-        @{Object html = "<p>abcd</p>"}
-            @raw() {
-            @html
-            }
-        </td>
-    </tr>
+}}</pre>
+            </td>
+            <td>
+                @{Object html = "<p>abcd</p>"}
+                @raw() {
+                    @html
+                }
+            </td>
+        </tr>
     </tbody>
 </table>
+
+<hr/>
+
 <h3>Code</h3>
-<pre>
-@(getTemplateClass(true).javaSource.raw())
+<pre class="prettyprint linenums">
+    @(getTemplateClass(true).javaSource.raw())
 </pre>
 
 @include(tmpl_src)

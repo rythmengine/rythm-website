@@ -1,5 +1,10 @@
 @args int max, int i, int j
 @extends(main)
+@set(title:"Fibonacci Numbers")
+
+<div>
+    <h2>@get("title") <small>demonstrate recursive tag invocation</small></h2>
+</div>
 
 @tags.fibonacci(max, i, j).cache()
 

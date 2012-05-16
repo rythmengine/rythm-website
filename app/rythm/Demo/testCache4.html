@@ -1,21 +1,38 @@
 @args boolean enableCache
 @extends(main)
+@set(title:"Cache4")
+
+<div>
+    <h2>@get("title") <small></small></h2>
+</div>
 
 <form action="@url(Demo.testCache4)">
     <input type="hidden" name="enableCache" value="@(!enableCache)"/>
-    <p>
+
+    <div>
+        <button id="toggle-cache" class="btn @(enableCache ? "btn-danger" : "btn-success")" type="submit"><i class="icon-off"></i> @(enableCache ? "Disable" : "Enable") cache</button>
+        <button id="refresh" class="btn" type="button"><i class="icon-refresh"></i> Refresh</button>
         <span>Currently cache4 is @(enableCache ? "enabled" : "disabled")</span>
-        <button type="submit">@(enableCache ? "Disable" : "Enable") cache</button>
-    </p>
-    <p>Note enable cache and click refresh button below you will notice the iframe timestamp will remain unchanged within 3 seconds</p>
+    </div>
 </form>
 
-<button id="refresh">Refresh</button>
+<div>
+    <p><i>Note: enable cache and click refresh button below you will notice the iframe timestamp will remain unchanged for 3 seconds.</i></p>
+</div>
+
 <hr/>
+
 <iframe id="check" src="@url(Demo.cachedTS())"></iframe>
 
+@section("moreScripts") {
 <script type="text/javascript">
-    $('#refresh').click(function(){
-        window.frames.check.location.reload();
-    })
+//<![CDATA[
+    $(function(){
+
+        $('#refresh').click(function(){
+            window.frames.check.location.reload();
+        });
+    });
+//]]>
 </script>
+}
