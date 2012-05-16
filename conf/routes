@@ -10,6 +10,7 @@ GET     /favicon.ico                            404
 
 # Home page
 GET     /                                       Demo.index
+GET /tst Test.index
 
 # Catch all
 *       /{controller}/{action}                  {controller}.{action}

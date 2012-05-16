@@ -1,0 +1,31 @@
+package controllers;
+
+import play.mvc.Controller;
+
+import java.util.Arrays;
+import java.util.List;
+
+/**
+ * Created with IntelliJ IDEA.
+ * User: luog
+ * Date: 16/05/12
+ * Time: 5:30 PM
+ * To change this template use File | Settings | File Templates.
+ */
+public class Test extends Controller {
+
+    public static void index() {
+        render();
+    }
+
+    public static void i29() {
+        String[] sa = {"ABC", "XYZ"};
+        List<String> names = Arrays.asList(sa);
+        render(names);
+    }
+
+    public static void i30() {
+        int[] vals = {1, 2, 3};
+        render(vals);
+    }
+}
