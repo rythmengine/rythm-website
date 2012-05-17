@@ -1,0 +1,16 @@
+@import models.demo.*
+
+@args Foo foo
+@extends(main)
+@set(title="Expression")
+
+<h4>Foo is not null</h4>
+<p>foo.bar: @foo.bar</p>
+<p>foo.bee(): @foo.bee()</p>
+
+<h4>Now set foo to null</h4>
+@{foo = null}
+<p>foo?.bar: @foo?.bar</p>
+<p>foo?.bee(): @foo?.bee()</p>
+
+@include(tmpl_src)

@@ -5,6 +5,7 @@ import com.greenlaw110.rythm.play.Cache4;
 import com.greenlaw110.rythm.play.RythmPlugin;
 import com.greenlaw110.rythm.play.UseRythmTemplateEngine;
 import com.greenlaw110.rythm.template.JavaTagBase;
+import models.demo.Foo;
 import org.apache.commons.lang3.StringUtils;
 import play.Play;
 import play.cache.Cache;
@@ -30,6 +31,11 @@ public class Demo extends Controller {
     public static void bug404xml() {
         Exception result = new Exception("404.xml");
         render("errors/404.xml", result);
+    }
+
+    public static void expression() {
+        Foo foo = new Foo();
+        render(foo);
     }
 
     public static void testDefaultEscape() {
