@@ -4,6 +4,18 @@
 @extends(main)
 @set(title="Expression")
 
+<h3>Simple Expression</h3>
+
+<p>@@foo.bar: @foo.bar</p>
+<p>@@foo.bee(): @foo.bee()</p>
+
+<h3>Expression with java extensions</h3>
+
+<p>@@foo.date(): @foo.date()</p>
+<p>@@foo.date().format("yyyy-MM-dd"): @foo.date().format("yyyy-MM-dd")</p>
+
+<h3>Null Safe Expression</h3>
+
 <h4>Foo is not null</h4>
 <p>@@foo?.bar: @foo?.bar</p>
 <p>@@foo?.bee(): @foo?.bee()</p>
@@ -12,5 +24,12 @@
 @{foo = null}
 <p>@@foo?.bar: @foo?.bar</p>
 <p>@@foo?.bee(): @foo?.bee()</p>
+
+<h3>Null safe expression with java extensions</h3>
+@{foo = new Foo()}
+<p>@@foo.nullDate(): @foo.nullDate()</p>
+<p>@@foo.nullDate()?.format("yyyy-MM-dd"): @foo.nullDate()?.format("yyyy-MM-dd")</p>
+
+
 
 @include(tmpl_src)

@@ -1,5 +1,7 @@
 package models.demo;
 
+import java.util.Date;
+import java.util.Random;
 import java.util.UUID;
 
 /**
@@ -16,5 +18,14 @@ public class Foo {
     }
     public Long bee() {
         return System.currentTimeMillis();
+    }
+    public int rint() {
+        return new Random().nextInt();
+    }
+    public Date date() {
+        return new Date();
+    }
+    public Date nullDate() {
+        return null;
     }
 }

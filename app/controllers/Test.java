@@ -1,5 +1,6 @@
 package controllers;
 
+import models.demo.Foo;
 import play.mvc.Controller;
 
 import java.util.Arrays;
@@ -27,5 +28,10 @@ public class Test extends Controller {
     public static void i30() {
         int[] vals = {1, 2, 3};
         render(vals);
+    }
+
+    public static void i32() {
+        Foo foo = new Foo();
+        render(foo);
     }
 }

@@ -183,7 +183,7 @@ public class Demo extends Controller {
     }
 
     public static void fibonacci() {
-        int max = 1000000;
+        int max = 100000;
         int i = 0;
         int j = 1;
         render(max, i, j);

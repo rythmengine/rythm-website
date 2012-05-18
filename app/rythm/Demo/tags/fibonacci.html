@@ -10,16 +10,15 @@
 
 } else {
 
-    <hr/>
-
-    <h3>Fibonacci Tag Template Source</h3>
-    <pre class="prettyprint linenums">
-        @(getTemplateClass(false).getTemplateSource())
-    </pre>
-
-    <h3>Fibonacci Tag Java Source</h3>
-    <pre class="prettyprint linenums">
-        @(getTemplateClass(false).javaSource)
-    </pre>
+    <div class="sources">
+        <div data-toggle="collapse" data-target="#tag-template-src" class="collapse-container"><i class="icon-play"></i> Fibonacci Tag Source</div>
+        <div id="tag-template-src" class="collapse">
+            <pre class="prettyprint linenums">@(getTemplateClass(false).getTemplateSource())</pre>
+        </div>
+        <div data-toggle="collapse" data-target="#tag-java-src" class="collapse-container"><i class="icon-play"></i> Fibonacci Tag Java Source (Rythm Generated)</div>
+        <div id="tag-java-src" class="collapse">
+            <pre class="prettyprint linenums">@(getTemplateClass(false).javaSource)</pre>
+        </div>
+    </div>
 
 }
