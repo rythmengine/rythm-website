@@ -1,6 +1,37 @@
-@extends(layout.main)
-@set(title:"Extends Layout Template without Params")
+@import foo.bar.*
 
-<p>Testing extends layout template without params.</p>
+@args models.demo.Foo foo
+
+@extends(main)
+@set(title:"Chained Extension")
+
+<div>
+    <h2>@get("title") <small></small></h2>
+</div>
+
+<p>@foo.name</p>
+
+<table class="table code-section">
+    <thead>
+    <th class="span6">Code</th>
+    <th>Result</th>
+    </thead>
+    <tbody>
+    <tr>
+        <td>
+                <pre class="prettyprint linenums">@verbatim() {@chain().raw().cache(3).assign("r1") {
+    <p>Chained content: @(new Date().getTime())</p>
+}
+The result is @r1}</pre>
+        </td>
+        <td>
+            @chain().raw().cache(3).assign("r1") {
+            <p>Chained content: @(new Date().getTime())</p>
+            }
+            The result is @r1
+        </td>
+    </tr>
+    </tbody>
+</table>
 
 @include(tmpl_src)

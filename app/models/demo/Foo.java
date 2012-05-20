@@ -28,4 +28,13 @@ public class Foo {
     public Date nullDate() {
         return null;
     }
+
+    public String name;
+    public String getName() {
+        return "foo_" + name;
+    }
+
+    public Foo(String name) {
+        this.name = name;
+    }
 }

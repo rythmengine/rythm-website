@@ -107,7 +107,8 @@ public class Demo extends Controller {
     }
 
     public static void testExtendsWithOutParams() {
-        render();
+        Foo foo = new Foo("test");
+        render(foo);
     }
 
     public static void callExtendedTag(){

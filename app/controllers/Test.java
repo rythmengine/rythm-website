@@ -34,4 +34,14 @@ public class Test extends Controller {
         Foo foo = new Foo();
         render(foo);
     }
+
+    public static void groovy() {
+        Foo foo = new Foo();
+        render(foo);
+    }
+
+    public static void p_i12() {
+        Foo foo = new Foo("Hello");
+        render(foo);
+    }
 }
