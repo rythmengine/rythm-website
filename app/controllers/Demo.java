@@ -6,7 +6,6 @@ import com.greenlaw110.rythm.play.RythmPlugin;
 import com.greenlaw110.rythm.play.UseRythmTemplateEngine;
 import com.greenlaw110.rythm.template.JavaTagBase;
 import models.demo.Foo;
-import org.apache.commons.lang3.StringUtils;
 import play.Play;
 import play.cache.Cache;
 import play.mvc.Before;
@@ -191,6 +190,14 @@ public class Demo extends Controller {
     }
 
     public static void testTagContext() {
+        render();
+    }
+
+    public static void compactMode() {
+        render();
+    }
+
+    public static void javaExtensions() {
         render();
     }
 

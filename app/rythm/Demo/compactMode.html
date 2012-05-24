@@ -1,0 +1,33 @@
+@extends(main)
+
+@set(title="Compact mode")
+
+@macro("textContent") {
+<pre>
+#foo {
+    border: 1px solid black;
+    padding-left: 5px;
+}
+var x = function(x) {
+    alert(x);
+}
+</pre>
+}
+
+<p>The following block should be compact</p>
+<div id="compact">
+@compact() {
+    @exec("textContent")
+}
+</div>
+<br/>
+
+
+<p>The following block should NOT be compact</p>
+<div id="nocompact">
+@nocompact() {
+    @exec("textContent")
+}
+</div>
+
+@include(tmpl_src)

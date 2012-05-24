@@ -1,0 +1,33 @@
+@extends(main)
+
+@set(title="Java extensions")
+
+<h3>Play built-in Java extensions</h3>
+<br/>
+<h4>format</h4>
+<br/>
+<p>@(new Date().format("yyyy-MM-dd"))</p>
+<p>@(new Date().format("dd/MMM/yy"))</p>
+<br/>
+<h4>since</h4>
+<br/>
+<p>@(new Date().since())</p>
+<br/>
+<h4>nl2br</h4>
+<br/>
+<p>@("abc\nxyz".nl2br().raw())</p>
+<br/>
+<h4>urlEncode</h4>
+<br/>
+<p>@("www.xyz.com?q=http://123.com".urlEncode().raw())</p>
+<br/>
+<h4>formatSize</h4>
+<br/>
+<p>@(3223424243l.formatSize())</p>
+<br/>
+<h3>Application java extensions</h3>
+<br>
+<h4>ccyAmount</h4>
+<br/>
+<p>@(3543.03.ccyAmount("$"))</p>
+@include(tmpl_src)
