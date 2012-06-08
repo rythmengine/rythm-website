@@ -1,0 +1,21 @@
+@extends(main)
+
+@set(title="Assignment")
+
+<p>Assign a part of document to a Java variable</p>
+@assign("foo"){
+<b>bar</b>
+}
+
+<p>Output the variable been assigned: @foo.raw()</p>
+
+<p>Assign a part of document to a final Java variable</p>
+@assign("bar", true){
+<b>foo</b>
+}
+
+<p>Output the variable been assigned: @bar.raw()</p>
+
+<p>Note, you can to expand Template Source and Java Source to watch what's behind, specifically you need to expand Java source to check the final object declaration</p>
+
+@include(tmpl_src)

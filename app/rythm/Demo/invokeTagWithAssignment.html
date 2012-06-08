@@ -1,0 +1,61 @@
+@extends(main)
+
+@set(title="Invoke tag with assignment")
+
+<h3>Invoke tag and assign to a variable</h3>
+
+<table>
+    <thead>
+    <tr>
+        <td>Code</td>
+        <td>Result</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>
+<pre>@@tags.bar().assign("bar")
+<p>...</p>
+@@bar</pre>
+        </td>
+        <td>
+            @tags.bar().assign("bar")
+            <p>...</p>
+            @bar
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<h3>Invoke tag and assign to a final variable</h3>
+
+@tags.bar().assign("immutableBar", true)
+
+<p>Check source code to see if <code>immutableBar</code> is final object</p>
+
+<h3>Invoke tag with cache enabled and assign to a variable</h3>
+
+<table>
+    <thead>
+    <tr>
+        <td>Code</td>
+        <td>Result</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td>
+<pre>@@testTagCacheTag().cache("3s").raw().assign("tagCached")
+<p>content cached for 3 seconds; refresh page to see the cache result</p>
+@@tagCached</pre>
+        </td>
+        <td>
+            @testTagCacheTag().cache("3s").raw().assign("tagCached")
+            <p>content cached for 3 seconds; refresh page to see the cache result</p>
+            @tagCached
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+@include(tmpl_src)

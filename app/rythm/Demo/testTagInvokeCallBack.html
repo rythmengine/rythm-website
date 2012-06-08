@@ -1,4 +1,4 @@
-@import foo.bar.*
+@import foo.bar.*, models.demo.*
 @extends(main)
 @set(title:"Tag Invoke Callback")
 
@@ -35,6 +35,22 @@
             </td>
             <td>
                 @tagWithCallback(2)
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <pre class="prettyprint linenums">@verbatim() {@tags.loadMenu().callback(List<Menu> menus) {
+    @for(Menu m: menus) {
+        <div><a href="@m.url">@m.label</a></div>
+    }
+}}</pre>
+            </td>
+            <td>
+                @tags.loadMenu().callback(List<Menu> menus) {
+                    @for(Menu m: menus) {
+                        <div><a href="@m.url">@m.label</a></div>
+                    }
+                }
             </td>
         </tr>
         <tr>

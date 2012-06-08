@@ -102,7 +102,8 @@ public class Demo extends Controller {
     }
 
     public static void testExtendsWithParams() {
-        render();
+        String who = "Rythm";
+        render(who);
     }
 
     public static void testExtendsWithOutParams() {
@@ -119,6 +120,10 @@ public class Demo extends Controller {
     }
 
     public static void testTagInvokeCallBack() {
+        render();
+    }
+
+    public static void invokeTagWithAssignment() {
         render();
     }
 
@@ -198,6 +203,10 @@ public class Demo extends Controller {
     }
 
     public static void javaExtensions() {
+        render();
+    }
+
+    public static void assignment() {
         render();
     }
 

@@ -1,0 +1,15 @@
+@extends(main)
+
+<h1>issue 44</h1>
+<p>
+<div id="fail" style="color:red">Failed!</div>
+<div id="success" style="color:green;display: none">Success!</div>
+</p>
+<script type="text/javascript">
+    var foo = "bar"
+    var bar = "foo"
+    $('#fail').hide()
+    $('#success').show()
+</script>
+
+@include(Demo.tmpl_src)

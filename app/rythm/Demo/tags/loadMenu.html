@@ -1,0 +1,8 @@
+@import models.demo.*
+@__simple__
+@{
+    List<Menu> menus = new ArrayList<Menu>();
+    menus.add(new Menu("http://1.com", "one"));
+    menus.add(new Menu("http://2.com", "two"));
+}
+@renderBody(menus)
