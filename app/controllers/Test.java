@@ -1,6 +1,7 @@
 package controllers;
 
 import models.demo.Foo;
+import play.data.validation.Validation;
 import play.mvc.Controller;
 
 import java.util.Arrays;
@@ -22,6 +23,7 @@ public class Test extends Controller {
     public static void i29() {
         String[] sa = {"ABC", "XYZ"};
         List<String> names = Arrays.asList(sa);
+        Validation.addError("foo","bar");
         render(names);
     }
 

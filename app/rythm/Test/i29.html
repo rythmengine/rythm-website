@@ -1,4 +1,5 @@
 @args List names
+@extends(main)
 <h1>issue 29</h1>
 @for (String s: (List<String>)names) {
     Hello @s!<br/>
@@ -7,3 +8,24 @@
 @for (String s: names) {
     Hello @s!<br/>
 }
+
+    @if(errors.size() >0){
+    <div class="alert alert-error">
+        <a class="close">×</a>
+        <h4 class="alert-heading">以下问题导致无法提交：</h4>
+        <ul>
+            @errorList() {
+            <li>@error</li>
+            }
+        </ul>
+    </div>
+    }
+@{boolean nullFlash = null == flash.get("success")}@
+    @if(!nullFlash){
+    <div class="alert alert-success">
+        <a class="close">×</a>
+        @flash.get("success")
+    </div>
+    }
+
+    @include(Demo.tmpl_src)
