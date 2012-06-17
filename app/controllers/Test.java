@@ -67,4 +67,12 @@ public class Test extends Controller {
         render();
     }
 
+    public static void i48() {
+        String name = "foo";
+        render(name);
+    }
+
+    public static void i50() {
+        render();
+    }
 }

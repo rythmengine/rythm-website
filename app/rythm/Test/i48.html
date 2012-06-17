@@ -1,0 +1,10 @@
+@args List names
+@extends(main)
+<h1>issue 29</h1>
+
+@{
+    String s = getRenderArg("name")
+}
+@s
+
+@include(Demo.tmpl_src)
