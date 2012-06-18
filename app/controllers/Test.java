@@ -75,4 +75,8 @@ public class Test extends Controller {
     public static void i50() {
         render();
     }
+
+    public static void i52() {
+        render();
+    }
 }
