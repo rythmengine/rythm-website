@@ -1,9 +1,9 @@
 # Application dependencies
 
 require:
-    - com.gelinsoft -> betterlogs 1.2h
-    #- com.gelinsoft -> rythm 1.0.0-20120518b
-    - play -> rythm 1.0.0-RC6
+    - com.gelinsoft -> betterlogs 1.2i
+    - com.gelinsoft -> rythm 1.0.0-20120629
+    #- play -> rythm 1.0.0-RC6
     - play -> gae 1.6.0
     - play -> secure
 

@@ -12,5 +12,9 @@ GET     /favicon.ico                            404
 GET     /                                       Demo.index
 GET /tst Test.index
 
+# Map static resources from the /app/public folder to the /public path
+GET     /public/                                staticDir:public
+GET /img/ staticDir:public/img
+
 # Catch all
 *       /{controller}/{action}                  {controller}.{action}

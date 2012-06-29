@@ -1,10 +1,8 @@
 @extends(main)
 @set(title:"Inline Tags")
-
 @def hello(String who) {
     Hello @who (at @ts())
 }
-
 <div>
     <h2>@get("title") <small>calling inline functions</small></h2>
 </div>

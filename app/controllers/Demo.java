@@ -147,6 +147,10 @@ public class Demo extends Controller {
         render();
     }
 
+    public static void inlineTagWithReturnType() {
+        render();
+    }
+
     @Cache4("cron.testCache4")
     public static void cachedTS(String param) {
         long ts = System.currentTimeMillis();
