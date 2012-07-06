@@ -99,4 +99,8 @@ public class Test extends Controller {
     public static void i58() {
         render();
     }
+    
+    public static void i66() {
+        render();
+    }    
 }
