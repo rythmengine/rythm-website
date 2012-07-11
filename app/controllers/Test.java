@@ -1,5 +1,6 @@
 package controllers;
 
+import com.greenlaw110.rythm.Rythm;
 import models.demo.Foo;
 import play.data.validation.Validation;
 import play.mvc.Controller;
@@ -97,6 +98,19 @@ public class Test extends Controller {
     }
 
     public static void i58() {
+        render();
+    }
+
+    public static void p_i34() {
+        render();
+    }
+
+    public static void i61() {
+        long ts = 50;
+        render(ts);
+    }
+
+    public static void showMessage() {
         render();
     }
 }

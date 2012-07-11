@@ -2,8 +2,8 @@
 
 require:
     - com.gelinsoft -> betterlogs 1.2i
-    - com.gelinsoft -> rythm 1.0.0-20120629
-    #- play -> rythm 1.0.0-RC6
+    #- com.gelinsoft -> rythm 1.0.0-20120629
+    - play -> rythm 1.0.0-20120630
     - play -> gae 1.6.0
     - play -> secure
 
