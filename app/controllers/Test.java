@@ -110,7 +110,12 @@ public class Test extends Controller {
         render(ts);
     }
 
+    public static void i66() {
+        render();
+    }
+
     public static void showMessage() {
         render();
     }
+
 }
