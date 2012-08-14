@@ -23,7 +23,7 @@ import java.util.Random;
 public class MyFastTags extends FastTags {
     public static void _foo(Map<?, ?> args, Closure body, PrintWriter out, GroovyTemplate.ExecutableTemplate template, int fromLine) {
         out.println("Inside fasttags:foo(), timestamp:" + System.currentTimeMillis());
-        body.call();
+        if (null != body) body.call();
     }
 
     /**

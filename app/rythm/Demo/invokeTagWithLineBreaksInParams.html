@@ -1,0 +1,59 @@
+@extends(main)
+
+@set(title:"Invoke tag with line breaks in params")
+
+<div>
+    <h2>@get("title")</h2>
+</div>
+
+<table class="table code-section">
+    <thead>
+        <th class="span6">Code</th>
+        <th>Result</th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+<pre class="prettyprint linenums">@verbatim() {
+@tags.echo("1", "2", "3")
+}</pre>
+            </td>
+            <td>
+                @tags.echo("1", "2", "3")
+            </td>
+        </tr>
+        <tr>
+            <td>
+<pre class="prettyprint linenums">@verbatim() {
+@tags.echo(
+    p1: "x",
+    p2: "y")
+}</pre>
+            </td>
+            <td>
+                @tags.echo(
+                    p1: "x",
+                    p2: "y"
+                )
+            </td>
+        </tr>
+        <tr>
+            <td>
+<pre class="prettyprint linenums">@verbatim() {
+@tags.echo({
+    p2: "A",
+    p3: "B"
+})
+}</pre>
+            </td>
+            <td>
+                @tags.echo({
+                    p2: "A",
+                    p3: "B"
+                })
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+@include("tmpl_src")

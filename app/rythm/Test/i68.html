@@ -1,0 +1,7 @@
+@extends(main)
+@args List<String> ls
+<h1>issue 68: for loop not work in included template</h1>
+
+@include("i68.i68_incl")
+
+@include(Demo.tmpl_src)

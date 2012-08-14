@@ -1,0 +1,28 @@
+@__simple__
+@args String p1 = "p1", String p2 = "p2", String p3 = "p3"
+@def t1(String name, String val) {
+<div class="cg clearfix">
+    <label>@name</label>
+    <div>@val</div>
+</div>
+}
+<style type="text/css">
+    div.cg label {
+        position: relative;
+        display: inline-block;
+        width: 80px;
+        margin-left: 10px;
+        font-weight: bold;
+        color: #efefef;
+        background-color: #888;
+        float: left;
+    }
+    div.cg div {
+        position: relative;
+        float: left;
+        clear: right;
+    }
+</style>
+@t1("p1", p1)
+@t1("p2", p2)
+@t1("p3", p3)

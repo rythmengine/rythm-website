@@ -1,0 +1,50 @@
+@extends(main)
+@args models.demo.Account account
+@set(title:"ToString")
+
+<div>
+    <h2>@get("title") <small></small></h2>
+</div>
+
+<table class="table code-section">
+    <thead>
+        <th class="span6">Code</th>
+        <th>Result</th>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <pre class="prettyprint linenums">@@account</pre>
+            </td>
+            <td>
+                @account
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <pre class="prettyprint linenums">@@account.toStringWithTransient()</pre>
+            </td>
+            <td>
+                @account.toStringWithTransient()
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <pre class="prettyprint linenums">@@account.toStringSimpleStyle()</pre>
+            </td>
+            <td>
+                @account.toStringSimpleStyle()
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <pre class="prettyprint linenums">@@account.toStringMultiLineStyle()</pre>
+            </td>
+            <td>
+                <pre>@account.toStringMultiLineStyle()</pre>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+@include(tmpl_src)

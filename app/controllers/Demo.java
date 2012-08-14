@@ -5,13 +5,17 @@ import com.greenlaw110.rythm.play.Cache4;
 import com.greenlaw110.rythm.play.RythmPlugin;
 import com.greenlaw110.rythm.play.UseRythmTemplateEngine;
 import com.greenlaw110.rythm.template.JavaTagBase;
+import models.demo.Account;
 import models.demo.Foo;
 import play.Play;
 import play.cache.Cache;
 import play.mvc.Before;
 import play.mvc.Controller;
 import play.mvc.Util;
+import play.vfs.VirtualFile;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Properties;
 import java.util.Random;
 
@@ -24,6 +28,8 @@ public class Demo extends Controller {
     @Util
     public static void index() {
         String title = "Hello";
+        VirtualFile vf = Play.getVirtualFile("app/rythm/welcome.html");
+        String key = vf.relativePath().replaceFirst("\\{.*?\\}", "");
         render(title);
     }
 
@@ -35,6 +41,12 @@ public class Demo extends Controller {
     public static void expression() {
         Foo foo = new Foo();
         render(foo);
+    }
+
+    public static void loopUtils() {
+        String[] sa = {"red", "green"};
+        List<String> list = Arrays.asList(sa);
+        render(list);
     }
 
     public static void testDefaultEscape() {
@@ -180,6 +192,9 @@ public class Demo extends Controller {
         renderText(time);
     }
 
+    public static void foo(String param1, int param2) {
+    }
+
     public static void reset() {
         session.clear();
         response.removeCookie("rememberme");
@@ -211,6 +226,15 @@ public class Demo extends Controller {
     }
 
     public static void assignment() {
+        render();
+    }
+
+    public static void testToString() {
+        Account account = new Account("green", "luo", "123456");
+        render(account);
+    }
+
+    public static void invokeTagWithLineBreaksInParams() {
         render();
     }
 

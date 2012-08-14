@@ -1,0 +1,16 @@
+@args List names
+@extends(main)
+<h1>issue 67: Support inline tag name overload</h1>
+
+@def foo(int i) {
+    <p>int: @i</p>
+}
+
+@def foo(String s) {
+    <p>String: @s</p>
+}
+
+@foo("1")
+@foo(1)
+
+@include(Demo.tmpl_src)

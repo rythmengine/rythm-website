@@ -1,0 +1,76 @@
+@extends(main)
+@args List<String> list
+
+@for(String s: list) {
+<hr/>
+<div class="info span11">
+<p>
+    <label>item</label>
+    <span>@s</span>
+</p>
+<p>
+    <label>index</label>
+    <span>@s_index</span>
+</p>
+<p>
+    <label>isFirst</label>
+    <span>@s_isFirst</span>
+</p>
+<p>
+    <label>isLast</label>
+    <span>@s_isLast</span>
+</p>
+<p>
+    <label>parity</label>
+    <span>@s_parity</span>
+</p>
+<p>
+    <label>isOdd</label>
+    <span>@s_isOdd</span>
+</p>
+<p>
+    <label>size</label>
+    <span>@s_size</span>
+</p>
+<p>
+    <label>separator</label>
+    <span>@s_sep</span>
+</p>
+<p>
+    <label>customized separator</label>
+    <span>@s_utils.preSep(";")</span>
+</p>
+</div>
+}
+
+@include(tmpl_src)
+
+    <style type="text/css">
+        .info {
+            padding: 10px 50px;
+            position: relative;
+        }
+        .info p {
+            display: block;
+            position: relative;
+            float: left;
+            width: 200px;
+            margin-left: 20px;
+            border: 1px solid #666;
+            padding: 2px;
+        }
+        .info p label, .info p span{
+            display: block;
+            position: relative;
+            float: left;
+            width: 80px;
+        }
+        .info p label {
+            background: #666;
+            color: white;
+            margin: 0;
+            margin-right: 10px;
+            text-align: right;
+            padding-right: 5px;
+        }
+    </style>

@@ -1,5 +1,6 @@
 @extends(main)
 
+@compact() {
 <h1>issue 44</h1>
 <p>
 <div id="fail" style="color:red">Failed!</div>
@@ -11,5 +12,5 @@
     $('#fail').hide()
     $('#success').show()
 </script>
-
+}
 @include(Demo.tmpl_src)

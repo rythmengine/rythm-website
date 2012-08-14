@@ -1,5 +1,7 @@
 package models.demo;
 
+import com.greenlaw110.rythm.Rythm;
+
 import java.util.Date;
 import java.util.Random;
 import java.util.UUID;
@@ -36,5 +38,10 @@ public class Foo {
 
     public Foo(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return Rythm.toString(this);
     }
 }

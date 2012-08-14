@@ -2,9 +2,11 @@ package controllers;
 
 import com.greenlaw110.rythm.Rythm;
 import models.demo.Foo;
+import play.cache.Cache;
 import play.data.validation.Validation;
 import play.mvc.Controller;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -114,7 +116,52 @@ public class Test extends Controller {
         render();
     }
 
+
+    public static void p_i38() {
+        render();
+    }
+
+    public static void i67() {
+        render();
+    }
+
+
+    public static void p_i41() {
+        String s = Rythm.toString("@Test.p_i41.ok()", new Test());
+        render(s);
+    }
+
+    public static void i68() {
+        List<String> ls = new ArrayList<String>();
+        ls.add("x");
+        ls.add("y");
+        String s = Rythm.render("hello @who", "world");
+        render(ls);
+    }
+
+    public static void p_i48(String p1, String p2) {
+        render(p1, p2);
+    }
+
     public static void showMessage() {
+        render();
+    }
+
+    public static void i74() {
+        render();
+    }
+
+
+    public static class P35 {
+        public String foo = "foo";
+    }
+
+    public static void p_i35() {
+        Cache.add("foo", new P35());
+        render();
+    }
+
+    public static void i77() {
         render();
     }
 

@@ -1,0 +1,19 @@
+@extends(main)
+<p id="x"></p>
+<p id="y"></p>
+
+@nocompact() {
+<script type="text/javascript">
+    var urlTmpl = 'http://www.abc.com/hi?n={name}'
+    $('#x').text(urlTmpl)
+</script>
+}
+
+@compact(){
+<script type="text/javascript">
+    var urlTmpl = 'http://www.xyz.com/hi?n={name}'
+    $('#y').text(urlTmpl)
+</script>
+}
+
+@include(Demo.tmpl_src)

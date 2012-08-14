@@ -1,0 +1,7 @@
+@extends(main)
+<pre id="url"></pre>
+<script type="text/javascript">
+    var url = '@url(p_i48("foo", "bar"))';
+    $('#url').text(url);
+</script>
+@include(Demo.tmpl_src)
