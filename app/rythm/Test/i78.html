@@ -1,10 +1,19 @@
 @args List names
 @extends(main)
+
 <h1>issue 78</h1>
 <pre>
 @i78.tag1() {
 1
-@i78.tag2("XXX")
+@i78.tag2("XXX") {
+3
+@i78.tag3("YYY") {
+5
+@i78.tag4("ZZZ")
+6
+}
+4
+}
 2
 }
 </pre>
