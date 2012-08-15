@@ -165,4 +165,8 @@ public class Test extends Controller {
         render();
     }
 
+    public static void i78() {
+        render();
+    }
+
 }
