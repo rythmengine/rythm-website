@@ -2,11 +2,8 @@
 @set(title:"Inline Tag with return type")
 
 @def boolean isRandomOdd() {
-    <h3>dicing...</h3>
-    @{
     int r = new Random().nextInt(100);
     return r % 2 != 0
-    }
 }
 
 <div>
@@ -22,6 +19,7 @@
         <tr>
             <td>
 <pre class="prettyprint linenums">@verbatim() {
+<h3>dicing...</h3>
 @if (isRandomOdd()){
     <p>Huh, it's odd</p>
 } else {

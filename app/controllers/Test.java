@@ -169,4 +169,8 @@ public class Test extends Controller {
         render();
     }
 
+    public static void p_i50(String a, String b) {
+        render();
+    }
+
 }

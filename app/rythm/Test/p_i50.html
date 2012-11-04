@@ -1,0 +1,9 @@
+@extends(main)
+@{
+    String url = _url("p_i50", "a", "b");
+}
+<pre id="url">
+    @url
+    @url(p_i50("b", "a"))
+</pre>
+@include(Demo.tmpl_src)
