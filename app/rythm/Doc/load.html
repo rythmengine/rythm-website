@@ -1,0 +1,88 @@
+@extends(main)
+@args String page, String html
+@set(bodyClass: "doc")
+@section(moreStyles) {
+    <link href="/public/css/prettify.css" type="text/css" rel="stylesheet" />
+    <style type="text/css">
+        h3 {
+            margin: 40px 0px 20px;
+            background-color: #e4e9ee;
+            font-size: 12pt;
+            padding: 10px;
+            line-height: 15px;
+        }
+        h3:before {content: '\203A';}
+        p {margin-top: 20px; margin-bottom: 10px; font-size: 14pt;}
+        footer p {font-size: 12pt;}
+        .main.container ul li {
+            font-size: 11pt;
+            margin-bottom: 10px;
+        }
+        pre {background-color: #000;}
+        pre > code {font-size: 10pt;line-height: 42px;}
+        section {
+            padding-top: 20px;
+        }
+    </style>
+}
+@section(moreScripts){
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/prettify/r224/prettify.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            $('pre > code').addClass("prettyprint linenums lang-java");
+            prettyPrint();
+            
+            var names = {
+                h2: 0,
+                h3: 0,
+                h4: 0
+            };
+            
+            // set anchor for all headers
+            var r = /^\s*\[(.*)\](.*)/;
+            $('#doc-content > h2, #doc-content > h3, #doc-content > h4').each(function(){
+                var $h = $(this), s = $h.text(), v = r.exec(s), id = false;
+                if (v) {
+                    id = v[1];
+                    $h.text(' ' + v[2]);
+                } else {
+                    var nm = this.tagName.toLowerCase();
+                    id = nm + "_" + names[nm]++;
+                }
+                 
+                //$('<a id="' + nm0 + '"></a>').prependTo($h);
+                $h.wrap($('<section></section>').prop('id', id));
+            });
+            
+            // construct navigation for named anchors
+            $('#doc-content section[id]').each(function(){
+                var $a = $(this), nm = $a.prop('id'), lbl = $a.text();
+                if (!lbl) {
+                    lbl = $a.parent().text();
+                }
+                if (!lbl) {
+                    lbl = $a.next().text();
+                }
+                if (lbl) {
+                    $('<li><a href="#' + nm + '"><i class="icon-angle-right"></i>' + lbl + '</li>').appendTo('#doc-nav');
+                }
+            });
+            
+            $('#doc-nav').affix();
+        })
+    </script>
+}
+@init() {
+    if (page.startsWith("feature")) super.setRenderArg("curPage", "feature");
+    else super.setRenderArg("curPage", "doc");
+}
+
+<div class="row">
+    <div class="span3" id="nav-box">
+        <ul class="nav nav-list" id="doc-nav">
+        </ul>
+    </div>
+    <div class="span9" id="doc-content">
+        @html.raw()
+    </div>
+</div>

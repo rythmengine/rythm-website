@@ -1,0 +1,10 @@
+@extends(main)
+@args int x=99
+
+@if (x == 10) {
+    <div class="alert-success">Success!</div>
+} else {
+    <div class="alert-error">Failed. Expected: 10, found: @x</div>
+}
+
+@include(Demo.tmpl_src)

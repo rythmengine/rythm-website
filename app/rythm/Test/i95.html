@@ -1,0 +1,12 @@
+@extends(main)
+
+@args models.demo.Foo foo
+
+<p>@i95.footag(value: (null == foo ? "" : foo.getName()))</p>
+
+@{
+String s = null;
+if (s.length() < 1) {}
+}
+
+@include(Demo.tmpl_src)

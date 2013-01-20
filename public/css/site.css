@@ -1,0 +1,32 @@
+body {
+    font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+    text-shadow: 1px 0px 1px #eaeaed;
+    filter: dropshadow(color=#aaa, offx=0, offy=0);
+}
+
+a:hover {
+    text-decoration: none;
+    background-color: #efefef;
+}
+
+body > .main.container {
+    font-size: 16pt;
+    line-height: 30px;
+}
+
+h1 {
+    margin-bottom: 40px;
+}
+
+h1, h2, h3, h4, h5 {
+    font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
+    text-shadow: none;
+}
+
+.gist {
+    font-size: 11pt !important;
+    text-shadow: none;
+}
+
+pre {background-color: #333; border: none;text-shadow: none; color: #fff;}
+code {background-color: #333; border-color: #333; text-shadow: none; color: #fff;}

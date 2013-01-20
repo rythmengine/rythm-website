@@ -2,19 +2,22 @@
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
 
-# Map static resources from the /app/public folder to the /public path
-GET     /public/                                staticDir:public
-
 # Ignore favicon requests
 GET     /favicon.ico                            404
 
 # Home page
-GET     /                                       Demo.index
+GET     /                                       Site.index
 GET /tst Test.index
 GET /test Test.index
 
+# Docs
+GET /doc/{page} Doc.load
+GET /doc/{page}\.md Doc.load
+
 # Map static resources from the /app/public folder to the /public path
-GET     /public/                                staticDir:public
+GET /doc/img/ staticDir:doc/img
+GET /public/ staticDir:public
+GET /bs/ staticDir:public/bootstrap
 GET /img/ staticDir:public/img
 
 # Catch all

@@ -173,4 +173,21 @@ public class Test extends Controller {
         render();
     }
 
+    public static void ix() {
+        render();
+    }
+
+    public static void i94() {
+        render();
+    }
+
+    public static void i95() {
+        Foo foo = new Foo("bar");
+        render(foo);
+    }
+
+    public static void p_i59() {
+        render();
+    }
+
 }

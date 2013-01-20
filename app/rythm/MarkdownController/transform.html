@@ -1,0 +1,8 @@
+@extends(main)
+@args String html
+@section(moreStyles) {
+<link rel="stylesheet" media="screen" href="/public/css/markdown.css">
+}
+<div class="markdown">
+@html.raw()
+</div>

@@ -1,0 +1,49 @@
+@extends(main, "home")
+@section(moreStyles) {
+    <style type="text/css">
+        .hero-unit {
+            background-color: white;
+            padding: 30px;
+        }
+        .links {margin-top: 40px;}
+        .links a.nav-btn {
+            width: 200px;
+            padding: 20px 10px;
+            text-align: center;
+            margin-right: 30px;
+            display: inline-block;
+            cursor: pointer;
+            color: #333;
+            text-decoration: none;
+            border: 1px solid #aaa;
+        }
+        .links a.nav-btn:hover {
+            background-color: #eaeaed;
+            border-color: #eaeaed;
+        }
+    </style>
+}
+
+<div style="margin: 0 auto; width: 810px;">
+    <h1>Rythm Template Engine</h1>
+    <p>
+        A static typed, high performance template engine for Java programmer
+    </p>
+    <p>
+        <img src="/public/img/hello_world.png" width="500px" style="padding: 15px;">
+    </p>
+    <div class="links clearfix">
+        <a class="nav-btn demo" title="check online demo">
+            <i class="icon-coffee"></i>
+            Online Demo
+        </a>
+        <a class="nav-btn use">
+            <i class="icon-cogs"></i>
+            Get Rythm
+        </a>
+        <a class="nav-btn learn">
+            <i class="icon-book"></i>
+            Learn more
+        </a>
+    </div>
+</div>
