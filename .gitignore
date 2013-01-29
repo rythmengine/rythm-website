@@ -1,3 +1,8 @@
+.idea
+*.iml
+*.ipr
+logs
+test-result
 tmp
 modules
 lib

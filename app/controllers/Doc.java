@@ -4,6 +4,7 @@ import com.greenlaw110.rythm.play.Cache4;
 import markdown.Markdown;
 import play.Play;
 import play.i18n.Lang;
+import play.jobs.OnApplicationStart;
 import play.mvc.Controller;
 
 import java.io.File;
@@ -12,6 +13,8 @@ import java.io.IOException;
 import java.io.Reader;
 import java.util.HashSet;
 import java.util.Set;
+
+import play.jobs.Job;
 
 public class Doc extends Controller {
 
@@ -25,7 +28,7 @@ public class Doc extends Controller {
         String lang = Lang.get();
         if (null == lang) return root;
         else if (invalidLangs.contains(lang)) return docDirWithDefLang();
-        else return root + lang + "/";
+        else return root + "/" + lang + "/";
     }
 
     private static String docDirWithDefLang() {
@@ -111,6 +114,14 @@ public class Doc extends Controller {
      */
     public static void refreshLangs() {
         invalidLangs.clear();
+    }
+    
+    @OnApplicationStart
+    public static class Cleaner extends Job {
+        @Override
+        public void doJob() throws Exception {
+            refreshLangs();
+        }
     }
 
 }

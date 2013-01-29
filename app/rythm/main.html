@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-@args String curPage;
+@args String curPage, String pageTitle
 <html class='@get("bodyClass")'>
 <head>
-    <title>Rythm Template Engine @get("title")</title>
+    <title>@msg('main.title')@(s().notEmpty(pageTitle) ? " - " + pageTitle : "")</title>
     <meta charset="@_response_encoding">
-    <meta content="A static typed high performance and .net Razor like syntax template engine for java" name="description">
+    <meta content="@msg('main.desc')" name="description">
     <meta content="greenlaw110@@gmail.com" name="author">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -14,29 +14,16 @@
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.0/css/font-awesome-ie7.css" rel="stylesheet">
     <![endif]-->
     <link rel="stylesheet" media="screen" href="/public/css/site.css">
+    @if(s().eq(lang, "zh")) {
+    <link rel="stylesheet" media="screen" href="/public/css/font.zh.css">
+    } else {
+    <link href="http://fonts.googleapis.com/css?family=ABeeZee&subset=latin" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" media="screen" href="/public/css/font.css">
+    }
     @render("moreStyles")
 
     <link rel="shortcut icon" type="image/png" href="/public/img/favicon.gif">
     <style type="text/css">
-        body {
-            margin-top: 100px;
-            min-height: 500px;
-        }
-        footer.footer {
-            font-size: 12pt !important;
-            margin-top: 50px;
-            position: relative;
-            bottom: 0;
-        }
-        .navbar-inner a {
-            font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
-            text-shadow: 1px 0 1px #444;
-        }
-        .navbar-inner a.brand {color: #fff;}
-        .navbar-inner a.brand:hover {background: transparent;}
-        .navbar-inner ul.nav {
-            padding-top: 2px;
-        }
     </style>
     <script type="text/javascript" src="//code.jquery.com/jquery-1.9.0.min.js"></script>
     <script type="text/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script>
@@ -50,22 +37,22 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </a>
-                <a class="brand" href="/">Rythm Engine</a>
+                <a class="brand" href="/">@msg('main.rythm')</a>
                 <div class="nav-collapse">
-                    @def opt(String pageId, String url) {@opt(pageId, null, url)}
-                    @def opt(String pageId, String label, String url) {
+                    @def opt(String pageId, String url) {
                         @{
                             boolean isCur = s().isEqual(pageId, curPage);
-                            if (s().isEmpty(label)) label = s().capFirst(pageId);
+                            String label = _msg("main." + pageId);
                         }
+                        
                         <li class='page-@pageId @if(isCur) {active}'>
-                            <a @if(!isCur){href="@url"}else{style="cursor: default"}>@label</a>
+                            <a href="@url">@label</a>
                         </li>
                     }
                     <ul class="nav">
                         @opt("home", "/")
                         @opt("feature", "/doc/feature")
-                        @opt("document", "/doc/index")
+                        @opt("doc", "/doc/index")
                         @opt("demo", "/demo")
                         @opt("community", "/community")
                     </ul>
@@ -82,7 +69,7 @@
     </div>
     <footer class="footer">
         <div class="container">
-            <p class="pull-right">&copy; Copyright 2013 by <a href=http://github.com/greenlaw110>Gelin Luo</a></p>
+            <p class="pull-right">&copy; Copyright 2013 @msg('main.by') <a href=http://github.com/greenlaw110>@msg('main.lgl')</a></p>
         </div>
     </footer>
 
@@ -93,7 +80,7 @@
             $p.find('li').removeClass('active');
             $p.find('li.page-' + pageId).addClass('active');
         }
-    </script>
+    </script> 
     @render('moreScripts')
 </body>
 </html>

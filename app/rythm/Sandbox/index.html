@@ -1,0 +1,18 @@
+@extends(main)
+
+@args String src, String output
+
+<h3>Template source</h3>
+<form method="post">
+    <div>
+        <textarea name="src" style="width: 400px; height: 100px">@src</textarea>
+    </div>
+    <div>
+        <button>Submit</button>
+    </div>
+</form>
+
+@if(s().isNotEmpty(output)){
+<h3>Render result</h3>
+<pre>@output</pre>
+}

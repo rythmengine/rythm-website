@@ -1,0 +1,72 @@
+@extends("main", noGoHome=true)
+@set(title: "Home")
+@args String title;
+
+@cache() {
+
+<div class="hero-unit">
+    <h1>PlayRythm Demo App</h1>
+    <p class="lead">A demonstration of the new <a href="http://www.playframework.org/modules/rythm">PlayRythm</a> template engine for Play! Framework (v1.2.x) based on <a href="http://www.rythmengine.com">Rythm-v@_rythmPlugin.VERSION</a>.
+</div>
+
+<div class="row">
+    <div class="span12">
+        <p>Click on the following links to find out the varieties of Rythm features, including: template layout management, caching, escaping, calling different tags, etc.</p>
+    </div>
+</div>
+
+<div class="row examples-list">
+    <div class="span4">
+        <h3>Basic Features</h3>
+        <ul>
+            <li><a href="@url(Demo.expression())">Expression evaluation</a></li>
+            <li><a href="@url(Demo.testDefaultLayoutContent())">Default layout content</a></li>
+            <li><a href="@url(Demo.testDefaultEscape())">Default escape</a></li>
+            <li><a href="@url(Demo.testRenderSection())">Render section</a></li>
+            <li><a href="@url(Demo.testActionCall())">Call action method from view</a></li>
+            <li><a href="@url(Demo.testInclude())">Include other templates</a></li>
+            <li><a href="@url(Demo.testExtendsWithParams())">Extends layout template with params</a></li>
+            <li><a href="@url(Demo.testExtendsWithOutParams())">Extends layout template without params</a></li>
+            <li><a href="@url(Demo.javaExtensions())">Java extensions</a></li>
+            <li><a href="@url(Demo.loopUtils())"><img src="/img/icon_new.gif">Loop Utils</a></li>
+            <li><a href="@url(Demo.testBreakContinue())">Break continue statement</a></li>
+        </ul>
+    </div>
+    <div class="span4">
+        <h3>Tags and Inline Functions</h3>
+        <ul>
+            <li><a href="@url(Demo.invokeTagWithLineBreaksInParams())">Line breaks in params</a></li>
+            <li><a href="@url(Demo.testInlineTag())">Inline tag</a></li>
+            <li><a href="@url(Demo.inlineTagWithReturnType())">Inline tag with return type <img src="/img/icon_new.gif"></a></li>
+            <li><a href="@url(Demo.testLoadTagByRelativePath())">Load tag using relative path</a></li>
+            <li><a href="@url(Demo.testLoadTagUsingImportPath())">Load tag using import path</a></li>
+            <li><a href="@url(Demo.testTagInvokeCallBack())">Tag invoke with callback</a></li>
+            <li><a href="@url(Demo.callExtendedTag())">Call tag that extends other templates</a></li>
+            <li><a href="@url(Demo.testInvoke())">Dynamic tag dispatch</a></li>
+            <li><a href="@url(Demo.testTagContext())">TagContext</a></li>
+            <li><a href="@url(Demo.testFastTag())">Fast tag</a></li>
+            <li><a href="@url(Demo.invokeTagWithAssignment())">Invoke tag with assignment</a></li>
+        </ul>
+    </div>
+    <div class="span4">
+        <h3>Others</h3>
+        <ul>
+            <li><a href="@url(Demo.testCache())">Cache</a></li>
+            <li><a href="@url(Demo.testTagCache())">Tag cache</a></li>
+            <li><a href="@url(Demo.testCache4())">Cache4</a></li>
+            <li><a href="@url(Demo.testCache4WithSessionData())">Cache4 with session data check enabled</a></li>
+            <li><a href="@url(Demo.testAssign())">Assignment</a></li>
+            <li><a href="@url(Demo.testChain())">Chained extension</a></li>
+            <li><a href="@url(Demo.fibonacci())">Fibonacci - recursive tag invocation</a></li>
+            <li><a href="@url(Demo.testSimple())">Simple template</a></li>
+            <li><a href="@url(Demo.compactMode())">Compact Mode</a></li>
+            <li><a href="@url(Demo.assignment())">Assignment</a></li>
+            <li><a href="@url(Demo.testToString())">ToString <img src="/img/icon_new.gif"></a></li>
+            <li><a href="@url(Demo.testMisc())">Miscellaneous tests</a></li>
+        </ul>
+    </div>
+</div>
+
+}
+
+@include(tmpl_src)

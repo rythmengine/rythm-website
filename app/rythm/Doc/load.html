@@ -1,6 +1,7 @@
-@extends(main)
+@extends(main, pageTitle: page.capFirst())
 @args String page, String html
 @set(bodyClass: "doc")
+@set(title: page)
 @section(moreStyles) {
     <link href="/public/css/prettify.css" type="text/css" rel="stylesheet" />
     <style type="text/css">
@@ -11,15 +12,14 @@
             padding: 10px;
             line-height: 15px;
         }
-        h3:before {content: '\203A';}
         p {margin-top: 20px; margin-bottom: 10px; font-size: 14pt;}
         footer p {font-size: 12pt;}
-        .main.container ul li {
-            font-size: 11pt;
+        .main.container ul li, .main.container ol li {
+            font-size: 13pt;
             margin-bottom: 10px;
         }
         pre {background-color: #000;}
-        pre > code {font-size: 10pt;line-height: 42px;}
+        pre > code * {font-size: 10pt;line-height: 16px;}
         section {
             padding-top: 20px;
         }
@@ -29,7 +29,11 @@
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/prettify/r224/prettify.js"></script>
     <script type="text/javascript">
         $(function(){
-            $('pre > code').addClass("prettyprint linenums lang-java");
+            $('pre code').each(function(){
+                var $me = $(this);
+                if (!$me.hasClass('prettyprint')) $me.addClass('prettyprint linenums lang-java');
+                else $me.addClass('linenums');
+            });
             prettyPrint();
             
             var names = {
@@ -69,9 +73,16 @@
             });
             
             $('#doc-nav').affix();
+            
+            // at last start embedded video if there is
+            $('iframe').each(function(){
+                $me = $(this), src = $me.data('src');
+                if (src) $me.attr('src', src);
+            })
         })
     </script>
 }
+
 @init() {
     if (page.startsWith("feature")) super.setRenderArg("curPage", "feature");
     else super.setRenderArg("curPage", "doc");
@@ -85,4 +96,7 @@
     <div class="span9" id="doc-content">
         @html.raw()
     </div>
+</div>
+
+<div>
 </div>

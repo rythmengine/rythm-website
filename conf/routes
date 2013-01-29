@@ -3,19 +3,19 @@
 # ~~~~
 
 # Ignore favicon requests
-GET     /favicon.ico                            404
+GET /favicon.ico 404
 
 # Home page
-GET     /                                       Site.index
-GET /tst Test.index
-GET /test Test.index
-
-# Docs
+GET / Site.index
 GET /doc/{page} Doc.load
 GET /doc/{page}\.md Doc.load
+GET /demo Demo.index
+
+* /sandbox Sandbox.index
 
 # Map static resources from the /app/public folder to the /public path
 GET /doc/img/ staticDir:doc/img
+GET /dist/ staticDir:public/dist
 GET /public/ staticDir:public
 GET /bs/ staticDir:public/bootstrap
 GET /img/ staticDir:public/img

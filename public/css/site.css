@@ -2,6 +2,30 @@ body {
     font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
     text-shadow: 1px 0px 1px #eaeaed;
     filter: dropshadow(color=#aaa, offx=0, offy=0);
+    margin-top: 100px;
+    min-height: 500px;
+    font-size: 16px;
+}
+
+footer.footer {
+    font-size: 12pt !important;
+    margin-top: 50px;
+    position: relative;
+    bottom: 0;
+}
+
+.navbar-inner {
+    border-bottom-color: #aaa !important;
+    box-shadow: 3px 3px 5px 6px #ccc;
+}
+.navbar-inner a {
+    font-family: Verdana, Geneva, Arial, Helvetica, sans-serif;
+    text-shadow: 1px 0 1px #444;
+}
+.navbar-inner a.brand {color: #fff;}
+.navbar-inner a.brand:hover {background: transparent;}
+.navbar-inner ul.nav {
+    padding-top: 2px;
 }
 
 a:hover {
@@ -19,7 +43,7 @@ h1 {
 }
 
 h1, h2, h3, h4, h5 {
-    font-family: "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
+    font-family: "Microsoft Yahei", "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
     text-shadow: none;
 }
 
@@ -28,5 +52,7 @@ h1, h2, h3, h4, h5 {
     text-shadow: none;
 }
 
-pre {background-color: #333; border: none;text-shadow: none; color: #fff;}
-code {background-color: #333; border-color: #333; text-shadow: none; color: #fff;}
+code {background-color: transparent; border: none;text-shadow: none; color: #2576B6; font-size: 15px; padding:0;}
+pre code {background-color: #333; border-color: #333; text-shadow: none; color: #fff;}
+
+li p {line-height: 30px;}

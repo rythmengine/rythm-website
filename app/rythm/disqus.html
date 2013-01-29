@@ -1,0 +1,16 @@
+@args String disqusShotname, String disqusID
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: THIS CODE IS ONLY AN EXAMPLE * * */
+    var disqus_shortname = '@disqusShortname'; // Required - Replace example with your forum shortname
+    var disqus_identifier = '@disqusID';
+    var disqus_title = '@pageTitle';
+    var disqus_url = '@request.url';
+    var disqus_developer = @(_play.mode.isDev() ? 1 : 0); // or 1 based on if you're looking to skip URL authentication
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
