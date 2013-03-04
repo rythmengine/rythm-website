@@ -7,6 +7,7 @@ import play.i18n.Lang;
 import play.jobs.Job;
 import play.jobs.OnApplicationStart;
 import play.mvc.Controller;
+import play.mvc.Util;
 
 import java.io.File;
 import java.io.IOException;
@@ -111,6 +112,7 @@ public class Doc extends Controller {
     /**
      * Force to check if language folder version is ready
      */
+    @Util
     public static void refreshLangs() {
         invalidLangs.clear();
     }
