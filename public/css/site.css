@@ -52,8 +52,10 @@ h1, h2, h3, h4, h5 {
     text-shadow: none;
 }
 
-code {background-color: transparent; border: none;text-shadow: none; color: #2576B6; font-size: 15px; padding:0;}
+code {background-color: transparent; border: none;text-shadow: none; color: #b65b19; font-size: 15px; padding:0;}
 pre code {background-color: #333; border-color: #333; text-shadow: none; color: #fff;}
 
 li p {line-height: 30px;}
+
+li pre {margin-top: 10px;}
 

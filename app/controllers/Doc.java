@@ -1,26 +1,24 @@
 package controllers;
 
 import com.greenlaw110.rythm.play.Cache4;
-import markdown.Markdown;
+import org.markdown4j.Markdown4jProcessor;
 import play.Play;
 import play.i18n.Lang;
+import play.jobs.Job;
 import play.jobs.OnApplicationStart;
 import play.mvc.Controller;
 
 import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
-import java.io.Reader;
 import java.util.HashSet;
 import java.util.Set;
-
-import play.jobs.Job;
 
 public class Doc extends Controller {
 
     private static String root = "/doc";
     private static String defLang = "en";
     private static String img = "img";
+    private static Markdown4jProcessor markDown = new Markdown4jProcessor(); 
 
     private static Set<String> invalidLangs = new HashSet<String>();
 
@@ -77,8 +75,9 @@ public class Doc extends Controller {
             }
         }
 
-        Reader pageReader = new FileReader(f);
-        String html = Markdown.transformMarkdown(pageReader);
+        //Reader pageReader = new FileReader(f);
+        //String html = Markdown.transformMarkdown(pageReader);
+        String html = markDown.process(f);
         render(page, html);
     }
 

@@ -84,8 +84,8 @@
 }
 
 @init() {
-    if (page.startsWith("feature")) super.setRenderArg("curPage", "feature");
-    else super.setRenderArg("curPage", "doc");
+    if (page.startsWith("feature")) super.__setRenderArg("curPage", "feature");
+    else super.__setRenderArg("curPage", "doc");
 }
 
 <div class="row">
