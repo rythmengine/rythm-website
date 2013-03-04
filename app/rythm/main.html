@@ -27,6 +27,7 @@
     </style>
     <script type="text/javascript" src="//code.jquery.com/jquery-1.9.0.min.js"></script>
     <script type="text/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script>
+    @initCodeMarker()
 </head>
 <body class='@get("bodyClass")'>
     <div class="navbar navbar-fixed-top navbar-inverse">
@@ -37,6 +38,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </a>
+                @codeMarker()
                 <a class="brand" href="/">@msg('main.rythm')</a>
                 <div class="nav-collapse">
                     @def opt(String pageId, String url) {
@@ -50,6 +52,7 @@
                         </li>
                     }
                     <ul class="nav">
+                        @codeMarker()
                         @opt("home", "/")
                         @opt("feature", "/doc/feature")
                         @opt("doc", "/doc/index")
@@ -57,6 +60,7 @@
                         @opt("community", "/community")
                     </ul>
                     <ul class="nav pull-right" style="margin-right: 30px;">
+                        @codeMarker()
                         @opt("about", "/about")
                     </ul>
                 </div><!--/.nav-collapse -->
@@ -69,7 +73,10 @@
     </div>
     <footer class="footer">
         <div class="container">
-            <p class="pull-right">&copy; Copyright 2013 @msg('main.by') <a href=http://github.com/greenlaw110>@msg('main.lgl')</a></p>
+            <p class="pull-right">
+                &copy; Copyright 2013 @msg('main.by') <a href=http://github.com/greenlaw110>@msg('main.lgl')</a>
+                @codeMarker()                
+            </p>
         </div>
     </footer>
 
