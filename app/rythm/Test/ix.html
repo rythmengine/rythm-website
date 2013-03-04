@@ -1,0 +1,15 @@
+@args List names
+@extends(main)
+
+<h1>issue X</h1>
+
+@def x() {
+<p>should be inside tag 1</p>
+}
+
+<pre>
+@ix.tag1(){
+@x()
+}
+</pre>
+@include(DemoTheLegacy.tmpl_src)
