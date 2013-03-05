@@ -8,14 +8,14 @@
     <meta content="greenlaw110@@gmail.com" name="author">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/css/bootstrap.no-icons.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap.no-icons.min.css" rel="stylesheet">
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.0/css/font-awesome.css" rel="stylesheet">
     <!--[if IE 7]>
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.0/css/font-awesome-ie7.css" rel="stylesheet">
     <![endif]-->
-    <link rel="stylesheet" media="screen" href="/public/css/site.css">
+    <link rel="stylesheet" media="screen" href="/css/site.css">
     @if(s().eq(lang, "zh")) {
-    <link rel="stylesheet" media="screen" href="/public/css/font.zh.css">
+    <link rel="stylesheet" media="screen" href="/css/font.zh.css">
     } else {
     <link href="http://fonts.googleapis.com/css?family=ABeeZee&subset=latin" rel="stylesheet" type="text/css">
     <link rel="stylesheet" media="screen" href="/public/css/font.css">
@@ -25,51 +25,66 @@
     <link rel="shortcut icon" type="image/png" href="/public/img/favicon.gif">
     <style type="text/css">
     </style>
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-29505548-1']);
+      _gaq.push(['_trackPageview']);
+    
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
     <script type="text/javascript" src="//code.jquery.com/jquery-1.9.0.min.js"></script>
-    <script type="text/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/js/bootstrap.min.js"></script>
     @initCodeMarker()
 </head>
 <body class='@get("bodyClass")'>
-    <div class="navbar navbar-fixed-top navbar-inverse">
-        <div class="navbar-inner">
-            <div class="container clearfix" style="padding: 5px;position: relative">
-                <a data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </a>
-                @codeMarker()
-                <a class="brand" href="/">@msg("main.rythm")</a>
-                <div class="nav-collapse">
-                    @def opt(String pageId, String url) {
-                        @{
-                            boolean isCur = s().isEqual(pageId, curPage);
-                            String label = _msg("main." + pageId);
+    <div id="wrap">
+        <div class="navbar navbar-fixed-top navbar-inverse">
+            <div class="navbar-inner">
+                <div class="container clearfix" style="padding: 5px;position: relative">
+                    <a data-target=".nav-collapse" data-toggle="collapse" class="btn btn-navbar">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </a>
+                    @codeMarker()
+                    <a class="brand" href="/">@msg("main.rythm")</a>
+                    <div class="nav-collapse">
+                        @def opt(String pageId, String url) {
+                            @{
+                                boolean isCur = s().isEqual(pageId, curPage);
+                                String label = _msg("main." + pageId);
+                            }
+                            
+                            <li class='page-@pageId x @if(isCur) {active}'>
+                                <a href="@url">@label</a>
+                            </li>
                         }
-                        
-                        <li class='page-@pageId x @if(isCur) {active}'>
-                            <a href="@url">@label</a>
-                        </li>
-                    }
-                    <ul class="nav">
-                        @codeMarker()
-                        @opt("home", "/")
-                        @opt("feature", "/doc/feature")
-                        @opt("doc", "/doc/index")
-                        @opt("demo", "/demo")
-                        @opt("community", "/community")
-                    </ul>
-                    <ul class="nav pull-right" style="margin-right: 30px;">
-                        @codeMarker()
-                        @opt("about", "/about")
-                    </ul>
-                </div><!--/.nav-collapse -->
+                        <ul class="nav">
+                            @codeMarker()
+                            @opt("home", "/")
+                            @opt("feature", "/doc/feature")
+                            @opt("doc", "/doc/index")
+                            @opt("demo", "/demo")
+                            @opt("community", "/community")
+                        </ul>
+                        <ul class="nav pull-right" style="margin-right: 30px;">
+                            @codeMarker()
+                            @opt("about", "/about")
+                        </ul>
+                    </div><!--/.nav-collapse -->
+                </div>
             </div>
         </div>
-    </div>
-
-    <div class="main container" style="min-height: 600px">
-            @doLayout()
+    
+        <div class="main container" style="min-height: 600px">
+                @doLayout()
+        </div>
+        
+        <div id="push"></div>
     </div>
     <footer class="footer">
         <div class="container">
@@ -83,9 +98,9 @@
     
     <script type="text/javascript">
         var setCurPage = function(pageId) {
-            var $p = $('.navbar.navbar-fixed-top .navbar-inner .nav");
-            $p.find('li").removeClass('active");
-            $p.find('li.page-' + pageId).addClass('active");
+            var $p = $(".navbar.navbar-fixed-top .navbar-inner .nav");
+            $p.find("li").removeClass("active");
+            $p.find("li.page-" + pageId).addClass("active");
         }
     </script> 
     @render('moreScripts")

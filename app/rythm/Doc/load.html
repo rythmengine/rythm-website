@@ -23,16 +23,23 @@
         section {
             padding-top: 20px;
         }
+        #doc-nav {
+            font-family: Arial, Sans;
+            width: 200px;
+        }
     </style>
 }
 @section(moreScripts){
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/prettify/r224/prettify.js"></script>
     <script type="text/javascript">
         $(function(){
-            $('pre code').each(function(){
+            $('pre code').each(function() {
                 var $me = $(this);
-                if (!$me.hasClass('prettyprint')) $me.addClass('prettyprint linenums lang-java');
-                else $me.addClass('linenums');
+                if (!$me.hasClass('prettyprint')) {
+                    $me.addClass('prettyprint linenums');
+                } else {
+                    $me.addClass('linenums'); 
+                }
             });
             prettyPrint();
             
@@ -55,11 +62,12 @@
                 }
                  
                 //$('<a id="' + nm0 + '"></a>').prependTo($h);
-                $h.wrap($('<section></section>').prop('id', id));
+                $h.wrap($('<section></section>').prop('id', id).addClass(this.tagName.toLowerCase()));
             });
             
             // construct navigation for named anchors
             $('#doc-content section[id]').each(function(){
+                if ($(this).hasClass('h4')) return;
                 var $a = $(this), nm = $a.prop('id'), lbl = $a.text();
                 if (!lbl) {
                     lbl = $a.parent().text();
@@ -68,7 +76,7 @@
                     lbl = $a.next().text();
                 }
                 if (lbl) {
-                    $('<li><a href="#' + nm + '"><i class="icon-angle-right"></i>' + lbl + '</li>').appendTo('#doc-nav');
+                    $('<li><a href="#' + nm + '"><i class="icon-angle-right"></i> ' + lbl + '</li>').appendTo('#doc-nav');
                 }
             });
             

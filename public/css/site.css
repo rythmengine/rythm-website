@@ -2,8 +2,6 @@ body {
     font-family: "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
     text-shadow: 1px 0px 1px #eaeaed;
     filter: dropshadow(color=#aaa, offx=0, offy=0);
-    margin-top: 100px;
-    min-height: 500px;
     font-size: 16px;
 }
 
@@ -33,7 +31,7 @@ a:hover {
     background-color: #efefef;
 }
 
-body > .main.container {
+body .main.container {
     font-size: 16pt;
     line-height: 30px;
 }
@@ -59,3 +57,48 @@ li p {line-height: 30px;}
 
 li pre {margin-top: 10px;}
 
+/* Sticky footer styles
+-------------------------------------------------- */
+
+html,
+body {
+    height: 100%;
+    /* The html and body elements cannot have any padding or margin. */
+}
+
+body {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+/* Wrapper for page content to push down footer */
+#wrap {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    padding: 0 20px;
+    /* Negative indent footer by it's height */
+    margin: 0 auto -80px;
+}
+
+/* Set the fixed height of the footer here */
+#push,
+#footer {
+    height: 80px;
+}
+
+@media (min-width: 767px) {
+    .main.container {
+        padding-top: 80px;
+    }
+}
+
+/* Lastly, apply responsive CSS fixes as necessary */
+@media (max-width: 767px) {
+    #footer {
+        margin-left: -20px;
+        margin-right: -20px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+}
