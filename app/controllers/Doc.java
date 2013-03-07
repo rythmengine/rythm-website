@@ -4,15 +4,10 @@ import com.greenlaw110.rythm.play.Cache4;
 import org.markdown4j.Markdown4jProcessor;
 import play.Play;
 import play.i18n.Lang;
-import play.jobs.Job;
-import play.jobs.OnApplicationStart;
 import play.mvc.Controller;
-import play.mvc.Util;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.HashSet;
-import java.util.Set;
 
 public class Doc extends Controller {
 
@@ -21,19 +16,24 @@ public class Doc extends Controller {
     private static String img = "img";
     private static Markdown4jProcessor markDown = new Markdown4jProcessor(); 
 
-    private static Set<String> invalidLangs = new HashSet<String>();
+    //private static Set<String> invalidLangs = new HashSet<String>();
 
     private static String docDir() {
         String lang = Lang.get();
-        if (null == lang) return root;
-        else if (invalidLangs.contains(lang)) return docDirWithDefLang();
-        else return root + "/" + lang + "/";
+        String dir = root + "/";
+        if (null == lang)  {
+            //else if (invalidLangs.contains(lang)) return docDirWithDefLang();
+            dir = docDirWithDefLang();
+        } else {
+            dir = root + "/" + lang + "/";
+        }
+        return dir;
     }
 
     private static String docDirWithDefLang() {
         String s = defLang;
-        if (invalidLangs.contains(s)) return docDirWithoutLang();
-        return root + s + "/";
+        //if (invalidLangs.contains(s)) return docDirWithoutLang();
+        return root + "/" + s + "/";
     }
 
     private static String docDirWithoutLang() {
@@ -52,23 +52,22 @@ public class Doc extends Controller {
         return docDirWithoutLang() + img + "/";
     }
 
-    @Cache4
+    @Cache4(langSensitive = true)
     public static void load(String page) throws Exception {
         if (page.endsWith(".md")) page = page.substring(0, page.length() - 3);
 
         // Just a little validation to make sure the path is not forged
-        if (page == null || page.indexOf('/') > 0 || page.indexOf('\\') > 0
-                || page.indexOf('.') > 0)
-            throw new IOException("Invalid path:" + page);
+        if (page == null) {
+            notFound();
+        }
 
-        File f = new File(Play.applicationPath, docDir() + page
-                + ".md");
+        File f = new File(Play.applicationPath, docDir() + page + ".md");
         if (!f.exists()) {
             // try defLang
-            invalidLangs.add(Lang.get());
+            //invalidLangs.add(Lang.get());
             f = new File(Play.applicationPath, docDirWithDefLang() + page + ".md");
             if (!f.exists()) {
-                invalidLangs.add(defLang);
+                //invalidLangs.add(defLang);
                 f = new File(Play.applicationPath, docDirWithoutLang() + page + ".md");
                 if (!f.exists()) {
                     notFound("Markdown page for " + page + " not found");
@@ -96,10 +95,10 @@ public class Doc extends Controller {
 
         if (!image.exists()) {
             // try defLang
-            invalidLangs.add(Lang.get());
+            //invalidLangs.add(Lang.get());
             image = new File(Play.applicationPath, imgDirWithDefLang() + imageName + "." + ext);
             if (!image.exists()) {
-                invalidLangs.add(defLang);
+                //invalidLangs.add(defLang);
                 image = new File(Play.applicationPath, imgDirWithoutLang() + imageName + "." + ext);
                 if (!image.exists()) {
                     notFound();
@@ -109,20 +108,20 @@ public class Doc extends Controller {
         renderBinary(image);
     }
 
-    /**
-     * Force to check if language folder version is ready
-     */
-    @Util
-    public static void refreshLangs() {
-        invalidLangs.clear();
-    }
-    
-    @OnApplicationStart
-    public static class Cleaner extends Job {
-        @Override
-        public void doJob() throws Exception {
-            refreshLangs();
-        }
-    }
-
+//    /**
+//     * Force to check if language folder version is ready
+//     */
+//    @Util
+//    public static void refreshLangs() {
+//        //invalidLangs.clear();
+//    }
+//    
+//    @OnApplicationStart
+//    public static class Cleaner extends Job {
+//        @Override
+//        public void doJob() throws Exception {
+//            refreshLangs();
+//        }
+//    }
+//
 }
