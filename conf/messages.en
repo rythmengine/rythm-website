@@ -17,3 +17,6 @@ index.title=A template engine for Java programmer
 index.link.online-demo=Online Demo
 index.link.doc=Document
 index.link.get-rythm=Get Rythm
+
+load.found-bug=Found document defects?
+load.report-bug=Report it

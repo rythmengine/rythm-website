@@ -24,7 +24,9 @@
             padding-top: 20px;
         }
         #doc-nav {
+        @ifNot("zh".equals(lang)) {
             font-family: Arial, Sans;
+        }
             width: 200px;
         }
     </style>
@@ -80,7 +82,7 @@
                 }
             });
             
-            $('#doc-nav').affix();
+            $('.affix').affix();
             
             // at last start embedded video if there is
             $('iframe').each(function(){
@@ -98,8 +100,18 @@
 
 <div class="row">
     <div class="span3" id="nav-box">
-        <ul class="nav nav-list" id="doc-nav">
-        </ul>
+        <div class="affix">
+            <ul class="nav nav-list" id="doc-nav">
+            </ul>
+            <div style="margin-top: 20px;font-size: 9pt; width:144px" class="alert">
+                @msg("load.found-bug")
+                <br/>
+                <a target="_blank" href="https://github.com/greenlaw110/rythm-doc/issues" style="color: #38a">
+                    <i class="icon-github"></i>
+                    @msg("load.report-bug")
+                </a>
+            </div>
+        </div>
     </div>
     <div class="span9" id="doc-content">
         @html.raw()

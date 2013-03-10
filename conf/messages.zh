@@ -18,3 +18,6 @@ index.title=一个专为Java程序员设计的模版引擎
 index.link.online-demo=在线演示
 index.link.doc=产品文档
 index.link.get-rythm=获得Rythm
+
+load.found-bug=发现文档有错误？
+load.report-bug=在这里报告

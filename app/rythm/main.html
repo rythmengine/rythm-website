@@ -2,9 +2,9 @@
 @args String curPage, String pageTitle
 <html class='@get("bodyClass")'>
 <head>
-    <title>@msg("main.title")@(s().notEmpty(pageTitle) ? " - " + pageTitle : "")</title>
+    <title>@i18n("main.title")@(s().notEmpty(pageTitle) ? " - " + pageTitle : "")</title>
     <meta charset="@_response_encoding">
-    <meta content="@msg("main.desc")" name="description">
+    <meta content="@i18n('main.desc')" name="description">
     <meta content="greenlaw110@@gmail.com" name="author">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -21,7 +21,6 @@
     <link rel="stylesheet" media="screen" href="/public/css/font.css">
     }
     @render("moreStyles")
-
     <link rel="shortcut icon" type="image/png" href="/public/img/favicon.gif">
     <style type="text/css">
     </style>
@@ -51,12 +50,12 @@
                         <span class="icon-bar"></span>
                     </a>
                     @codeMarker()
-                    <a class="brand" href="/">@msg("main.rythm")</a>
+                    <a class="brand" href="/">@i18n("main.rythm")</a>
                     <div class="nav-collapse">
                         @def opt(String pageId, String url) {
                             @{
                                 boolean isCur = s().isEqual(pageId, curPage);
-                                String label = _msg("main." + pageId);
+                                String label = __i18n("main." + pageId);
                             }
                             
                             <li class='page-@pageId x @if(isCur) {active}'>
@@ -89,7 +88,7 @@
     <footer class="footer">
         <div class="container">
             <p class="pull-right">
-                &copy; Copyright 2013 @msg("main.by") <a href=http://github.com/greenlaw110>@msg("main.lgl")</a>
+                &copy; Copyright 2013 @i18n("main.by") <a href=http://github.com/greenlaw110>@i18n("main.lgl")</a>
                 @codeMarker()                
             </p>
         </div>
