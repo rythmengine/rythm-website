@@ -21,12 +21,12 @@
 <p>@@foo?.bee(): @foo?.bee()</p>
 
 <h4>Now set foo to null</h4>
-@{foo = null}
+@{foo = null;}
 <p>@@foo?.bar: @foo?.bar</p>
 <p>@@foo?.bee(): @foo?.bee()</p>
 
 <h3>Null safe expression with java extensions</h3>
-@{foo = new Foo()}
+@{foo = new Foo();}
 <p>@@foo.nullDate(): @foo.nullDate()</p>
 <p>@@foo.nullDate()?.format("yyyy-MM-dd"): @foo.nullDate()?.format("yyyy-MM-dd")</p>
 
