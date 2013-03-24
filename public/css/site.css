@@ -71,6 +71,8 @@ body {
     padding-right: 0;
 }
 
+div.alert {font-size: 80%; margin-top: 20px;}
+
 /* Wrapper for page content to push down footer */
 #wrap {
     min-height: 100%;

@@ -1,6 +1,7 @@
 package controllers;
 
 import com.greenlaw110.rythm.play.Cache4;
+import com.greenlaw110.rythm.utils.S;
 import org.markdown4j.Markdown4jProcessor;
 import play.Play;
 import play.i18n.Lang;
@@ -53,13 +54,15 @@ public class Doc extends Controller {
     }
 
     @Cache4(langSensitive = true)
-    public static void load(String page) throws Exception {
+    public static void load(String page, String path1, String path2) throws Exception {
         if (page.endsWith(".md")) page = page.substring(0, page.length() - 3);
-
         // Just a little validation to make sure the path is not forged
         if (page == null) {
             notFound();
         }
+
+        if (!S.empty(path2)) page = path2 + "/" + page;
+        if (!S.empty(path1)) page = path1 + "/" + page;
 
         File f = new File(Play.applicationPath, docDir() + page + ".md");
         if (!f.exists()) {
