@@ -29,6 +29,11 @@
         }
             width: 200px;
         }
+        iframe {
+            width: 100%;
+            min-height: 220px;
+            border: 1px solid #eee;
+        }
     </style>
 }
 @section(moreScripts){
@@ -87,7 +92,15 @@
             // at last start embedded video if there is
             $('iframe').each(function(){
                 $me = $(this), src = $me.data('src');
-                if (src) $me.attr('src', src);
+                if (src) {
+                    src = src.replace(/\s+/g, '');
+                    $me.attr('src', src);
+                    var r = /.*\/embed\/([0-9a-z]*).*/g, m = r.exec(src);
+                    $me.attr('data-id', m[1]);
+                    $me.bind('_resize', function(data){
+                        console.log(data);
+                    });
+                }
             })
         })
     </script>
