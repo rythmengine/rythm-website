@@ -98,10 +98,11 @@
                     $me.attr('src', src);
                     var r = /.*\/embed\/([0-9a-z]*).*/g, m = r.exec(src);
                     $me.attr('data-id', m[1]);
-                    $me.bind('_resize', function(data){
-                        console.log(data);
-                    });
                 }
+            })
+            
+            $('body').bind('_resize', function(data){
+                console.log(data);
             })
         })
     </script>
