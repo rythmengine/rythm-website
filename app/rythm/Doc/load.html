@@ -101,8 +101,8 @@
                 }
             })
             
-            $('body').bind('_resize', function(data){
-                console.log(data);
+            $('body').bind('_resize', function(evt){
+                $('iframe[data-id=' + evt.id + "]").height(event.h);
             })
         })
     </script>
