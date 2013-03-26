@@ -91,7 +91,14 @@
             $('pre code.prettyprint').each(function(){
                 var $me = $(this), clss = $me.attr('class').split(" ");
                 $.each(clss, function(id, cls) {
-                    if (cls.indexOf('fid-') == 0) {
+                    if (cls.indexOf(',') != -1) {
+                        //lang-html,fid-c5a55bb34cf4476984a6faea9f875fe0 style
+                        var s = cls.split(",");
+                        setTimeout(function(){
+                            $me.removeClass(cls);
+                            $me.addClass(s[0].trim());
+                        },1);
+                        cls = s[1].trim();
                         var id = cls.substring(4);
                         $me.parent().replaceWith('<iframe src="http://fiddle.rythmengine.org/embed/#/' +  id  + '" data-id="' + id + '"></iframe>');
                         return false;
