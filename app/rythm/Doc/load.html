@@ -39,7 +39,6 @@
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/prettify/r224/prettify.js"></script>
     <script type="text/javascript">
         $(function(){
-            document.domain = location.host.replace(/^.*?([^.]+\.[^.]+)$/g,'$1');
             $('pre code').each(function() {
                 var $me = $(this);
                 if (!$me.hasClass('prettyprint')) {
@@ -89,20 +88,36 @@
             
             $('.affix').affix();
             
+            $('pre code.prettyprint').each(function(){
+                var $me = $(this), clss = $me.attr('class').split(" ");
+                $.each(clss, function(id, cls) {
+                    if (cls.indexOf('fid-') == 0) {
+                        var id = cls.substring(4);
+                        $me.parent().replaceWith('<iframe src="http://fiddle.rythmengine.org/embed/#/' +  id  + '" data-id="' + id + '"></iframe>');
+                        return false;
+                    }
+                })
+            })
+            
             // at last start embedded video if there is
             $('iframe').each(function(){
                 $me = $(this), src = $me.data('src');
+                if (!src && $me.data('id')) {
+                    src = "http://fiddle.rythmengine.org/embed/#/" + $me.data('id');
+                }
                 if (src) {
                     src = src.replace(/\s+/g, '');
                     $me.attr('src', src);
-                    var r = /.*\/embed\/([0-9a-z]*).*/g, m = r.exec(src);
-                    $me.attr('data-id', m[1]);
+                    //var r = /.*\/embed\/([0-9a-z]*).*/g, m = r.exec(src);
+                    //$me.attr('data-id', m[1]);
                 }
             })
             
             $('body').bind('_resize', function(evt){
                 $('iframe[data-id=' + evt.id + "]").height(evt.h);
             })
+
+            document.domain = location.host.replace(/^.*?([^.]+\.[^.]+)$/g,'$1');
         })
     </script>
 }
