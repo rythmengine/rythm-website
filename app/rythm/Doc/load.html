@@ -121,7 +121,7 @@
             })
             
             $('body').bind('_resize', function(evt){
-                $('iframe[data-id=' + evt.id + "]").height(evt.h);
+                $('iframe[data-id=' + evt.id + "]").animate({height: evt.h}, 600);
             })
 
             document.domain = location.host.replace(/^.*?([^.]+\.[^.]+)$/g,'$1');
