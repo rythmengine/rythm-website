@@ -121,8 +121,15 @@
             })
             
             $('body').bind('_resize', function(evt){
-                $('iframe[data-id=' + evt.id + "]").animate({height: evt.h}, 600);
+                $('iframe[data-id=' + evt.id + "]").animate({height: evt.h}, 300);
             })
+            
+            $('body').bind('_show_sample_code', function(){
+                var popup = window.open("about:blank", "_rythmfiddle_sample_code");
+                $.get("http://fiddle.rythmengine.org/#/sample_model_code", function(html){
+                    popup.document.write(html);
+                });
+            });
 
             document.domain = location.host.replace(/^.*?([^.]+\.[^.]+)$/g,'$1');
         })
