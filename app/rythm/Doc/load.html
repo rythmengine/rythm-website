@@ -35,10 +35,36 @@
         }
     </style>
 }
-@section(moreScripts){
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/prettify/r224/prettify.js"></script>
+@init() {
+    if (page.startsWith("feature")) super.__setRenderArg("curPage", "feature");
+    else super.__setRenderArg("curPage", "doc");
+}
+
+<div class="row">
+    <div class="span3" id="nav-box">
+        <div class="affix">
+            <ul class="nav nav-list" id="doc-nav">
+            </ul>
+            <div style="margin: 20px auto;font-size: 9pt; width:157px;padding-right: 14px;" class="alert">
+                @msg("load.found-bug")
+                <br/>
+                <a target="_blank" href="https://github.com/greenlaw110/rythm-doc/issues" style="color: #38a">
+                    <i class="icon-github"></i>
+                    @msg("load.report-bug")
+                </a>
+            </div>
+        </div>
+    </div>
+    <div class="span9" id="doc-content">
+        @html.raw()
+    </div>
+</div>
+
+<div>
+</div>
+
     <script type="text/javascript">
-        $(function(){
+        var fx = function(){
             $('pre code').each(function() {
                 var $me = $(this);
                 if (!$me.hasClass('prettyprint')) {
@@ -120,9 +146,33 @@
                 }
             })
             
+            var x = {};
             $('body').bind('_resize', function(evt){
-                $('iframe[data-id=' + evt.id + "]").animate({height: evt.h}, 300);
-            })
+                $if = $('iframe[data-id=' + evt.id + ']');
+                if ($if.size() == 0) return;
+                var css = {height: evt.h};
+                if (!x[evt.id]) {
+                    //$if.css(css);
+                    x[evt.id] = {h :evt.h, ts: new Date().getTime()};
+                } else if(x[evt.id].h != evt.h || x[evt.id].h != $if.height()) {
+                    x[evt.id].h = evt.h;
+                    if (new Date().getTime() > (x[evt.id].ts + 1000)) {
+                        $if.animate(css, 300);
+                    }
+                }
+            });
+            function insideViewPort(el) {
+                var rect = el.getBoundingClientRect();
+                return rect.top >= 0 && rect.bottom <= window.innerHeight;
+            }
+            $(window).scroll(function(){
+                    $('iframe[data-id]').each(function(){
+                         var $if = $(this), id = $if.data('id');
+                         if (insideViewPort(this) && x[id] && x[id].h != $if.height()) {
+                            $if.animate({height: x[id].h}, 300);
+                         }
+                    })
+            });
             
             $('body').bind('_show_sample_code', function(){
                 var popup = window.open("about:blank", "_rythmfiddle_sample_code");
@@ -130,34 +180,7 @@
             });
 
             document.domain = location.host.replace(/^.*?([^.]+\.[^.]+)$/g,'$1');
-        })
+        };
+        fx();
     </script>
-}
 
-@init() {
-    if (page.startsWith("feature")) super.__setRenderArg("curPage", "feature");
-    else super.__setRenderArg("curPage", "doc");
-}
-
-<div class="row">
-    <div class="span3" id="nav-box">
-        <div class="affix">
-            <ul class="nav nav-list" id="doc-nav">
-            </ul>
-            <div style="margin: 20px auto;font-size: 9pt; width:157px;padding-right: 14px;" class="alert">
-                @msg("load.found-bug")
-                <br/>
-                <a target="_blank" href="https://github.com/greenlaw110/rythm-doc/issues" style="color: #38a">
-                    <i class="icon-github"></i>
-                    @msg("load.report-bug")
-                </a>
-            </div>
-        </div>
-    </div>
-    <div class="span9" id="doc-content">
-        @html.raw()
-    </div>
-</div>
-
-<div>
-</div>
