@@ -133,6 +133,7 @@
             })
             
             // at last start embedded video if there is
+            var ifCnt = 0;
             $('iframe').each(function(){
                 $me = $(this), src = $me.data('src');
                 if (!src && $me.data('id')) {
@@ -141,6 +142,7 @@
                 if (src) {
                     src = src.replace(/\s+/g, '');
                     $me.attr('src', src);
+                    ifCnt = ifCnt + 1;
                     //var r = /.*\/embed\/([0-9a-z]*).*/g, m = r.exec(src);
                     //$me.attr('data-id', m[1]);
                 }
@@ -177,6 +179,20 @@
             $('body').bind('_show_sample_code', function(){
                 var popup = window.open("about:blank", "_rythmfiddle_sample_code");
                 popup.location.href = "http://fiddle.rythmengine.org/#/sample_model_code";
+            });
+            
+            function moveToHash() {
+                var hashElem = $(window.location.hash);
+            
+                // If the hash elment exists
+                if(hashElem.length) {
+                    window.scrollTo(hashElem.position().left, hashElem.position().top);
+                } 
+            }
+            
+            $('body').on('load', 'iframe', function(){
+                ifCnt = ifCnt - 1;
+                if (ifCnt == 0) moveToHash();
             });
 
             document.domain = location.host.replace(/^.*?([^.]+\.[^.]+)$/g,'$1');
