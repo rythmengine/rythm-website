@@ -143,10 +143,13 @@
                     src = src.replace(/\s+/g, '');
                     $me.attr('src', src);
                     ifCnt = ifCnt + 1;
+                    console.log({ifCnt: ifCnt});
                     //var r = /.*\/embed\/([0-9a-z]*).*/g, m = r.exec(src);
                     //$me.attr('data-id', m[1]);
                 }
             })
+
+            console.log("----------------------------------------------------");
             
             var x = {};
             $('body').bind('_resize', function(evt){
@@ -167,14 +170,16 @@
                 var rect = el.getBoundingClientRect();
                 return rect.top >= 0 && rect.bottom <= window.innerHeight;
             }
-            $(window).scroll(function(){
+            var _scroll = function(){
                     $('iframe[data-id]').each(function(){
                          var $if = $(this), id = $if.data('id');
                          if (insideViewPort(this) && x[id] && x[id].h != $if.height()) {
                             $if.animate({height: x[id].h}, 300);
                          }
                     })
-            });
+            };
+
+            $(window).scroll(_scroll);
             
             $('body').bind('_show_sample_code', function(){
                 var popup = window.open("about:blank", "_rythmfiddle_sample_code");
@@ -186,11 +191,14 @@
             
                 // If the hash elment exists
                 if(hashElem.length) {
-                    window.scrollTo(hashElem.position().left, hashElem.position().top);
+                    setTimeout(function(){
+                        window.scrollTo(hashElem.position().left, hashElem.position().top);
+                    }, 500);
                 } 
             }
-            
-            $('body').on('load', 'iframe', function(){
+
+            $('iframe').load(function(){
+                console.log({ifCnt: ifCnt});
                 ifCnt = ifCnt - 1;
                 if (ifCnt == 0) moveToHash();
             });
