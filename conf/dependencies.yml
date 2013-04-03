@@ -2,7 +2,7 @@
 
 require:
     #- com.gelinsoft -> betterlogs 1.2i
-    - com.gelinsoft -> play-rythm 1.0-b5p
+    - com.gelinsoft -> play-rythm 1.0-b5q
     #- play -> rythm 1.0.0-20121110
     - play -> secure
     #- play -> markdown 1.8
