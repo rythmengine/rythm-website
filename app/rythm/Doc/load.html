@@ -5,6 +5,7 @@
 @section(moreStyles) {
     <link href="/public/css/prettify.css" type="text/css" rel="stylesheet" />
     <style type="text/css">
+        section .h5 {padding-top: 0;}
         h3 {
             margin: 40px 0px 20px;
             background-color: #e4e9ee;
@@ -83,7 +84,7 @@
             
             // set anchor for all headers
             var r = /^\s*\[(.*)\](.*)/;
-            $('#doc-content > h2, #doc-content > h3, #doc-content > h4, #doc-content > h5').each(function(){
+            $('#doc-content > h2, #doc-content > h3, #doc-content > h4').each(function(){
                 var $h = $(this), s = $h.text(), v = r.exec(s), id = false;
                 if (v) {
                     id = v[1];
