@@ -50,7 +50,7 @@
             opacity: 0.95;
             z-index: 1010;
             cursor: progress;
-            display: block;
+            display: none;
         }
         #overlay #overlay-spinner {
             position: absolute;
@@ -160,6 +160,12 @@
                     }
                 })
             })
+            
+            if ($('iframe').size() == 0) {
+                return;
+            }
+            
+            $('#overlay').fadeIn();
             
             // at last start embedded video if there is
             var ifCnt = 0;
