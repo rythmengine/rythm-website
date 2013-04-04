@@ -13,6 +13,10 @@
             padding: 10px;
             line-height: 15px;
         }
+        h4 {
+            border-bottom: 1px solid black;
+            padding-bottom: 4px;
+        }
         p {margin-top: 20px; margin-bottom: 10px; font-size: 14pt;}
         footer p {font-size: 12pt;}
         .main.container ul li, .main.container ol li {
@@ -30,9 +34,29 @@
         }
             width: 200px;
         }
+        #doc-content {position: relative;}
         iframe {
             width: 100%;
             border: 1px solid #eee;
+        }
+        #overlay {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #fff;
+            opacity: 0.95;
+            z-index: 1010;
+            cursor: progress;
+            display: block;
+        }
+        #overlay #overlay-spinner {
+            position: absolute;
+            top: calc(50% - 0.5em);
+            left: calc(50% - 4.5em);
+            font-size: 1.5em;
+            text-align: center;
         }
     </style>
 }
@@ -60,9 +84,12 @@
         @html.raw()
     </div>
 </div>
-
-<div>
+<div id="overlay">
+    <div id="overlay-spinner">
+        Loading fiddles ...
+    </div>
 </div>
+
 
     <script type="text/javascript">
         var fx = function(){
@@ -149,8 +176,6 @@
                     //$me.attr('data-id', m[1]);
                 }
             })
-
-            console.log("----------------------------------------------------");
             
             var x = {};
             $('body').bind('_resize', function(evt){
@@ -194,14 +219,22 @@
                 if(hashElem.length) {
                     setTimeout(function(){
                         window.scrollTo(hashElem.position().left, hashElem.position().top);
+                        $('#overlay').fadeOut();
                     }, 500);
-                } 
+                } else {
+                    setTimeout(function(){
+                        window.scrollTo(0);
+                        $('#overlay').fadeOut();
+                    }, 500);
+                }
             }
 
             $('iframe').load(function(){
                 console.log({ifCnt: ifCnt});
                 ifCnt = ifCnt - 1;
-                if (ifCnt == 0) moveToHash();
+                if (ifCnt == 0) {
+                    moveToHash();
+                }
             });
 
             document.domain = location.host.replace(/^.*?([^.]+\.[^.]+)$/g,'$1');

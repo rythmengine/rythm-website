@@ -20,10 +20,10 @@
     <link href="http://fonts.googleapis.com/css?family=ABeeZee&subset=latin" rel="stylesheet" type="text/css">
     <link rel="stylesheet" media="screen" href="/public/css/font.css">
     }
-    @render("moreStyles")
     <link rel="shortcut icon" type="image/png" href="/public/img/favicon.gif">
     <style type="text/css">
     </style>
+    @render("moreStyles")
     <script type="text/javascript">
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-29505548-1']);
@@ -41,6 +41,7 @@
     @initCodeMarker()
 </head>
 <body class='@get("bodyClass")'>
+
     <div id="wrap">
         <div class="navbar navbar-fixed-top navbar-inverse">
             <div class="navbar-inner">
@@ -95,7 +96,6 @@
         </div>
     </footer>
 
-    
     <script type="text/javascript">
         var setCurPage = function(pageId) {
             var $p = $(".navbar.navbar-fixed-top .navbar-inner .nav");
