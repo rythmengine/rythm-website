@@ -2,14 +2,17 @@ package controllers;
 
 import com.greenlaw110.rythm.play.Cache4;
 import com.greenlaw110.rythm.utils.S;
+import controllers.filters.UADetector;
 import org.markdown4j.Markdown4jProcessor;
 import play.Play;
 import play.i18n.Lang;
 import play.mvc.Controller;
+import play.mvc.With;
 
 import java.io.File;
 import java.io.IOException;
 
+@With(UADetector.class)
 public class Doc extends Controller {
 
     private static String root = "/doc";

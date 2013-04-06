@@ -59,6 +59,10 @@
             font-size: 1.5em;
             text-align: center;
         }
+        #overlay.opera #overlay-spinner {
+            top: 49%;
+            left: 46%;
+        }
     </style>
 }
 @init() {
@@ -85,11 +89,14 @@
         @html.raw()
     </div>
 </div>
-<div id="overlay">
+@args com.greenlaw110.utils.UserAgent __ua__;
+@if (__ua__.isWebKit() || __ua__.isOpera()) {
+<div id="overlay" @if(__ua__.isOpera() || __ua__.isSafari())class="opera"@>
     <div id="overlay-spinner">
         Loading fiddles ...
     </div>
 </div>
+}
 
 
     <script type="text/javascript">
@@ -225,12 +232,16 @@
                 // If the hash elment exists
                 if(hashElem.length) {
                     setTimeout(function(){
-                        window.scrollTo(hashElem.position().left, hashElem.position().top);
+                        //window.scrollTo(hashElem.position().left, hashElem.position().top);
+                        document.location.href = document.location.hash;
                         $('#overlay').fadeOut();
                     }, 500);
                 } else {
                     setTimeout(function(){
-                        window.scrollTo(0);
+                        //window.scrollTo(1);
+                        $('html,body').animate({
+                            scrollTop: 0
+                        }, 100);
                         $('#overlay').fadeOut();
                     }, 500);
                 }
