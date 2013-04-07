@@ -16,6 +16,7 @@ GET /demo Demo.index
 
 # Map static resources from the /app/public folder to the /public path
 GET /img/ staticDir:doc/img
+GET /api/ staticDir:public/api
 GET /dist/ staticDir:public/dist
 GET /css/ staticDir:public/css
 GET /public/ staticDir:public
