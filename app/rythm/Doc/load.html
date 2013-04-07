@@ -185,7 +185,6 @@
                     src = src.replace(/\s+/g, '');
                     $me.attr('src', src);
                     ifCnt = ifCnt + 1;
-                    console.log({ifCnt: ifCnt});
                     //var r = /.*\/embed\/([0-9a-z]*).*/g, m = r.exec(src);
                     //$me.attr('data-id', m[1]);
                 }
@@ -248,7 +247,6 @@
             }
 
             $('iframe').load(function(){
-                console.log({ifCnt: ifCnt});
                 ifCnt = ifCnt - 1;
                 if (ifCnt == 0) {
                     moveToHash();
