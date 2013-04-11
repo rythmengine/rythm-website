@@ -63,6 +63,13 @@
             top: 49%;
             left: 46%;
         }
+        .alert {
+            background: transparent !important;
+            border-radius: 0 !important;
+            border-left-width: 5px;
+            color: #333;
+            border-color: rgb(67, 170, 219);
+        }
     </style>
 }
 @init() {
@@ -75,10 +82,9 @@
         <div class="affix">
             <ul class="nav nav-list" id="doc-nav">
             </ul>
-            <div style="margin: 20px auto;font-size: 9pt; width:157px;padding-right: 14px;" class="alert">
+            <div style="margin: 20px auto;font-size: 9pt; width:157px;padding-right: 14px;">
                 @msg("load.found-bug")
-                <br/>
-                <a target="_blank" href="https://github.com/greenlaw110/rythm-doc/issues" style="color: #38a">
+                <a target="_blank" href="https://github.com/greenlaw110/rythm-doc/issues" style="color: #38a;display:block;">
                     <i class="icon-github"></i>
                     @msg("load.report-bug")
                 </a>
@@ -90,7 +96,8 @@
     </div>
 </div>
 @args com.greenlaw110.utils.UserAgent __ua__;
-@if (__ua__.isWebKit() || __ua__.isOpera()) {
+@{boolean hasShift = __ua__.isWebKit() || __ua__.isOpera();}
+@if (hasShift) {
 <div id="overlay" @if(__ua__.isOpera() || __ua__.isSafari())class="opera"@>
     <div id="overlay-spinner">
         Loading fiddles ...
@@ -225,6 +232,7 @@
                 popup.location.href = "http://fiddle.rythmengine.org/#/sample_model_code";
             });
             
+        @if(hasShift) {
             function moveToHash() {
                 var hashElem = $(window.location.hash);
             
@@ -252,6 +260,7 @@
                     moveToHash();
                 }
             });
+        } @// eof hasShift
 
             document.domain = location.host.replace(/^.*?([^.]+\.[^.]+)$/g,'$1');
         };
