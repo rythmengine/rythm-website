@@ -1,3 +1,7 @@
 body, .navbar-inner a {
     font-family: "Microsoft Yahei", YouYuan, STHeiti, "Segoe UI", Frutiger, "Frutiger Linotype", "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
 }
+
+h1, h2, h3, h4, h5 {
+    font-family: "Microsoft Yahei", "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
+}

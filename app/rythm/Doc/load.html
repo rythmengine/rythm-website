@@ -18,16 +18,20 @@
             padding-bottom: 4px;
         }
         h5 {margin-top: 20px;}
-        p {margin-top: 20px; margin-bottom: 10px; font-size: 14pt;}
+        p {margin-top: 20px; margin-bottom: 15px; font-size: 13pt;}
         footer p {font-size: 12pt;}
         .main.container ul li, .main.container ol li {
             font-size: 13pt;
             margin-bottom: 10px;
         }
+        li ul li:first-child {margin-top: 10px;}
         pre {background-color: #000;}
         pre > code * {font-size: 10pt;line-height: 16px;}
         section {
             padding-top: 20px;
+        }
+        section.h4 {
+            padding-top:44px;
         }
         #doc-nav {
         @ifNot("zh".equals(lang)) {
@@ -47,7 +51,7 @@
             left: 0;
             right: 0;
             background: #fff;
-            opacity: 0.95;
+            opacity: 0.2;
             z-index: 1010;
             cursor: progress;
             display: none;
@@ -79,7 +83,7 @@
 
 <div class="row">
     <div class="span3" id="nav-box">
-        <div class="affix">
+        <div class="affix" style="position: fixed;">
             <ul class="nav nav-list" id="doc-nav">
             </ul>
             <div style="margin: 20px auto;font-size: 9pt; width:157px;padding-right: 14px;">
