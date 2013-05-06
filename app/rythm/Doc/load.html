@@ -20,7 +20,7 @@
         h5 {margin-top: 20px;}
         p {margin-top: 20px; margin-bottom: 15px; font-size: 13pt;}
         footer p {font-size: 12pt;}
-        .main.container ul li, .main.container ol li {
+        .main.container li {
             font-size: 13pt;
             margin-bottom: 10px;
         }
@@ -34,10 +34,10 @@
             padding-top:44px;
         }
         #doc-nav {
-        @ifNot("zh".equals(lang)) {
-            font-family: Arial, Sans;
-        }
             width: 200px;
+        }
+        #doc-nav li {
+            font-size: 11pt;
         }
         #doc-content {position: relative;}
         iframe {
@@ -74,6 +74,18 @@
             color: #333;
             border-color: rgb(67, 170, 219);
         }
+        .main.container .alert li {
+            font-size:  11pt;
+            margin-bottom: 0;
+            margin-top: 6px;
+        }
+        .h4 .back-to-top {
+            margin-top: -32px;
+        }
+        .h3 .back-to-top {
+            margin-top: -46px;
+        }
+        .back-to-top {margin-right: 10px;cursor: pointer}
     </style>
 }
 @init() {
@@ -130,7 +142,7 @@
             
             // set anchor for all headers
             var r = /^\s*\[(.*)\](.*)/;
-            $('#doc-content > h2, #doc-content > h3, #doc-content > h4').each(function(){
+            $('#doc-content > h3, #doc-content > h4').each(function(){
                 var $h = $(this), s = $h.text(), v = r.exec(s), id = false;
                 if (v) {
                     id = v[1];
@@ -141,8 +153,23 @@
                 }
                  
                 //$('<a id="' + nm0 + '"></a>').prependTo($h);
-                $h.wrap($('<section></section>').prop('id', id).addClass(this.tagName.toLowerCase()));
+                var $section = $('<section></section>')
+                $h.wrap($section.prop('id', id).addClass(this.tagName.toLowerCase()));
+                $h.parent('section').append('<i class="icon-circle-arrow-up pull-right back-to-top" title="back to top"></i>')
             });
+            
+            $('body').on('click', '.back-to-top', function(){
+                if ($(this).parent('section').hasClass('h3')) {
+                    $('html,body').animate({
+                        scrollTop: 0
+                    }, 100);
+                } else {
+                    var $h4 = $(this).parent('.h4'), $h3 = $h4.prev();
+                    
+                    while($h3 && $h3.size() > 0 && !$h3.hasClass('h3')) {$h3 = $h3.prev();}
+                    document.location.href = '#' + $h3.attr('id');
+                }
+            })
             
             // construct navigation for named anchors
             $('#doc-content section[id]').each(function(){
