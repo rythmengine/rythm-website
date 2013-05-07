@@ -8,4 +8,14 @@ public class Site extends Controller {
     public static void index() {
         render();
     }
+    
+    @Cache4(langSensitive = true)
+    public static void community() {
+        render();
+    }
+    
+    @Cache4(langSensitive = true)
+    public static void about() {
+        render();
+    }
 }

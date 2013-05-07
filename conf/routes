@@ -10,7 +10,8 @@ GET / Site.index
 GET /doc/{page}(\.md)? Doc.load
 GET /doc/{path1}/{page}(\.md)? Doc.load
 GET /doc/{path1}/{path2}/{page}(\.md)? Doc.load
-GET /demo Demo.index
+GET /about Site.about
+GET /community Site.community
 
 * /sandbox Sandbox.index
 

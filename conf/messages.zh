@@ -4,7 +4,7 @@
 main.title=Rythm模板引擎
 main.desc=一个使用类.Net Razor语法的高性能Java模板引擎
 main.rythm=@Rythm
-main.home=主页
+main.download=下载
 main.feature=特性
 main.doc=文档
 main.fiddle=在线演示

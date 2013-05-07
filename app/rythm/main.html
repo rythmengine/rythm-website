@@ -62,12 +62,12 @@
                             }
                             
                             <li class='page-@pageId x @if(isCur) {active}'>
-                                <a href="@url">@label</a>
+                                <a href="@url">@label.raw()</a>
                             </li>
                         }
                         <ul class="nav">
                             @codeMarker()
-                            @opt("home", "/")
+                            @opt("download", "/doc/index#get")
                             @opt("feature", "/doc/feature")
                             @opt("doc", "/doc/index")
                             @opt("fiddle", "http://rythmfiddle.gelinsoft.com")
