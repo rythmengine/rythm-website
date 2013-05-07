@@ -2,6 +2,9 @@
 @args String page, String html
 @set(bodyClass: "doc")
 @set(title: page)
+@section(moreHeaderScripts) {
+    <script type="text/javascript" src="/public/js/jquery.scrollto.js"></script>
+}
 @section(moreStyles) {
     <link href="/public/css/prettify.css" type="text/css" rel="stylesheet" />
     <style type="text/css">
@@ -80,12 +83,20 @@
             margin-top: 6px;
         }
         .h4 .back-to-top {
-            margin-top: -32px;
+            margin-top: -28px;
         }
         .h3 .back-to-top {
             margin-top: -46px;
         }
-        .back-to-top {margin-right: 10px;cursor: pointer}
+        .back-to-top {
+            margin-right: 10px;
+            cursor: pointer;
+            font-size: 11pt;
+            opacity: .6;
+        }
+        .back-to-top:hover {
+            opacity: 1;
+        }
     </style>
 }
 @init() {
@@ -155,7 +166,11 @@
                 //$('<a id="' + nm0 + '"></a>').prependTo($h);
                 var $section = $('<section></section>')
                 $h.wrap($section.prop('id', id).addClass(this.tagName.toLowerCase()));
-                $h.parent('section').append('<i class="icon-circle-arrow-up pull-right back-to-top" title="back to top"></i>')
+                if ($h.parent('section').hasClass('h3')) {
+                    $h.parent('section').append('<i class="icon-double-angle-up pull-right back-to-top" title="back to top"></i>')
+                } else {
+                    $h.parent('section').append('<i class="icon-double-angle-up pull-right back-to-top" title="back to section top"></i>')
+                }
             });
             
             $('body').on('click', '.back-to-top', function(){
@@ -167,7 +182,8 @@
                     var $h4 = $(this).parent('.h4'), $h3 = $h4.prev();
                     
                     while($h3 && $h3.size() > 0 && !$h3.hasClass('h3')) {$h3 = $h3.prev();}
-                    document.location.href = '#' + $h3.attr('id');
+                    var hash = '#' + $h3.attr('id');
+                    $('html,body').scrollTo(hash, hash) ;
                 }
             })
             
