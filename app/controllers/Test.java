@@ -1,6 +1,6 @@
 package controllers;
 
-import com.greenlaw110.rythm.Rythm;
+import org.rythmengine.Rythm;
 import models.demo.Foo;
 import play.cache.Cache;
 import play.data.validation.Validation;

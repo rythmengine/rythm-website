@@ -1,9 +1,9 @@
 package models.demo;
 
-import com.greenlaw110.rythm.Rythm;
-import com.greenlaw110.rythm.toString.NoExpose;
-import com.greenlaw110.rythm.toString.ToStringOption;
-import com.greenlaw110.rythm.toString.ToStringStyle;
+import org.rythmengine.Rythm;
+import org.rythmengine.toString.NoExpose;
+import org.rythmengine.toString.ToStringOption;
+import org.rythmengine.toString.ToStringStyle;
 
 import javax.persistence.Transient;
 import java.util.UUID;

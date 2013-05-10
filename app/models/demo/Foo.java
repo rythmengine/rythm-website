@@ -1,6 +1,6 @@
 package models.demo;
 
-import com.greenlaw110.rythm.Rythm;
+import org.rythmengine.Rythm;
 
 import java.util.Date;
 import java.util.Random;

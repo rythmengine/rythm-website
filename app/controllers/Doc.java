@@ -1,7 +1,7 @@
 package controllers;
 
-import com.greenlaw110.rythm.play.Cache4;
-import com.greenlaw110.rythm.utils.S;
+import org.rythmengine.play.Cache4;
+import org.rythmengine.utils.S;
 import controllers.filters.UADetector;
 import org.markdown4j.Markdown4jProcessor;
 import play.Play;

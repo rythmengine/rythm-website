@@ -1,7 +1,7 @@
 package templates;
 
-import com.greenlaw110.rythm.play.FastTagBridge;
-import com.greenlaw110.rythm.template.TemplateBase;
+import org.rythmengine.play.FastTagBridge;
+import org.rythmengine.template.TemplateBase;
 import groovy.lang.Closure;
 import org.apache.commons.lang3.ObjectUtils;
 import play.templates.FastTags;

@@ -1,6 +1,6 @@
 package controllers;
 
-import com.greenlaw110.rythm.Rythm;
+import org.rythmengine.Rythm;
 import play.mvc.Controller;
 
 /**

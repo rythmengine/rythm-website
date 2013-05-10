@@ -1,12 +1,8 @@
 package controllers;
 
-import com.greenlaw110.rythm.logger.Logger;
-import com.greenlaw110.rythm.play.Cache4;
-import com.greenlaw110.rythm.play.RythmPlugin;
-import com.greenlaw110.rythm.play.UseRythmTemplateEngine;
-import com.greenlaw110.rythm.template.JavaTagBase;
 import models.demo.Account;
 import models.demo.Foo;
+import org.rythmengine.play.Cache4;
 import play.Play;
 import play.cache.Cache;
 import play.mvc.Before;

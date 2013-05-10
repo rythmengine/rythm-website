@@ -21,11 +21,12 @@
             padding-bottom: 4px;
         }
         h5 {margin-top: 20px;}
-        p {margin-top: 20px; margin-bottom: 15px; font-size: 13pt;}
+        p {margin-top: 20px; margin-bottom: 15px; font-size: 12pt;}
         footer p {font-size: 12pt;}
         .main.container li {
-            font-size: 13pt;
+            font-size: 11pt;
             margin-bottom: 10px;
+            line-height: 23px;
         }
         li ul li:first-child {margin-top: 10px;}
         pre {background-color: #000;}
@@ -175,9 +176,7 @@
             
             $('body').on('click', '.back-to-top', function(){
                 if ($(this).parent('section').hasClass('h3')) {
-                    $('html,body').animate({
-                        scrollTop: 0
-                    }, 100);
+                    $('html,body').scrollTo(0, 0) ;
                 } else {
                     var $h4 = $(this).parent('.h4'), $h3 = $h4.prev();
                     
