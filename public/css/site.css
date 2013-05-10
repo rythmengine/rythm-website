@@ -46,7 +46,7 @@ code, pre {
 }
 
 pre > code {
-    font-family: Monaco,Menlo,Consolas,"Courier New",monospace;;
+    font-family: "Source Code Pro Semibold","Envy Code R",Consolas,Monaco,Menlo,"Courier New",monospace;;
 }
 
 li p {line-height: 30px;}
