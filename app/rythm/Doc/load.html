@@ -21,7 +21,7 @@
             padding-bottom: 4px;
         }
         h5 {margin-top: 20px;}
-        p {margin-top: 20px; margin-bottom: 15px; font-size: 12pt;}
+        p {margin-top: 20px; margin-bottom: 15px; font-size: 12pt;text-shadow: 0px 1px 0px #eee;}
         footer p {font-size: 12pt;}
         .main.container li {
             font-size: 11pt;
@@ -58,21 +58,37 @@
             left: 0;
             right: 0;
             background: #fff;
-            opacity: 0.2;
+            opacity: 0.9;
             z-index: 1010;
             cursor: progress;
             display: none;
         }
-        #overlay #overlay-spinner {
+        #overlay-spinner {
             position: absolute;
-            top: calc(50% - 0.5em);
-            left: calc(50% - 4.5em);
-            font-size: 1.5em;
+            top: calc(50% - 100px);
+            left: calc(50% - 250px);
             text-align: center;
+            width: 500px;
+            height: 200px;
+            background-color: #eee;
         }
         #overlay.opera #overlay-spinner {
             top: 49%;
             left: 46%;
+        }
+        #overlay-spinner h2 {
+            margin-top: 50px;
+            font-size: 16px;
+        }
+        #overlay-spinner .gauge-container {
+            width: 400px;
+            margin-left: 50px;
+            height: 4px;
+        }
+        .gauge-container .gauge-meter {
+            background-color: #444;
+            height: 100%;
+            width: 0;
         }
         .alert {
             background: transparent !important;
@@ -115,7 +131,8 @@
             </ul>
             <div style="margin: 20px auto;font-size: 9pt; width:157px;padding-right: 14px;">
                 @msg("load.found-bug")
-                <a target="_blank" href="https://github.com/greenlaw110/rythm-doc/issues" style="color: #38a;display:block;">
+                <br/>
+                <a target="_blank" href="https://github.com/greenlaw110/rythm-doc/issues">
                     <i class="icon-github"></i>
                     @msg("load.report-bug")
                 </a>
@@ -131,13 +148,17 @@
 @if (hasShift) {
 <div id="overlay" @if(__ua__.isOpera() || __ua__.isSafari())class="opera"@>
     <div id="overlay-spinner">
-        Loading fiddles ...
+        <h2>Loading fiddles ...</h2>
+        <div class="gauge-container">
+            <div class="gauge-meter"></div>
+        </div>
     </div>
 </div>
 }
 
 
     <script type="text/javascript">
+        $('gauge-meter').width(0);
         var fx = function(){
             $('pre code').each(function() {
                 var $me = $(this);
@@ -218,7 +239,7 @@
                         },1);
                         cls = s[1].trim();
                         var id = cls.substring(4);
-                        $me.parent().replaceWith('<iframe src="http://fiddle.rythmengine.org/embed/#/' +  id  + '" data-id="' + id + '"></iframe>');
+                        $me.parent().replaceWith('<iframe data-id="' + id + '"></iframe>');
                         return false;
                     }
                 })
@@ -231,20 +252,28 @@
             $('#overlay').fadeIn();
             
             // at last start embedded video if there is
-            var ifCnt = 0;
-            $('iframe').each(function(){
-                $me = $(this), src = $me.data('src');
+            var ifCnt0 = $('iframe').size(), ifCnt = 0, ifInited = 0, ifLoaded = 0;
+            var loadFrame = function() {
+                if (ifInited >= ifCnt0) return;
+                $me = $($('iframe').get(ifCnt)), src = $me.data('src');
                 if (!src && $me.data('id')) {
                     src = "http://fiddle.rythmengine.org/embed/#/" + $me.data('id');
                 }
                 if (src) {
                     src = src.replace(/\s+/g, '');
                     $me.attr('src', src);
-                    ifCnt = ifCnt + 1;
+                    ifCnt++;
+                    ifInited++;
+                    console.log(">>" + ifInited);
+                    $('.gauge-meter').width($('.gauge-meter').width() + 200/ifCnt0);
                     //var r = /.*\/embed\/([0-9a-z]*).*/g, m = r.exec(src);
                     //$me.attr('data-id', m[1]);
+                } else {
+                    ifCnt0--;
                 }
-            })
+                setTimeout(loadFrame, 0);
+            };
+            loadFrame();
             
             var x = {};
             $('body').bind('_resize', function(evt){
@@ -266,12 +295,13 @@
                 return rect.top >= 0 && rect.bottom <= window.innerHeight;
             }
             var _scroll = function(){
-                    $('iframe[data-id]').each(function(){
-                         var $if = $(this), id = $if.data('id');
-                         if (insideViewPort(this) && x[id] && x[id].h != $if.height()) {
-                            $if.animate({height: x[id].h}, 300);
-                         }
-                    })
+                $('iframe[data-id]').each(function(){
+                     var $if = $(this), id = $if.data('id');
+                     if (insideViewPort(this) && x[id] && x[id].h != $if.height()) {
+                        $if.animate({height: x[id].h}, 300);
+                     }
+                })
+                console.log($('h3:visible').size());
             };
 
             $(window).scroll(_scroll);
@@ -290,25 +320,34 @@
                     setTimeout(function(){
                         //window.scrollTo(hashElem.position().left, hashElem.position().top);
                         document.location.href = document.location.hash;
-                        $('#overlay').fadeOut();
-                    }, 500);
+                        $('#overlay').fadeOut(500);
+                    }, 100);
                 } else {
                     setTimeout(function(){
                         //window.scrollTo(1);
                         $('html,body').animate({
                             scrollTop: 0
                         }, 100);
-                        $('#overlay').fadeOut();
-                    }, 500);
+                        $('#overlay').fadeOut(500);
+                    }, 100);
                 }
             }
 
             $('iframe').load(function(){
-                ifCnt = ifCnt - 1;
-                if (ifCnt == 0) {
+                if (!$(this).attr('src')) {
+                    return;
+                }
+                ifCnt--;
+                ifLoaded++;
+                console.log("<<" + ifLoaded);
+                var w = $('.gauge-meter').width() + 200/ifCnt0;
+                $('.gauge-meter').width(w);
+                if (ifLoaded >= ifCnt0) {
                     moveToHash();
                 }
             });
+            
+            setTimeout(moveToHash, 800 * ifCnt0);
         } @// eof hasShift
 
             document.domain = location.host.replace(/^.*?([^.]+\.[^.]+)$/g,'$1');

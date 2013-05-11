@@ -51,9 +51,8 @@
 
 pre.prettyprint, code.prettyprint {
     display: block;
-    padding: 13px;
+    padding: 5px 13px;
     border: 0px solid #888;
-    padding-bottom: 5px;
 }
 
 ol.linenums {

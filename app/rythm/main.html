@@ -14,6 +14,7 @@
     <link href="//netdna.bootstrapcdn.com/font-awesome/3.0/css/font-awesome-ie7.css" rel="stylesheet">
     <![endif]-->
     <link rel="stylesheet" media="screen" href="/css/site.css">
+    <link rel="stylesheet" media="screen" href="/css/color-dark.css">
     @if(s().eq(lang, "zh")) {
     <link rel="stylesheet" media="screen" href="/css/font.zh.css">
     } else {
@@ -41,7 +42,7 @@
     @render("moreHeaderScripts")
     @initCodeMarker()
 </head>
-<body class='@get("bodyClass")'>
+<body class='@get("bodyClass") dark'>
 
     <div id="wrap">
         <div class="navbar navbar-fixed-top navbar-inverse">
@@ -67,7 +68,7 @@
                         }
                         <ul class="nav">
                             @codeMarker()
-                            @opt("download", "/doc/index#get")
+                            @opt("download", "/dist/rythm-engine-1.0-b9-SNAPSHOT-dist.zip")
                             @opt("feature", "/doc/feature")
                             @opt("doc", "/doc/index")
                             @opt("fiddle", "http://fiddle.rythmengine.org")
