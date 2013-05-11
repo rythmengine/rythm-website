@@ -252,17 +252,16 @@
             $('#overlay').fadeIn();
             
             // at last start embedded video if there is
-            var ifCnt0 = $('iframe').size(), ifCnt = 0, ifInited = 0, ifLoaded = 0;
+            var ifCnt0 = $('iframe').size(), ifInited = 0, ifLoaded = 0;
             var loadFrame = function() {
                 if (ifInited >= ifCnt0) return;
-                $me = $($('iframe').get(ifCnt)), src = $me.data('src');
+                $me = $($('iframe').get(ifInited)), src = $me.data('src');
                 if (!src && $me.data('id')) {
                     src = "http://fiddle.rythmengine.org/embed/#/" + $me.data('id');
                 }
                 if (src) {
                     src = src.replace(/\s+/g, '');
                     $me.attr('src', src);
-                    ifCnt++;
                     ifInited++;
                     console.log(">>" + ifInited);
                     $('.gauge-meter').width($('.gauge-meter').width() + 200/ifCnt0);
@@ -336,7 +335,6 @@
                 if (!$(this).attr('src')) {
                     return;
                 }
-                ifCnt--;
                 ifLoaded++;
                 console.log("<<" + ifLoaded);
                 var w = $('.gauge-meter').width() + 200/ifCnt0;
