@@ -56,3 +56,6 @@ body.dark .pln {
     color: #bbb;
 }
 
+body.dark #nav-box h4 {
+    border-bottom-color: #666;
+}

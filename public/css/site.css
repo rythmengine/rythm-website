@@ -92,3 +92,34 @@ div.alert {font-size: 80%; margin-top: 20px;}
         padding-right: 20px;
     }
 }
+
+.navbar-inverse .nav .active>a, .navbar-inverse .nav .active>a:hover, .navbar-inverse .nav .active>a:focus {
+background: transparent;
+}
+.navbar-inverse {color: #999;}
+.navbar-inverse .nav .active>a, .navbar-inverse .nav .active>a:hover, .navbar-inverse .nav .active>a:focus {color: #eee;}
+ul.nav i.icon-caret-down {cursor: pointer;} 
+ul.nav li.active i.icon-caret-down, ul.nav i.icon-caret-down:hover {color: #eee;} 
+
+.nav-sub.doc {
+    list-style: none;
+    text-align: center;
+    position: relative;
+    display: none;
+    width: 800px;
+}
+
+.nav-sub.doc li {
+    display: block;
+    float: left;
+    padding: 20px 20px;
+    position: relative;
+    width: 150px;
+    height: 62px;
+    cursor: pointer;
+}
+
+.nav-sub.doc li:hover{background-color: #333;}
+.nav-sub.doc li:hover, .nav-sub.doc li.active {
+    color: #eee;
+}

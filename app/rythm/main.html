@@ -62,7 +62,7 @@
                                 String label = __i18n("main." + pageId);
                             }
                             
-                            <li class='page-@pageId x @if(isCur) {active}'>
+                            <li class='page-@pageId @if(isCur) {active}'>
                                 <a href="@url">@label.raw()</a>
                             </li>
                         }
@@ -70,7 +70,10 @@
                             @codeMarker()
                             @opt("download", "/dist/rythm-engine-1.0-b9-SNAPSHOT-dist.zip")
                             @opt("feature", "/doc/feature")
-                            @opt("doc", "/doc/index")
+                            <li class='page-doc @if(s().isEqual("doc", curPage)) {active}'>
+                                <a href="/doc/index" style="display: inline-block;padding-right: 2px;">@i18n("main.doc")</a>
+                                <i class="icon-caret-down" style="display:inline-block;margin-right: 10px"></i>
+                            </li>
                             @opt("fiddle", "http://fiddle.rythmengine.org")
                             @opt("community", "/community")
                         </ul>
@@ -80,6 +83,22 @@
                         </ul>
                     </div><!--/.nav-collapse -->
                 </div>
+                <ul class="nav-sub doc clearfix container">
+                    @def book(String bookId, String url) {
+                    <li class="book clearfix @bookId" data-url="@url">
+                        <i class="icon-book" style="font-size: 32px;margin-bottom: 10px;"></i>&nbsp;
+                        @{bookId = "main.book." + bookId;}
+                        <div>@i18n(bookId)</div>
+                    </li>
+                    }
+                    @book("index", "/doc/index.md")
+                    @book("tutorial", "/doc/tutorial.md")
+                    @book("template_guide", "/doc/template_guide.md")
+                    @book("developer_guide", "/doc/developer_guide.md")
+                    @book("configuration", "/doc/configuration.md")
+                    @book("directive", "/doc/directive.md")
+                    @book("builtin_transformer", "/doc/builtin_transformer.md")
+                </ul>
             </div>
         </div>
     
@@ -104,6 +123,31 @@
             $p.find("li").removeClass("active");
             $p.find("li.page-" + pageId).addClass("active");
         }
+        $('body').on('click', '.navbar-fixed-top .page-doc .icon-caret-down', function(evt){
+            evt.stopImmediatePropagation();
+            var $bookList = $('.nav-sub.doc');
+            if ($bookList.is(':visible')) {
+                $bookList.slideUp();
+            } else {
+                $bookList.slideDown();
+            }
+            return false;
+        });
+        $('body').on('click', '.nav-sub.doc li', function(){
+            var url = $(this).data('url');
+            window.location.href = url;
+        });
+        $('body').on('click', function(){
+            var $bookList = $('.nav-sub.doc');
+            if ($bookList.is(':visible')) {
+                $bookList.slideUp();
+            }
+        });
+        $('h1[data-book]').each(function(){
+            var id = $(this).data('book');
+            $('.nav-sub.doc li.' + id).addClass('active');
+            $('#nav-box h4').text($(this).text()).show();
+        });
     </script> 
     @render('moreScripts")
 </body>
