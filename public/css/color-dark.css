@@ -35,11 +35,11 @@ body.dark #overlay {
 }
 
 body.dark #overlay-spinner {
-    background-color: #666;
+    background-color: #333;
 }
 
 body.dark #overlay-spinner h2 {
-    color: #000;
+    color: #aaa;
 }
 
 body.dark #overlay-spinner .gauge-meter {
@@ -47,3 +47,12 @@ body.dark #overlay-spinner .gauge-meter {
 }
 
 body.dark #overlay {opacity: .96;}
+
+body.dark .pun {
+    color: #bbb;
+}
+
+body.dark .pln {
+    color: #bbb;
+}
+
