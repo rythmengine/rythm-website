@@ -37,12 +37,13 @@
       })();
     </script>
     <script type="text/javascript" src="//code.jquery.com/jquery-1.9.0.min.js"></script>
+    <script type="text/javascript" src="/public/js/jquery.cookie.js"></script>
     <script type="text/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/prettify/r224/prettify.js"></script>
     @render("moreHeaderScripts")
     @initCodeMarker()
 </head>
-<body class='@get("bodyClass") dark'>
+<body class='@get("bodyClass") dark1'>
 
     <div id="wrap">
         <div class="navbar navbar-fixed-top navbar-inverse">
@@ -54,7 +55,7 @@
                         <span class="icon-bar"></span>
                     </a>
                     @codeMarker()
-                    <a class="brand" href="/">@i18n("main.rythm")</a>
+                    <a class="brand" href="/"><img src="/public/img/logo.png" style="height: 18px;"/></a>
                     <div class="nav-collapse">
                         @def opt(String pageId, String url) {
                             @{
@@ -62,7 +63,7 @@
                                 String label = __i18n("main." + pageId);
                             }
                             
-                            <li class='page-@pageId @if(isCur) {active}'>
+                            <li class='page-@pageId @if(isCur) { active}'>
                                 <a href="@url">@label.raw()</a>
                             </li>
                         }
@@ -71,15 +72,22 @@
                             @opt("download", "/dist/rythm-engine-1.0-b9-SNAPSHOT-dist.zip")
                             @opt("feature", "/doc/feature")
                             <li class='page-doc @if(s().isEqual("doc", curPage)) {active}'>
-                                <a href="/doc/index" style="display: inline-block;padding-right: 2px;">@i18n("main.doc")</a>
-                                <i class="icon-caret-down" style="display:inline-block;margin-right: 10px"></i>
+                                <a href="/doc/index" style="display: inline-block;padding-right: 0px;">@i18n("main.doc")</a>
+                                <i class="icon-caret-down" style="padding-left: 0;display:inline-block;margin-right: 10px"></i>
                             </li>
                             @opt("fiddle", "http://fiddle.rythmengine.org")
                             @opt("community", "/community")
+                            @opt("about", "/about")
                         </ul>
                         <ul class="nav pull-right" style="margin-right: 30px;">
                             @codeMarker()
-                            @opt("about", "/about")
+                            <li>
+                                <a href="#" id="theme-dropdown-button">
+                                    <i class="icon-desktop"></i>&nbsp;
+                                    Theme &nbsp;
+                                    <i class="icon-caret-down"></i>
+                                </a>
+                            </li>
                         </ul>
                     </div><!--/.nav-collapse -->
                 </div>
@@ -98,6 +106,14 @@
                     @book("configuration", "/doc/configuration.md")
                     @book("directive", "/doc/directive.md")
                     @book("builtin_transformer", "/doc/builtin_transformer.md")
+                </ul>
+                <ul class="nav-sub theme clearfix container">
+                    <li class="light" data-theme="light">
+                        <img src="/public/img/theme-light.png"/>
+                    </li>
+                    <li class="dark" data-theme="dark">
+                        <img src="/public/img/theme-dark.png"/>
+                    </li>
                 </ul>
             </div>
         </div>
@@ -125,6 +141,7 @@
         }
         $('body').on('click', '.navbar-fixed-top .page-doc .icon-caret-down', function(evt){
             evt.stopImmediatePropagation();
+            $('.nav-sub.theme').hide();
             var $bookList = $('.nav-sub.doc');
             if ($bookList.is(':visible')) {
                 $bookList.slideUp();
@@ -133,14 +150,39 @@
             }
             return false;
         });
+        $('body').on('click', '.navbar-fixed-top #theme-dropdown-button', function(evt){
+            evt.stopImmediatePropagation();
+            $('.nav-sub.doc').hide();
+            var $themeList = $('.nav-sub.theme');
+            if ($themeList.is(':visible')) {
+                $themeList.slideUp();
+            } else {
+                $themeList.slideDown();
+            }
+        });
         $('body').on('click', '.nav-sub.doc li', function(){
             var url = $(this).data('url');
             window.location.href = url;
+        });
+        var setTheme = function(theme){
+            if (theme == 'dark') {
+                $('body').addClass('dark');
+            } else {
+                $('body').removeClass('dark');
+            }
+            $.cookie('rythm_theme', theme);
+        };
+        $('body').on('click', '.nav-sub.theme li', function(){
+            setTheme($(this).data('theme'));
         });
         $('body').on('click', function(){
             var $bookList = $('.nav-sub.doc');
             if ($bookList.is(':visible')) {
                 $bookList.slideUp();
+            }
+            var $themeList = $('.nav-sub.theme');
+            if ($themeList.is(':visible')) {
+                $themeList.slideUp();
             }
         });
         $('h1[data-book]').each(function(){
@@ -148,6 +190,13 @@
             $('.nav-sub.doc li.' + id).addClass('active');
             $('#nav-box h4').text($(this).text()).show();
         });
+        // load theme setting
+        (function(){
+            var myTheme = $.cookie('rythm_theme');
+            if (myTheme) {
+                setTheme(myTheme);
+            }
+        })()
     </script> 
     @render('moreScripts")
 </body>

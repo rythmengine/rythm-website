@@ -101,7 +101,7 @@ background: transparent;
 ul.nav i.icon-caret-down {cursor: pointer;} 
 ul.nav li.active i.icon-caret-down, ul.nav i.icon-caret-down:hover {color: #eee;} 
 
-.nav-sub.doc {
+.nav-sub {
     list-style: none;
     text-align: center;
     position: relative;
@@ -117,6 +117,23 @@ ul.nav li.active i.icon-caret-down, ul.nav i.icon-caret-down:hover {color: #eee;
     width: 150px;
     height: 62px;
     cursor: pointer;
+}
+
+.nav-sub.theme li {
+    display: block;
+    float: right;
+    margin: 10px 10px;
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+.nav-sub.theme li:hover {
+    opacity: 1;
+}
+
+.nav-sub.theme li img {
+    border: 1px solid #aaa;
+    width: 200px;
 }
 
 .nav-sub.doc li:hover{background-color: #333;}
