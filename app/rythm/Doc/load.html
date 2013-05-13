@@ -186,7 +186,7 @@
             
             // set anchor for all headers
             var r = /^\s*\[(.*)\](.*)/;
-            $('#doc-content > h3, #doc-content > h4').each(function(){
+            $('#doc-content > h3, #doc-content > h4, #doc-content > h5').each(function(){
                 var $h = $(this), s = $h.text(), v = r.exec(s), id = false;
                 if (v) {
                     id = v[1];
