@@ -15,6 +15,7 @@
     <![endif]-->
     <link rel="stylesheet" media="screen" href="/css/site.css">
     <link rel="stylesheet" media="screen" href="/css/color-dark.css">
+    <link rel="stylesheet" media="screen" href="/css/color-gray.css">
     @if(s().eq(lang, "zh")) {
     <link rel="stylesheet" media="screen" href="/css/font.zh.css">
     } else {
@@ -43,7 +44,7 @@
     @render("moreHeaderScripts")
     @initCodeMarker()
 </head>
-<body class='@get("bodyClass") dark1'>
+<body class='@get("bodyClass") gray'>
 
     <div id="wrap">
         <div class="navbar navbar-fixed-top navbar-inverse">
@@ -108,12 +109,16 @@
                     @book("builtin_transformer", "/doc/builtin_transformer.md")
                 </ul>
                 <ul class="nav-sub theme clearfix container">
-                    <li class="light" data-theme="light">
-                        <img src="/public/img/theme-light.png"/>
+                    @def theme(String theme) {
+                    <li class="@theme" data-theme="@theme" title="@theme">
+                        <img src="/public/img/theme-@(theme).png"/>
+                        <br/>
+                        <div style="margin-top: 10px;color: #eee; font-weight: bold">@theme</div>
                     </li>
-                    <li class="dark" data-theme="dark">
-                        <img src="/public/img/theme-dark.png"/>
-                    </li>
+                    }
+                    @theme("light")
+                    @theme("gray")
+                    @theme("dark")
                 </ul>
             </div>
         </div>
@@ -166,11 +171,7 @@
             window.location.href = url;
         });
         var setTheme = function(theme){
-            if (theme == 'dark') {
-                $('body').addClass('dark');
-            } else {
-                $('body').removeClass('dark');
-            }
+            $('body').removeClass("dark gray").addClass(theme);
             $.cookie('rythm_theme', theme);
         };
         $('body').on('click', '.nav-sub.theme li', function(){
