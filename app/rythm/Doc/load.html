@@ -125,11 +125,13 @@
         }
         pre.code {
             position: relative;
+            max-height: 600px;
+            overflow-y: auto;
         }
         pre .btn-try-it {
             position: absolute;
             right: 0px;
-            bottom: 0px;
+            top: 0px;
             color: #aaa;
             padding: 1px 5px;
             background-color: #333;
@@ -141,6 +143,9 @@
             opacity: 1;
             background-color: #555;
             color: #ccc;
+        }
+        iframe[data-id] {
+            max-height: 600px;
         }
     </style>
 }
