@@ -6,7 +6,7 @@ h1, h2, h3, h4, h5 {
     font-family: "Verdana", "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
 }
 
-code, pre {
+code, pre, .mono {
     font-family: "Segoe UI Mono", Verdana;
 }
 

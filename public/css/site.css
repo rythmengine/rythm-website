@@ -140,3 +140,5 @@ ul.nav li.active i.icon-caret-down, ul.nav i.icon-caret-down:hover {color: #eee;
 .nav-sub.doc li:hover, .nav-sub.doc li.active {
     color: #eee;
 }
+
+table.table {font-size: 11pt;}
