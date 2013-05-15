@@ -243,6 +243,9 @@
             var url = "http://" + fiddle + "/embed/#/" + fid;
             $pre.replaceWith($('<iframe src="' + url + '"></iframe>'));
         });
+        $('body').on('load', 'iframe', function(){
+            $(this).height(this.contentWindow.document.body.offsetHeight);
+        })
         
         // construct navigation for named anchors
         $('#doc-content section[id]').each(function(){
@@ -278,7 +281,7 @@
                     return false;
                 }
             })
-        })
+        });
         
         if ($('iframe').size() == 0) {
             return;
