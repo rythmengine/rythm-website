@@ -20,7 +20,7 @@ body.gray a:hover, body.gray a:focus {background: transparent; color: #3d6c80; t
 
 body.gray .navbar-inner {border-bottom-color: #444 !important;}
 
-body.gray iframe[data-id] {border-top: 1px solid #fff;}
+body.gray iframe[data-id] {border: 1px solid #aaa;}
 
 body.gray .links a.nav-btn {
     background-color: #437288;
