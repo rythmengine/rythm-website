@@ -283,20 +283,11 @@
             })
         });
         
-        var x = {};
         $('body').bind('_resize', function(evt){
             $if = $('iframe[data-id=' + evt.id + ']');
             if ($if.size() == 0) return;
             var css = {height: evt.h};
-            if (!x[evt.id]) {
-                //$if.css(css);
-                x[evt.id] = {h :evt.h, ts: new Date().getTime()};
-            } else if(x[evt.id].h != evt.h || x[evt.id].h != $if.height()) {
-                x[evt.id].h = evt.h;
-                if (new Date().getTime() > (x[evt.id].ts + 1000)) {
-                    $if.animate(css, 300);
-                }
-            }
+            $if.animate(css, 300);
         });
 
         $('body').bind('_show_sample_code', function(){
