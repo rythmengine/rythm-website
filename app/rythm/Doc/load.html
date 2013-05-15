@@ -241,7 +241,7 @@
                 fiddle = "fiddle.rythmengine.com";
             }
             var url = "http://" + fiddle + "/embed/#/" + fid;
-            $pre.replaceWith($('<iframe src="' + url + '"></iframe>'));
+            $pre.replaceWith($('<iframe src="' + url + '" data-id="' + fid + '"></iframe>'));
         });
         $('body').on('load', 'iframe', function(){
             $(this).height(this.contentWindow.document.body.offsetHeight);
