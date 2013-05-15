@@ -283,38 +283,6 @@
             })
         });
         
-        if ($('iframe').size() == 0) {
-            return;
-        }
-        
-        $('#overlay').fadeIn();
-        
-        // at last start embedded video if there is
-        var ifCnt0 = $('iframe').size(), ifInited = 0, ifLoaded = 0, fiddle = "fiddle.rythmengine.org";
-        if (window.location.href.indexOf("rythmengine.com") > -1) {
-            fiddle = "fiddle.rythmengine.com";
-        }
-        var loadFrame = function() {
-            if (ifInited >= ifCnt0) return;
-            $me = $($('iframe').get(ifInited)), src = $me.data('src');
-            if (!src && $me.data('id')) {
-                src = "http://" + fiddle + "/embed/#/" + $me.data('id');
-            }
-            if (src) {
-                src = src.replace(/\s+/g, '');
-                $me.attr('src', src);
-                ifInited++;
-                console.log(">>" + ifInited);
-                $('.gauge-meter').width($('.gauge-meter').width() + 200/ifCnt0);
-                //var r = /.*\/embed\/([0-9a-z]*).*/g, m = r.exec(src);
-                //$me.attr('data-id', m[1]);
-            } else {
-                ifCnt0--;
-            }
-            setTimeout(loadFrame, 0);
-        };
-        loadFrame();
-        
         var x = {};
         $('body').bind('_resize', function(evt){
             $if = $('iframe[data-id=' + evt.id + ']');
@@ -330,64 +298,11 @@
                 }
             }
         });
-        function insideViewPort(el) {
-            var rect = el.getBoundingClientRect();
-            return rect.top >= 0 && rect.bottom <= window.innerHeight;
-        }
-        var _scroll = function(){
-            $('iframe[data-id]').each(function(){
-                 var $if = $(this), id = $if.data('id');
-                 if (insideViewPort(this) && x[id] && x[id].h != $if.height()) {
-                    $if.animate({height: x[id].h}, 300);
-                 }
-            })
-        };
 
-        $(window).scroll(_scroll);
-        
         $('body').bind('_show_sample_code', function(){
             var popup = window.open("about:blank", "_rythmfiddle_sample_code");
             popup.location.href = "http://fiddle.rythmengine.org/#/sample_model_code";
         });
-        
-    @if(hasShift) {
-        function moveToHash() {
-            var hashElem = $(window.location.hash);
-        
-            // If the hash elment exists
-            if(hashElem.length) {
-                setTimeout(function(){
-                    //window.scrollTo(hashElem.position().left, hashElem.position().top);
-                    document.location.href = document.location.hash;
-                    $('#overlay').fadeOut(500);
-                }, 100);
-            } else {
-                setTimeout(function(){
-                    //window.scrollTo(1);
-                    $('html,body').animate({
-                        scrollTop: 0
-                    }, 100);
-                    $('#overlay').fadeOut(500);
-                }, 100);
-            }
-        }
-
-        $('iframe').load(function(){
-            if (!$(this).attr('src')) {
-                return;
-            }
-            ifLoaded++;
-            console.log("<<" + ifLoaded);
-            var w = $('.gauge-meter').width() + 200/ifCnt0;
-            $('.gauge-meter').width(w);
-            if (ifLoaded >= ifCnt0) {
-                moveToHash();
-            }
-        });
-        
-        setTimeout(moveToHash, 800 * ifCnt0);
-    } @// eof hasShift
-
     };
     fx();
     document.domain = location.host.replace(/^.*?([^.]+\.[^.]+)$/g,'$1');    
