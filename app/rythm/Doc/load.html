@@ -123,6 +123,25 @@
             display: none;
             font-size: 10pt;
         }
+        pre.code {
+            position: relative;
+        }
+        pre .btn-try-it {
+            position: absolute;
+            right: 0px;
+            bottom: 0px;
+            color: #aaa;
+            padding: 1px 5px;
+            background-color: #333;
+            opacity: .8;
+            cursor: pointer;
+            font-family: "Segoe UI", Frutiger, "Frutiger Linotype", Tahoma, "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+        }
+        pre .btn-try-it:hover {
+            opacity: 1;
+            background-color: #555;
+            color: #ccc;
+        }
     </style>
 }
 @init() {
@@ -164,201 +183,210 @@
 }
 
 
-    <script type="text/javascript">
-        $('gauge-meter').width(0);
-        var fx = function(){
-            $('pre code').each(function() {
-                var $me = $(this);
-                if (!$me.hasClass('prettyprint')) {
-                    $me.addClass('prettyprint linenums');
-                } else {
-                    $me.addClass('linenums'); 
-                }
-            });
-            prettyPrint();
-            
-            var names = {
-                h2: 0,
-                h3: 0,
-                h4: 0
-            };
-            
-            // set anchor for all headers
-            var r = /^\s*\[(.*)\](.*)/;
-            $('#doc-content > h3, #doc-content > h4, #doc-content > h5').each(function(){
-                var $h = $(this), s = $h.text(), v = r.exec(s), id = false;
-                if (v) {
-                    id = v[1];
-                    $h.text(' ' + v[2]);
-                } else {
-                    var nm = this.tagName.toLowerCase();
-                    id = nm + "_" + names[nm]++;
-                }
-                 
-                //$('<a id="' + nm0 + '"></a>').prependTo($h);
-                var $section = $('<section></section>')
-                $h.wrap($section.prop('id', id).addClass(this.tagName.toLowerCase()));
-                if ($h.parent('section').hasClass('h3')) {
-                    $h.parent('section').append('<i class="icon-double-angle-up pull-right back-to-top" title="back to top"></i>')
-                } else {
-                    $h.parent('section').append('<i class="icon-double-angle-up pull-right back-to-top" title="back to section top"></i>')
-                }
-            });
-            
-            $('body').on('click', '.back-to-top', function(){
-                if ($(this).parent('section').hasClass('h3')) {
-                    $('html,body').scrollTo(0, 0) ;
-                } else {
-                    var $h4 = $(this).parent('.h4'), $h3 = $h4.prev();
-                    
-                    while($h3 && $h3.size() > 0 && !$h3.hasClass('h3')) {$h3 = $h3.prev();}
-                    var hash = '#' + $h3.attr('id');
-                    $('html,body').scrollTo(hash, hash) ;
-                }
-            })
-            
-            // construct navigation for named anchors
-            $('#doc-content section[id]').each(function(){
-                if (!$(this).hasClass('h3')) return;
-                var $a = $(this), nm = $a.prop('id'), lbl = $a.text();
-                if (!lbl) {
-                    lbl = $a.parent().text();
-                }
-                if (!lbl) {
-                    lbl = $a.next().text();
-                }
-                if (lbl) {
-                    $('<li><a href="#' + nm + '"><i class="icon-angle-right"></i> ' + lbl + '</li>').appendTo('#doc-nav');
-                }
-            });
-            
-            $('.affix').affix();
-            
-            $('pre code.prettyprint').each(function(){
-                var $me = $(this), clss = $me.attr('class').split(" ");
-                $.each(clss, function(id, cls) {
-                    if (cls.indexOf(',') != -1) {
-                        //lang-html,fid-c5a55bb34cf4476984a6faea9f875fe0 style
-                        var s = cls.split(",");
-                        setTimeout(function(){
-                            $me.removeClass(cls);
-                            $me.addClass(s[0].trim());
-                        },1);
-                        cls = s[1].trim();
-                        var id = cls.substring(4);
-                        $me.parent().replaceWith('<iframe data-id="' + id + '"></iframe>');
-                        return false;
-                    }
-                })
-            })
-            
-            if ($('iframe').size() == 0) {
-                return;
+<script type="text/javascript">
+    $('gauge-meter').width(0);
+    var fx = function(){
+        $('pre code').each(function() {
+            var $me = $(this);
+            if (!$me.hasClass('prettyprint')) {
+                $me.addClass('prettyprint linenums');
+            } else {
+                $me.addClass('linenums'); 
             }
-            
-            $('#overlay').fadeIn();
-            
-            // at last start embedded video if there is
-            var ifCnt0 = $('iframe').size(), ifInited = 0, ifLoaded = 0, fiddle = "fiddle.rythmengine.org";
+        });
+        prettyPrint();
+        
+        var names = {
+            h2: 0,
+            h3: 0,
+            h4: 0
+        };
+        
+        // set anchor for all headers
+        var r = /^\s*\[(.*)\](.*)/;
+        $('#doc-content > h3, #doc-content > h4, #doc-content > h5').each(function(){
+            var $h = $(this), s = $h.text(), v = r.exec(s), id = false;
+            if (v) {
+                id = v[1];
+                $h.text(' ' + v[2]);
+            } else {
+                var nm = this.tagName.toLowerCase();
+                id = nm + "_" + names[nm]++;
+            }
+             
+            //$('<a id="' + nm0 + '"></a>').prependTo($h);
+            var $section = $('<section></section>')
+            $h.wrap($section.prop('id', id).addClass(this.tagName.toLowerCase()));
+            if ($h.parent('section').hasClass('h3')) {
+                $h.parent('section').append('<i class="icon-double-angle-up pull-right back-to-top" title="back to top"></i>')
+            } else {
+                $h.parent('section').append('<i class="icon-double-angle-up pull-right back-to-top" title="back to section top"></i>')
+            }
+        });
+        
+        $('body').on('click', '.back-to-top', function(){
+            if ($(this).parent('section').hasClass('h3')) {
+                $('html,body').scrollTo(0, 0) ;
+            } else {
+                var $h4 = $(this).parent('.h4'), $h3 = $h4.prev();
+                
+                while($h3 && $h3.size() > 0 && !$h3.hasClass('h3')) {$h3 = $h3.prev();}
+                var hash = '#' + $h3.attr('id');
+                $('html,body').scrollTo(hash, hash) ;
+            }
+        })
+        $('body').on('click', '.btn-try-it', function(){
+            var $pre = $(this).parent(), fid = $(this).data('fiddle'), fiddle = "fiddle.rythmengine.org";
             if (window.location.href.indexOf("rythmengine.com") > -1) {
                 fiddle = "fiddle.rythmengine.com";
             }
-            var loadFrame = function() {
-                if (ifInited >= ifCnt0) return;
-                $me = $($('iframe').get(ifInited)), src = $me.data('src');
-                if (!src && $me.data('id')) {
-                    src = "http://" + fiddle + "/embed/#/" + $me.data('id');
-                }
-                if (src) {
-                    src = src.replace(/\s+/g, '');
-                    $me.attr('src', src);
-                    ifInited++;
-                    console.log(">>" + ifInited);
-                    $('.gauge-meter').width($('.gauge-meter').width() + 200/ifCnt0);
-                    //var r = /.*\/embed\/([0-9a-z]*).*/g, m = r.exec(src);
-                    //$me.attr('data-id', m[1]);
-                } else {
-                    ifCnt0--;
-                }
-                setTimeout(loadFrame, 0);
-            };
-            loadFrame();
-            
-            var x = {};
-            $('body').bind('_resize', function(evt){
-                $if = $('iframe[data-id=' + evt.id + ']');
-                if ($if.size() == 0) return;
-                var css = {height: evt.h};
-                if (!x[evt.id]) {
-                    //$if.css(css);
-                    x[evt.id] = {h :evt.h, ts: new Date().getTime()};
-                } else if(x[evt.id].h != evt.h || x[evt.id].h != $if.height()) {
-                    x[evt.id].h = evt.h;
-                    if (new Date().getTime() > (x[evt.id].ts + 1000)) {
-                        $if.animate(css, 300);
-                    }
-                }
-            });
-            function insideViewPort(el) {
-                var rect = el.getBoundingClientRect();
-                return rect.top >= 0 && rect.bottom <= window.innerHeight;
+            var url = "http://" + fiddle + "/embed/#/" + fid;
+            $pre.replaceWith($('<iframe src="' + url + '"></iframe>'));
+        });
+        
+        // construct navigation for named anchors
+        $('#doc-content section[id]').each(function(){
+            if (!$(this).hasClass('h3')) return;
+            var $a = $(this), nm = $a.prop('id'), lbl = $a.text();
+            if (!lbl) {
+                lbl = $a.parent().text();
             }
-            var _scroll = function(){
-                $('iframe[data-id]').each(function(){
-                     var $if = $(this), id = $if.data('id');
-                     if (insideViewPort(this) && x[id] && x[id].h != $if.height()) {
-                        $if.animate({height: x[id].h}, 300);
-                     }
-                })
-            };
-
-            $(window).scroll(_scroll);
-            
-            $('body').bind('_show_sample_code', function(){
-                var popup = window.open("about:blank", "_rythmfiddle_sample_code");
-                popup.location.href = "http://fiddle.rythmengine.org/#/sample_model_code";
-            });
-            
-        @if(hasShift) {
-            function moveToHash() {
-                var hashElem = $(window.location.hash);
-            
-                // If the hash elment exists
-                if(hashElem.length) {
-                    setTimeout(function(){
-                        //window.scrollTo(hashElem.position().left, hashElem.position().top);
-                        document.location.href = document.location.hash;
-                        $('#overlay').fadeOut(500);
-                    }, 100);
-                } else {
-                    setTimeout(function(){
-                        //window.scrollTo(1);
-                        $('html,body').animate({
-                            scrollTop: 0
-                        }, 100);
-                        $('#overlay').fadeOut(500);
-                    }, 100);
-                }
+            if (!lbl) {
+                lbl = $a.next().text();
             }
-
-            $('iframe').load(function(){
-                if (!$(this).attr('src')) {
-                    return;
+            if (lbl) {
+                $('<li><a href="#' + nm + '"><i class="icon-angle-right"></i> ' + lbl + '</li>').appendTo('#doc-nav');
+            }
+        });
+        
+        $('.affix').affix();
+        
+        $('pre code.prettyprint').each(function(){
+            var $me = $(this), clss = $me.attr('class').split(" ");
+            $.each(clss, function(id, cls) {
+                if (cls.indexOf(',') != -1) {
+                    //lang-html,fid-c5a55bb34cf4476984a6faea9f875fe0 style
+                    var s = cls.split(",");
+                    setTimeout(function(){
+                        $me.removeClass(cls);
+                        $me.addClass(s[0].trim());
+                    },1);
+                    cls = s[1].trim();
+                    var id = cls.substring(4);
+                    //$me.parent().replaceWith('<iframe data-id="' + id + '"></iframe>');
+                    $me.parent().addClass("code").append($('<div class="btn-try-it" data-fiddle="' + id + '">Try it yourself <i class="icon-angle-right"></i>'));
+                    return false;
                 }
-                ifLoaded++;
-                console.log("<<" + ifLoaded);
-                var w = $('.gauge-meter').width() + 200/ifCnt0;
-                $('.gauge-meter').width(w);
-                if (ifLoaded >= ifCnt0) {
-                    moveToHash();
-                }
-            });
-            
-            setTimeout(moveToHash, 800 * ifCnt0);
-        } @// eof hasShift
-
-            document.domain = location.host.replace(/^.*?([^.]+\.[^.]+)$/g,'$1');
+            })
+        })
+        
+        if ($('iframe').size() == 0) {
+            return;
+        }
+        
+        $('#overlay').fadeIn();
+        
+        // at last start embedded video if there is
+        var ifCnt0 = $('iframe').size(), ifInited = 0, ifLoaded = 0, fiddle = "fiddle.rythmengine.org";
+        if (window.location.href.indexOf("rythmengine.com") > -1) {
+            fiddle = "fiddle.rythmengine.com";
+        }
+        var loadFrame = function() {
+            if (ifInited >= ifCnt0) return;
+            $me = $($('iframe').get(ifInited)), src = $me.data('src');
+            if (!src && $me.data('id')) {
+                src = "http://" + fiddle + "/embed/#/" + $me.data('id');
+            }
+            if (src) {
+                src = src.replace(/\s+/g, '');
+                $me.attr('src', src);
+                ifInited++;
+                console.log(">>" + ifInited);
+                $('.gauge-meter').width($('.gauge-meter').width() + 200/ifCnt0);
+                //var r = /.*\/embed\/([0-9a-z]*).*/g, m = r.exec(src);
+                //$me.attr('data-id', m[1]);
+            } else {
+                ifCnt0--;
+            }
+            setTimeout(loadFrame, 0);
         };
-        fx();
-    </script>
+        loadFrame();
+        
+        var x = {};
+        $('body').bind('_resize', function(evt){
+            $if = $('iframe[data-id=' + evt.id + ']');
+            if ($if.size() == 0) return;
+            var css = {height: evt.h};
+            if (!x[evt.id]) {
+                //$if.css(css);
+                x[evt.id] = {h :evt.h, ts: new Date().getTime()};
+            } else if(x[evt.id].h != evt.h || x[evt.id].h != $if.height()) {
+                x[evt.id].h = evt.h;
+                if (new Date().getTime() > (x[evt.id].ts + 1000)) {
+                    $if.animate(css, 300);
+                }
+            }
+        });
+        function insideViewPort(el) {
+            var rect = el.getBoundingClientRect();
+            return rect.top >= 0 && rect.bottom <= window.innerHeight;
+        }
+        var _scroll = function(){
+            $('iframe[data-id]').each(function(){
+                 var $if = $(this), id = $if.data('id');
+                 if (insideViewPort(this) && x[id] && x[id].h != $if.height()) {
+                    $if.animate({height: x[id].h}, 300);
+                 }
+            })
+        };
+
+        $(window).scroll(_scroll);
+        
+        $('body').bind('_show_sample_code', function(){
+            var popup = window.open("about:blank", "_rythmfiddle_sample_code");
+            popup.location.href = "http://fiddle.rythmengine.org/#/sample_model_code";
+        });
+        
+    @if(hasShift) {
+        function moveToHash() {
+            var hashElem = $(window.location.hash);
+        
+            // If the hash elment exists
+            if(hashElem.length) {
+                setTimeout(function(){
+                    //window.scrollTo(hashElem.position().left, hashElem.position().top);
+                    document.location.href = document.location.hash;
+                    $('#overlay').fadeOut(500);
+                }, 100);
+            } else {
+                setTimeout(function(){
+                    //window.scrollTo(1);
+                    $('html,body').animate({
+                        scrollTop: 0
+                    }, 100);
+                    $('#overlay').fadeOut(500);
+                }, 100);
+            }
+        }
+
+        $('iframe').load(function(){
+            if (!$(this).attr('src')) {
+                return;
+            }
+            ifLoaded++;
+            console.log("<<" + ifLoaded);
+            var w = $('.gauge-meter').width() + 200/ifCnt0;
+            $('.gauge-meter').width(w);
+            if (ifLoaded >= ifCnt0) {
+                moveToHash();
+            }
+        });
+        
+        setTimeout(moveToHash, 800 * ifCnt0);
+    } @// eof hasShift
+
+        document.domain = location.host.replace(/^.*?([^.]+\.[^.]+)$/g,'$1');
+    };
+    fx();
+</script>
 
