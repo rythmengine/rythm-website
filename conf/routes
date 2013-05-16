@@ -23,7 +23,7 @@ GET /css/ staticDir:public/css
 GET /public/ staticDir:public
 GET /bs/ staticDir:public/bootstrap
 
-GET /wxc/news/{y}/{m}/{d}/{nid}.html Doc.wxc
+GET /news/{y}/{m}/{d}/{nid}.html Doc.wxc
 
 # Catch all
 *       /{controller}/{action}                  {controller}.{action}
