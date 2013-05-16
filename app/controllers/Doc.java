@@ -1,11 +1,12 @@
 package controllers;
 
-import org.rythmengine.play.Cache4;
-import org.rythmengine.utils.S;
 import controllers.filters.UADetector;
 import org.markdown4j.Markdown4jProcessor;
+import org.rythmengine.play.Cache4;
+import org.rythmengine.utils.S;
 import play.Play;
 import play.i18n.Lang;
+import play.libs.WS;
 import play.mvc.Controller;
 import play.mvc.With;
 
@@ -112,6 +113,12 @@ public class Doc extends Controller {
             }
         }
         renderBinary(image);
+    }
+    
+    public static void wxc(String y, String m, String d, String nid) {
+        WS.HttpResponse r = WS.url(String.format("http://www.wenxuecity.com/news/%s/%s/%s/%s.html", y, m, d, nid)).get();
+        response.setContentTypeIfNotSet(r.getContentType());
+        renderHtml(r.getString());
     }
 
 //    /**

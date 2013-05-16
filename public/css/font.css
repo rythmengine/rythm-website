@@ -1,5 +1,5 @@
 body, .navbar-inner a {
-    font-family: "Segoe UI", Frutiger, "Frutiger Linotype", Tahoma, "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
+    font-family: "Arial Unicode MS", "Segoe UI", Frutiger, "Frutiger Linotype", Tahoma, "Dejavu Sans", "Helvetica Neue", Arial, sans-serif;
 }
 
 h1, h2, h3, h4, h5 {
@@ -7,9 +7,5 @@ h1, h2, h3, h4, h5 {
 }
 
 code, pre, .mono {
-    font-family: "Segoe UI Mono", Verdana;
-}
-
-pre > code {
-    font-family: "Source Code Pro Semibold","Envy Code R","Segoe UI Mono",Consolas,Monaco,Menlo,"Courier New",monospace;
+    font-family: "Segoe UI Mono",Consolas,Monaco,"Source Code Pro Semibold","Envy Code R",Menlo,"Courier New",monospace;
 }

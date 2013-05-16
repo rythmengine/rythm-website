@@ -24,7 +24,7 @@ body.gray iframe[data-id] {border: 1px solid #aaa;}
 
 body.gray .links a.nav-btn {
     background-color: #437288;
-    color: #ccc;
+    color: #efefef;
 }
 body.gray .links a.nav-btn:hover {
     background-color: #4c8da4;
