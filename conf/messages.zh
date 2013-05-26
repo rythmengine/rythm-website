@@ -12,6 +12,14 @@ main.community=社区
 main.about=关于
 main.by=
 main.lgl=罗格林
+main.book.index=文档中心
+main.book.tutorial=教程
+main.book.template_guide=模版指南 (WIP)
+main.book.developer_guide=开发指南
+main.book.configuration=配置手册
+main.book.directive=指令手册(WIP)
+main.book.builtin_transformer=内置转换器
+
 
 
 index.title=一个专为Java程序员设计的模版引擎

@@ -59,3 +59,5 @@ body.dark .pln {
 body.dark #nav-box h4 {
     border-bottom-color: #666;
 }
+
+body.dark table code, body.dark table pre {color: #aaa;} 

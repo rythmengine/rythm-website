@@ -5,3 +5,7 @@ body, .navbar-inner a {
 h1, h2, h3, h4, h5 {
     font-family: "Microsoft Yahei", "Franklin Gothic Medium", "Franklin Gothic", "ITC Franklin Gothic", Arial, sans-serif;
 }
+
+code, pre, .mono {
+    font-family: "Segoe UI Mono",Consolas,"Source Code Pro Semibold","Envy Code R",Monaco,Menlo,"Courier New",monospace;
+}

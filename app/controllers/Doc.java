@@ -85,7 +85,8 @@ public class Doc extends Controller {
         //Reader pageReader = new FileReader(f);
         //String html = Markdown.transformMarkdown(pageReader);
         String html = markDown.process(f);
-        render(page, html);
+        String fiddleWebSite = Play.configuration.getProperty("fiddle.website", "http://localhost:9000");
+        render(page, html, fiddleWebSite);
     }
 
     public static void image(String imageName, String ext) throws Exception {

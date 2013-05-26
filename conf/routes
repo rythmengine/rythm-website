@@ -20,6 +20,8 @@ GET /img/ staticDir:doc/img
 GET /api/ staticDir:public/api
 GET /dist/ staticDir:public/dist
 GET /css/ staticDir:public/css
+GET /js/ staticDir:public/js
+GET /font/ staticDir:public/font
 GET /public/ staticDir:public
 GET /bs/ staticDir:public/bootstrap
 

@@ -8,24 +8,9 @@
     <meta content="greenlaw110@@gmail.com" name="author">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap.no-icons.min.css" rel="stylesheet">
-    <link href="//netdna.bootstrapcdn.com/font-awesome/3.0/css/font-awesome.css" rel="stylesheet">
-    <!--[if IE 7]>
-    <link href="//netdna.bootstrapcdn.com/font-awesome/3.0/css/font-awesome-ie7.css" rel="stylesheet">
-    <![endif]-->
-    <link rel="stylesheet" media="screen" href="/css/site.css">
-    <link rel="stylesheet" media="screen" href="/css/color-dark.css">
-    <link rel="stylesheet" media="screen" href="/css/color-gray.css">
-    @if(s().eq(lang, "zh")) {
-    <link rel="stylesheet" media="screen" href="/css/font.zh.css">
-    } else {
-    <link href="http://fonts.googleapis.com/css?family=Roboto&subset=latin" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" media="screen" href="/public/css/font.css">
-    }
     <link rel="shortcut icon" type="image/png" href="/public/img/favicon.gif">
     <style type="text/css">
     </style>
-    @render("moreStyles")
     <script type="text/javascript">
       var _gaq = _gaq || [];
       _gaq.push(['_setAccount', 'UA-29505548-1']);
@@ -37,10 +22,32 @@
         var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
       })();
     </script>
-    <script type="text/javascript" src="//code.jquery.com/jquery-1.9.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-2.0.1.min.js"></script>
+    <script>
+        if (!window.jQuery) {
+            document.write('<link href="/css/bootstrap-fontawesome.css" rel="stylesheet">'
+        @if(s().eq(lang, "zh")) {
+            + '<link rel="stylesheet" media="screen" href="/css/font.zh.css">'
+        } else {
+            + '<link rel="stylesheet" media="screen" href="/public/css/font.css">'
+        }
+            + '<link rel="stylesheet" media="screen" href="/css/site.css">'
+            + '<script src="/js/jquery.js">\x3C/script>'
+            + '<script src="/js/bootstrap.js">\x3C/script>'
+            + '<script src="/js/prettify.js">\x3C/script>'
+            );
+        } else {
+            document.write('<link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">'
+            + '<link href="//netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.min.css" rel="stylesheet">'
+            + '<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/js/bootstrap.min.js">\x3C/script>'
+            + '<script src="//cdnjs.cloudflare.com/ajax/libs/prettify/r224/prettify.js">\x3C/script>'
+            );
+        }
+    </script>
+    <link rel="stylesheet" media="screen" href="/css/color-dark.css">
+    <link rel="stylesheet" media="screen" href="/css/color-gray.css">
     <script type="text/javascript" src="/public/js/jquery.cookie.js"></script>
-    <script type="text/javascript" src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/prettify/r224/prettify.js"></script>
+    @render("moreStyles")
     @render("moreHeaderScripts")
     @initCodeMarker()
 </head>

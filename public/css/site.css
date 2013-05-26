@@ -1,3 +1,6 @@
+#wrap .container {
+    width: 940px;
+}
 footer.footer {
     font-size: 12pt !important;
     margin-top: 50px;
