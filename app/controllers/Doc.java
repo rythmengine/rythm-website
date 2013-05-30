@@ -87,7 +87,11 @@ public class Doc extends Controller {
         //Reader pageReader = new FileReader(f);
         //String html = Markdown.transformMarkdown(pageReader);
         String s = IO.readContentAsString(f);
-        s = RythmPlugin.render(s);
+        try {
+            s = RythmPlugin.render(s);
+        } catch (Exception e) {
+            // ignore
+        }
         String html = markDown.process(s);
         String fiddleWebSite = Play.configuration.getProperty("fiddle.website", "http://localhost:9000");
         render(page, html, fiddleWebSite);
