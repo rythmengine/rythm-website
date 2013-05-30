@@ -83,7 +83,7 @@
                         }
                         <ul class="nav">
                             @codeMarker()
-                            @opt("download", "/dist/rythm-engine-1.0-b9-SNAPSHOT-dist.zip")
+                            @opt("download", _play.configuration.getProperty("dist.url"))
                             @opt("feature", "/doc/feature")
                             <li class='page-doc @if(s().isEqual("doc", curPage)) {active}'>
                                 <a href="/doc/index" style="display: inline-block;padding-right: 0px;">@i18n("main.doc")</a>

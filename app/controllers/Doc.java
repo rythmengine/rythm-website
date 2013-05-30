@@ -3,6 +3,8 @@ package controllers;
 import controllers.filters.UADetector;
 import org.markdown4j.Markdown4jProcessor;
 import org.rythmengine.play.Cache4;
+import org.rythmengine.play.RythmPlugin;
+import org.rythmengine.utils.IO;
 import org.rythmengine.utils.S;
 import play.Play;
 import play.i18n.Lang;
@@ -84,7 +86,9 @@ public class Doc extends Controller {
 
         //Reader pageReader = new FileReader(f);
         //String html = Markdown.transformMarkdown(pageReader);
-        String html = markDown.process(f);
+        String s = IO.readContentAsString(f);
+        s = RythmPlugin.render(s);
+        String html = markDown.process(s);
         String fiddleWebSite = Play.configuration.getProperty("fiddle.website", "http://localhost:9000");
         render(page, html, fiddleWebSite);
     }
