@@ -1,9 +1,9 @@
 # Application dependencies
 
 require:
-    - com.gelinsoft -> app-base 1.5.0
+    - com.gelinsoft -> app-base 2.04a
     - com.gelinsoft -> betterlogs 1.2i
-    - com.gelinsoft -> play-rythm 1.0-b9a
+    - com.gelinsoft -> play-rythm 1.0-b10
     - play -> secure
 
 repositories:

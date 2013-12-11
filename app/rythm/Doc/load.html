@@ -174,7 +174,7 @@
         @html.raw()
     </div>
 </div>
-@args com.greenlaw110.utils.UserAgent __ua__;
+@args org.osgl.web.util.UserAgent __ua__;
 @{boolean hasShift = __ua__.isWebKit() || __ua__.isOpera();}
 @if (hasShift) {
 <div id="overlay" @if(__ua__.isOpera() || __ua__.isSafari())class="opera"@>
