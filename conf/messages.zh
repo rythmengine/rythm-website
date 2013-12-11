@@ -1,31 +1,31 @@
 # You can specialize this file for each language.
 # For example, for French create a messages.fr file
 #
-main.title=Rythm模板引擎
-main.desc=一个使用类.Net Razor语法的高性能Java模板引擎
+main.title=Rythm\u6A21\u677F\u5F15\u64CE
+main.desc=\u4E00\u4E2A\u4F7F\u7528\u7C7B.Net Razor\u8BED\u6CD5\u7684\u9AD8\u6027\u80FDJava\u6A21\u677F\u5F15\u64CE
 main.rythm=@Rythm
-main.download=下载
-main.feature=特性
-main.doc=文档
-main.fiddle=在线演示
-main.community=社区
-main.about=关于
+main.download=\u4E0B\u8F7D
+main.feature=\u7279\u6027
+main.doc=\u6587\u6863
+main.fiddle=\u5728\u7EBF\u6F14\u793A
+main.community=\u793E\u533A
+main.about=\u5173\u4E8E
 main.by=
-main.lgl=罗格林
-main.book.index=文档中心
-main.book.tutorial=教程
-main.book.template_guide=模版指南 (WIP)
-main.book.developer_guide=开发指南
-main.book.configuration=配置手册
-main.book.directive=指令手册(WIP)
-main.book.builtin_transformer=内置转换器
+main.lgl=\u7F57\u683C\u6797
+main.book.index=\u6587\u6863\u4E2D\u5FC3
+main.book.tutorial=\u6559\u7A0B
+main.book.template_guide=\u6A21\u7248\u6307\u5357 (WIP)
+main.book.developer_guide=\u5F00\u53D1\u6307\u5357
+main.book.configuration=\u914D\u7F6E\u624B\u518C
+main.book.directive=\u6307\u4EE4\u624B\u518C
+main.book.builtin_transformer=\u5185\u7F6E\u8F6C\u6362\u5668
 
 
 
-index.title=一个专为Java程序员设计的模版引擎
-index.link.online-demo=在线演示
-index.link.doc=产品文档
-index.link.get-rythm=获得Rythm
+index.title=\u4E00\u4E2A\u4E13\u4E3AJava\u7A0B\u5E8F\u5458\u8BBE\u8BA1\u7684\u6A21\u7248\u5F15\u64CE
+index.link.online-demo=\u5728\u7EBF\u6F14\u793A
+index.link.doc=\u4EA7\u54C1\u6587\u6863
+index.link.get-rythm=\u83B7\u5F97Rythm
 
-load.found-bug=发现文档有错误？
-load.report-bug=在这里报告
+load.found-bug=\u53D1\u73B0\u6587\u6863\u6709\u9519\u8BEF\uFF1F
+load.report-bug=\u5728\u8FD9\u91CC\u62A5\u544A

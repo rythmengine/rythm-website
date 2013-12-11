@@ -17,7 +17,7 @@ main.book.tutorial=Beginner's Tutorial
 main.book.template_guide=Template Guide (WIP)
 main.book.developer_guide=Developer Guide
 main.book.configuration=Configuration Reference
-main.book.directive=Directive Reference (WIP)
+main.book.directive=Directive Reference
 main.book.builtin_transformer=Built-in Transformers
 
 index.title=A template engine for Java programmer
