@@ -1,4 +1,4 @@
-# You can specialize this file for each language.
+﻿# You can specialize this file for each language.
 # For example, for French create a messages.fr file
 #
 main.title=Rythm Template Engine
@@ -27,3 +27,8 @@ index.link.get-rythm=Get Rythm
 
 load.found-bug=Found document defects?
 load.report-bug=Report it
+
+community.ask_on_stackoverflow=Ask question on StackOverflow
+community.ask_on_google_group=Ask question on Google Group
+community.open_issue_on_github=Report issue on GitHub
+community.fork_on_github=Fork Rythm on GitHub
