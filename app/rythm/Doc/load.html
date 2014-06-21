@@ -1,5 +1,5 @@
 @extends(main, pageTitle: page.capFirst())
-@args String page, String html, String fiddleWebSite
+@args String page, String html, String fiddleWebSite, boolean localized
 @set(bodyClass: "doc")
 @set(title: page)
 @section(moreHeaderScripts) {
@@ -153,11 +153,36 @@
     if (page.startsWith("feature")) super.__setRenderArg("curPage", "feature");
     else super.__setRenderArg("curPage", "doc");
 }
+@ifNot(localized) {
+<style>
+  .icon-remove.absolute {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+  }
+</style>
+<div id="localization" class="alert alert-warning" style="position: relative">
+<p>@msg("load.no-translation", lang)</p>
+<p>@msg("load.welcome-volunteer")</p>
+<i class="icon-remove absolute"></i>
+</div>
+<script>
+$(function(){
+setTimeout(function(){
+$('#localization').fadeOut();
+}, 15000)
+})
+$('.icon-remove.absolute').click(function(){
+$('#localization').fadeOut();
+})
+</script>
+}
 
 <div class="row">
     <div class="span3" id="nav-box">
         <div class="affix" style="position: fixed;">
-            <h4>aaa</h4>
+            <h4>place-holder</h4>
             <ul class="nav nav-list" id="doc-nav">
             </ul>
             <div style="margin: 20px auto;font-size: 9pt; width:157px;padding-right: 14px;">
@@ -186,7 +211,6 @@
     </div>
 </div>
 }
-
 
 <script type="text/javascript">
     $('gauge-meter').width(0);

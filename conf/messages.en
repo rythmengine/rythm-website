@@ -15,10 +15,10 @@ main.lgl=Gelin Luo
 main.book.index=Document Center
 main.book.tutorial=Beginner's Tutorial
 main.book.template_guide=Template Guide
-main.book.developer_guide=Developer Guide
+main.book.developer_guide=Guide du développeur
 main.book.configuration=Configuration Reference
 main.book.directive=Directive Reference
-main.book.builtin_transformer=Built-in Transformers
+main.book.builtin_transformer=Transformateurs intégrés
 
 index.title=A template engine for Java programmer
 index.link.online-demo=Online Demo
@@ -27,6 +27,8 @@ index.link.get-rythm=Get Rythm
 
 load.found-bug=Found document defects?
 load.report-bug=Report it
+load.no-translation=There is no translation for %s
+load.welcome-volunteer=Welcome volunteer join <a target\="_blank" href\="https\://github.com/greenlaw110/rythm-doc">Rythm Doc</a> project to translate the doc into your native language
 
 community.ask_on_stackoverflow=Ask question on StackOverflow
 community.ask_on_google_group=Ask question on Google Group

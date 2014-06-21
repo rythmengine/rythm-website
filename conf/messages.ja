@@ -1,0 +1,36 @@
+﻿# You can specialize this file for each language.
+# For example, for French create a messages.fr file
+#
+main.title=Rythm テンプレートエンジン
+main.desc=静的型付けされた高い性能とJavaの構文テンプレートエンジンのような。NETかみそり
+main.rythm=@Rythm
+main.download=ダウンロード
+main.feature=フィーチャー
+main.doc=ドキュメント
+main.fiddle=<i class="icon-cloud"></i> Fiddle
+main.community=コミュニティ
+main.about=About
+main.by=by
+main.lgl=Gelin Luo
+main.book.index=ドキュメントセンター
+main.book.tutorial=チュートリアル
+main.book.template_guide=テンプレートガイド
+main.book.developer_guide=開発者ガイド
+main.book.configuration=コンフィグレーションリファレンス
+main.book.directive=Directive Reference
+main.book.builtin_transformer=内蔵のトランスフォーマー
+
+index.title=Javaプログラマのためのテンプレートエンジン
+index.link.online-demo=オンラインデモ
+index.link.doc=ドキュメント
+index.link.get-rythm=Get Rythm
+
+load.found-bug=Found document defects?
+load.report-bug=Report it
+load.no-translation=申し訳ありませんが、このドキュメントのいかなる日本語版ません
+load.welcome-volunteer=ようこそ、ボランティアは、あなたの母国語にドキュメントを翻訳する<a target\="_blank" href\="https\://github.com/greenlaw110/rythm-doc">Rythmドキュメント</a>プロジェクトに参加
+
+community.ask_on_stackoverflow=Ask question on StackOverflow
+community.ask_on_google_group=Ask question on Google Group
+community.open_issue_on_github=Report issue on GitHub
+community.fork_on_github=Fork Rythm on GitHub

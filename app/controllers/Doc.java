@@ -15,7 +15,7 @@ import play.mvc.With;
 import java.io.File;
 import java.io.IOException;
 
-@With(UADetector.class)
+@With({UADetector.class, Site.class})
 public class Doc extends Controller {
 
     private static String root = "/doc";
@@ -71,7 +71,8 @@ public class Doc extends Controller {
         if (!S.empty(path1)) page = path1 + "/" + page;
 
         File f = new File(Play.applicationPath, docDir() + page + ".md");
-        if (!f.exists()) {
+        boolean localized = f.exists();
+        if (!localized) {
             // try defLang
             //invalidLangs.add(Lang.get());
             f = new File(Play.applicationPath, docDirWithDefLang() + page + ".md");
@@ -94,7 +95,7 @@ public class Doc extends Controller {
         }
         String html = markDown.process(s);
         String fiddleWebSite = Play.configuration.getProperty("fiddle.website", "http://localhost:9000");
-        render(page, html, fiddleWebSite);
+        render(page, html, fiddleWebSite, localized);
     }
 
     public static void image(String imageName, String ext) throws Exception {
