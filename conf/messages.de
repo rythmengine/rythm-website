@@ -1,0 +1,36 @@
+﻿# You can specialize this file for each language.
+# For example, for French create a messages.fr file
+#
+main.title=Rythm Template-Engine
+main.desc=Eine statische eingegeben hohe Leistung und. Net Razor-Syntax wie Template-Engine für Java
+main.rythm=@Rythm
+main.download=Herunterladen
+main.feature=Feature
+main.doc=Dokument
+main.fiddle=<i class="icon-cloud"></i> Fiddle
+main.community=Gemeinde
+main.about=About
+main.by=by
+main.lgl=Gelin Luo
+main.book.index=Document Center
+main.book.tutorial=Lernprogramm
+main.book.template_guide=Template-Führer
+main.book.developer_guide=Entwicklerhandbuch
+main.book.configuration=Konfigurationsreferenz
+main.book.directive=Directive Reference
+main.book.builtin_transformer=Built-in Transformers
+
+index.title=Eine Template-Engine für Java-Programmierer
+index.link.online-demo=Online-Demo
+index.link.doc=Dokument
+index.link.get-rythm=Get Rythm
+
+load.found-bug=Found document defects?
+load.report-bug=Report it
+load.no-translation=Sorry, keine deutsche Version dieses Dokuments
+load.welcome-volunteer=Willkommen Freiwilligen kommen <a target\="_blank" href\="https\://github.com/greenlaw110/rythm-doc"> Rythm Doc </a> um das Projekt doc in Ihre Muttersprache übersetzen
+
+community.ask_on_stackoverflow=Ask question on StackOverflow
+community.ask_on_google_group=Ask question on Google Group
+community.open_issue_on_github=Report issue on GitHub
+community.fork_on_github=Fork Rythm on GitHub

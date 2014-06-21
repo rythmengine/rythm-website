@@ -1,0 +1,36 @@
+﻿# You can specialize this file for each language.
+# For example, for French create a messages.fr file
+#
+main.title=Rythm 템플릿 엔진
+main.desc=정적 형식의 높은 성능과 자바에 대한 구문 템플릿 엔진과 같은. NET 면도기
+main.rythm=@Rythm
+main.download=다운로드
+main.feature=특징
+main.doc=문서
+main.fiddle=<i class="icon-cloud"></i> Fiddle
+main.community=커뮤니티
+main.about=About
+main.by=by
+main.lgl=Gelin Luo
+main.book.index=문서 센터
+main.book.tutorial=자습서
+main.book.template_guide=템플릿 가이드
+main.book.developer_guide=개발자 가이드
+main.book.configuration=구성 참조
+main.book.directive=Directive Reference
+main.book.builtin_transformer=내장 변압기
+
+index.title=자바 프로그래머를위한 템플릿 엔진
+index.link.online-demo=온라인 데모
+index.link.doc=문서
+index.link.get-rythm=Get Rythm
+
+load.found-bug=Found document defects?
+load.report-bug=Report it
+load.no-translation=죄송합니다,이 문서의 한국어 버전은 없습니다
+load.welcome-volunteer=에 오신 것을 환영합니다 자원 봉사 참가 <a target\="_blank" href\="https\://github.com/greenlaw110/rythm-doc">Rythm 박사</a> 모국어로 문서를 번역하는 프로젝트
+
+community.ask_on_stackoverflow=Ask question on StackOverflow
+community.ask_on_google_group=Ask question on Google Group
+community.open_issue_on_github=Report issue on GitHub
+community.fork_on_github=Fork Rythm on GitHub
