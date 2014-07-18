@@ -1,36 +1,36 @@
-﻿# You can specialize this file for each language.
+# You can specialize this file for each language.
 # For example, for French create a messages.fr file
 #
-main.title=Rythm Шаблон двигателя
-main.desc=Статический набрали высокая производительность и. Чистая Бритва как шаблона Синтаксис двигателя для Java
+main.title=Шаблонизатор Rythm
+main.desc=Строготипизированный высокопроизводительный шаблонизатор для Java
 main.rythm=@Rythm
-main.download=скачать
-main.feature=особенность
-main.doc=документ
+main.download=Скачать
+main.feature=Особенности
+main.doc=Документация
 main.fiddle=<i class="icon-cloud"></i> Fiddle
-main.community=сообщество
-main.about=About
+main.community=Сообщество
+main.about=О продукте
 main.by=by
 main.lgl=Gelin Luo
-main.book.index=Центр документов
-main.book.tutorial=учебник
-main.book.template_guide=Руководство шаблона
+main.book.index=Оглавление
+main.book.tutorial=Учебник для начинающих
+main.book.template_guide=Руководство по шаблонизатору
 main.book.developer_guide=Руководство разработчика
-main.book.configuration=Конфигурация Ссылка
-main.book.directive=Directive Reference
-main.book.builtin_transformer=Built-in Transformers
+main.book.configuration=Конфигурация
+main.book.directive=Справочник по директивам
+main.book.builtin_transformer=Встроенные преобразователи
 
 index.title=Шаблонизатор для Java программиста
 index.link.online-demo=Демо-версия
-index.link.doc=документ
-index.link.get-rythm=Get Rythm
+index.link.doc=Документация
+index.link.get-rythm=Скачать Rythm
 
-load.found-bug=Found document defects?
-load.report-bug=Report it
-load.no-translation=К сожалению, этот документ не России
-load.welcome-volunteer=Присоединиться Добро пожаловать на общественных началах <a target\="_blank" href\="https\://github.com/greenlaw110/rythm-doc">Rythm Док</a> Проект перевести документ на ваш родной язык
+load.found-bug=Нашли ошибки?
+load.report-bug=Сообщите о них
+load.no-translation=К сожалению, для этого документа нет перевода на русский язык
+load.welcome-volunteer=Приглашаем желающих присоединиться к переводу <a target\="_blank" href\="https\://github.com/greenlaw110/rythm-doc">документации</a> на ваш родной язык
 
-community.ask_on_stackoverflow=Ask question on StackOverflow
-community.ask_on_google_group=Ask question on Google Group
-community.open_issue_on_github=Report issue on GitHub
-community.fork_on_github=Fork Rythm on GitHub
+community.ask_on_stackoverflow=Задать вопрос на StackOverflow
+community.ask_on_google_group=Задать вопрос в Google Group
+community.open_issue_on_github=Сообщить об ошибке on GitHub
+community.fork_on_github=Форкнуть Rythm на GitHub
