@@ -18,7 +18,7 @@ main.book.template_guide=Template Guide
 main.book.developer_guide=Developer Guide
 main.book.configuration=Configuration Reference
 main.book.directive=Directive Reference
-main.book.builtin_transformer=Transformateurs intégrés
+main.book.builtin_transformer=Built-in Transformer
 
 index.title=A template engine for Java programmer
 index.link.online-demo=Online Demo
